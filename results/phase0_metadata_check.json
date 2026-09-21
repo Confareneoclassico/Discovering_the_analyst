@@ -1,0 +1,70 @@
+{
+  "artefact": "../data/raw/AR6_Scenarios_Database_World_v1.1/AR6_Scenarios_Database_metadata_indicators_v1.1.xlsx",
+  "sha256": "1c1d70208bcf48c531c178899a7ce8ffd0fa905700bb3739770a796f0f2db12d",
+  "n_vetted_withclimate": 1202,
+  "expected_total": 1202,
+  "per_category": {
+    "C1": 97,
+    "C2": 133,
+    "C3": 311,
+    "C4": 159,
+    "C5": 212,
+    "C6": 97,
+    "C7": 164,
+    "C8": 29
+  },
+  "per_category_expected": {
+    "C1": 97,
+    "C2": 133,
+    "C3": 311,
+    "C4": 159,
+    "C5": 212,
+    "C6": 97,
+    "C7": 164,
+    "C8": 29
+  },
+  "category_match": {
+    "C1": true,
+    "C2": true,
+    "C3": true,
+    "C4": true,
+    "C5": true,
+    "C6": true,
+    "C7": true,
+    "C8": true
+  },
+  "aggregated": {
+    "C1234": 700,
+    "C56": 309,
+    "C78": 193
+  },
+  "si_s31_training_counts": {
+    "C1234": 680,
+    "C56": 308,
+    "C78": 172
+  },
+  "d2_gap_per_agg": {
+    "C1234": 20,
+    "C56": 1,
+    "C78": 21
+  },
+  "n_unique_model_versions": 44,
+  "per_model_top15": {
+    "MESSAGEix-GLOBIOM_1.1": 170,
+    "REMIND-MAgPIE 2.1-4.2": 106,
+    "WITCH 5.0": 86,
+    "POLES ENGAGE": 70,
+    "COFFEE 1.1": 65,
+    "REMIND 2.1": 60,
+    "REMIND-MAgPIE 1.7-3.0": 58,
+    "IMAGE 3.0.1": 56,
+    "MESSAGE-GLOBIOM 1.0": 48,
+    "TIAM-ECN 1.1": 45,
+    "GEM-E3_V2021": 41,
+    "GCAM 5.3": 40,
+    "IMAGE 3.2": 40,
+    "AIM/CGE 2.2": 34,
+    "IMAGE 3.0": 30
+  },
+  "PASS": true
+}

@@ -1,0 +1,55 @@
+{
+  "target": {
+    "C1234": 680,
+    "C56": 308,
+    "C78": 172
+  },
+  "filters_tested": [
+    {
+      "grid": "2010_2100",
+      "variant": "5features",
+      "missing_variable_columns": [],
+      "counts": {
+        "C1234": 650,
+        "C56": 300,
+        "C78": 169
+      },
+      "exact_match": false
+    },
+    {
+      "grid": "2010_2100",
+      "variant": "5features+kyoto",
+      "missing_variable_columns": [],
+      "counts": {
+        "C1234": 599,
+        "C56": 281,
+        "C78": 157
+      },
+      "exact_match": false
+    },
+    {
+      "grid": "2020_2100",
+      "variant": "5features",
+      "missing_variable_columns": [],
+      "counts": {
+        "C1234": 680,
+        "C56": 308,
+        "C78": 172
+      },
+      "exact_match": true,
+      "dropped_list": "/Users/es922014/Google Drive/Research/Discovering_the_analyst/momp-li2025-otgsa/data/derived/dropped42_2020_2100_5features.csv"
+    },
+    {
+      "grid": "2020_2100",
+      "variant": "5features+kyoto",
+      "missing_variable_columns": [],
+      "counts": {
+        "C1234": 629,
+        "C56": 289,
+        "C78": 160
+      },
+      "exact_match": false
+    }
+  ],
+  "conclusion": "REPRODUCED"
+}
