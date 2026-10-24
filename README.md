@@ -47,11 +47,20 @@ near-exact up to the latent-sampling seed, numpy seed 3 per SI S3);
 ```
 DATA.md              artefact registry: DOIs, versions, sha256, access dates
 DISCREPANCIES.md     documentation-internal inconsistencies of the target paper
-config/paper_values.yaml   factor table: paper values + candidate ranges (draft)
+config/paper_values.yaml   factor space and fixed settings, aligned with the protocol
+config/local_paths.example.yaml   template; copy to config/local_paths.yaml (git-ignored)
 phase0/01_metadata_check.py            AR6 metadata vs Extended Data Table 1
 phase0/02_training_set_reconstruction.py  raw World CSV -> the 1,160 training set
 phase0/03_synthetic_fidelity.py        Gen_/Real_ CSVs vs Source Data Fig. 3
-data/raw/            read-only local copies of deposits (not committed)
+phase0/04_evaluation_subset.py         1,160 -> 901 reconstruction (D9)
+phase0/05_regeneration_check.py        Phase 0B: regeneration from shipped weights
+phase0/06_code_scan.py                 Phase 0C: static scan of v1.0.0 notebooks (D4, D12, X3, G8)
+phase0/07_sumcheck_reference.py        Phase 0C: AR6 sum-check reference, real data only
+protocol/preregistration.tex           protocol; \frozenfalse = release candidate
+docs/FREEZE_CHECKLIST.md               ordered steps from release candidate to deposit
+docs/data_raw_manifest.sha256          SHA-256 of every raw file as committed in 7ee280d (World CSV: LFS object id)
+DEVIATIONS.md                          empty until the deposit
+data/raw/            read-only local copies of deposits (git-ignored; AR6 licence)
 data/derived/        outputs of phase0 scripts
 results/             machine-readable reports (JSON)
 ```

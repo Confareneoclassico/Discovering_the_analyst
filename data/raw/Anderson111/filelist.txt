@@ -1,4 +1,0 @@
-Files Deep-IAM_v1.0.0/.DS_Store and Deep-IAM_v1.0.1/.DS_Store differ
-Files Deep-IAM_v1.0.0/Configuration of Environments.txt and Deep-IAM_v1.0.1/Configuration of Environments.txt differ
-Files Deep-IAM_v1.0.0/Policy-Generative Model/Secondary-data-generate.ipynb and Deep-IAM_v1.0.1/Policy-Generative Model/Secondary-data-generate.ipynb differ
-Files Deep-IAM_v1.0.0/README.md and Deep-IAM_v1.0.1/README.md differ

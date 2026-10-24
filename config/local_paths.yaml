@@ -1,8 +1,0 @@
-# Machine-local paths (edit; not committed if it contains private locations)
-ar6_metadata_xlsx: ../data/raw/AR6_Scenarios_Database_World_v1.1/AR6_Scenarios_Database_metadata_indicators_v1.1.xlsx
-ar6_world_csv: ../data/raw/AR6_Scenarios_Database_World_v1.1/AR6_Scenarios_Database_World_v1.1.csv
-scenarios3000_dir: ../data/raw/Scenarios3000
-source_data_fig3_xlsx: ../data/raw/Source_data_Fig3.xlsx
-deepiam_v100_dir: ../data/raw/Anderson111/Deep-IAM_v1.0.0
-deepiam_v101_dir: ../data/raw/Anderson111/Deep-IAM_v1.0.1
-deepiam_weights_dir: ../data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model

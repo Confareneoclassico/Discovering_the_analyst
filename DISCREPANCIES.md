@@ -33,14 +33,19 @@ CarbonSequestration, Kyoto Gases) then describes tensors as "(680, 10, 5) …
 5 key variables". Hypothesis: Kyoto Gases is the conditioning/label variable,
 not a feature. Adjudicate from the training notebooks in A1.
 
-## D4 — Epoch/learning-rate contradictions, SI vs Extended Data Table 3. [OPEN]
+## D4 — Epoch/learning-rate contradictions, SI vs Extended Data Table 3. [RESOLVED 2026-10, Phase 0C]
 - CGAN: SI S3.2 → 500 epochs, lr 1e-4; ED Table 3 → 1,500 epochs, lr 1e-4.
 - RCGAN: SI S3.3 → 1,200 epochs, lr 1e-3; ED Table 3 → 1,800 epochs, lr 1e-3.
-Which configuration produced Table 1 / ED Table 2 is undetermined from the
-documentation. Directly relevant to claim X4 (VAE superiority): the GAN
-baselines' training budget is what is in dispute. Adjudicate from shipped h5
-metadata / notebook defaults; if still ambiguous, treat "which documented
-config" as an explicit factor level.
+Resolved by `phase0/06_code_scan.py` (results/phase0c_code_scan.txt): the two
+documents describe two different model families in the v1.0.0 deposit. The
+SI's numbers are those of the five-feature "Top6" notebooks (CGAN 500 epochs,
+RCGAN 1,200, VAE 2,000). ED Table 3's are those of the sixteen-variable
+"Secondary" notebooks (VAE 3,000 epochs with batches 50/30, CGAN 1,500, RCGAN
+1,800), with two slips: the C78 VAE uses batch size 25 in the code against 30
+in the table, and the RCGAN uses decay_steps 1,000 against 200. The paper's
+configuration, and therefore our paper values, follow the Secondary code. The
+nested two-level factor in G5 is dropped. See D12 for which family produced
+the published results.
 
 ## D5 — Time-grid inconsistency. [SHARPENED 2026-09]
 Methods: values 2010–2100, 10-year step (10 points). SI S2.1: "time step of 9
@@ -108,3 +113,74 @@ re-run expected to PASS. Benign, but goes in the documentation-hygiene list.
 Curio noted in passing: Real_C78 CarbonSequestration medians of exactly
 0.0001 Mt (100 tCO2) in early decades look like an imputation floor —
 inspect when the imputed CS file is examined.
+
+## D11 — Deposited generation not tied to documented seed or shipped weights. [ESTABLISHED 2026-09, Phase 0B]
+Regeneration from the shipped decoder weights under the documented seed 3
+(three latent-stream readings tested) yields entirely different samples
+(median elementwise rel. dev. 0.33–0.45). Distributionally, the regenerated
+ensemble matches the deposit to 1.8% of spread in the median (p95 10.3%) but
+sits ~4.4x above the two-independent-draws Monte Carlo floor, with the
+excess in tails and tight-spread cells (CS 2020). Scaler-bounds diagnostic:
+0/48 feature-category flags — Real_*.csv consistent with the scaler-fit
+data. Leading explanation: the shipped h5 checkpoint is not the one that
+generated the deposit (README describes multiple training sessions with
+"comparable" results). Consequence: even the nominally deterministic half of
+the published pipeline cannot be tied to its own archived outputs. Extends
+D1 from training to generation. Reports: results/phase0b_regeneration_run{1,2}.json
+and results/phase0b_regeneration.json (final).
+
+## D12 — The model documented in SI S3 is not the model behind the figures. [RESOLVED for X4 2026-10, Phase 0C; documentation discrepancy stands]
+SI S3.1–S3.2 document generators trained on 1,160 scenarios with five
+features on a 10-step grid (VAE tensors "(680, 10, 5)"; CGAN tensor
+"(1160, 10, 5)"). The Methods instead describe generation of the key
+variables together with all electricity fuel-level variables, and every
+published result corresponds to that extended configuration: Fig. 3 and ED
+Fig. 2 match the deposited 16-variable, 9-step generation trained on the
+901-set (D9; Phase 0 items 3 and 4; Phase 0B). Consequence: the paper's own
+configuration, hence the paper value of factor G1, is the 901-rule, not the
+1,160-rule (corrected in protocol v0.2).
+
+The open question (which configuration the GAN baselines of Table 1 used) is
+answered by Phase 0C in the paper's favour. Each generative notebook runs its
+own label-transfer test: the Top6 notebooks test on 1,160 real scenarios
+(680/308/172), the Secondary notebooks on 901 (554/237/110). ED Table 2
+reports 554/237/110 for all three generators, so the published VAE, CGAN and
+RCGAN all come from the Secondary configuration, and the published comparison
+was like-for-like in population and variables. What stands is a documentation
+discrepancy: the SI documents the Top6 family, which underlies no published
+result. Label-transfer details from the Secondary notebooks, now in the
+protocol's X4 rule: random forest (random_state 42) tuned by 3-fold grid search
+(Experiment I grid: n_estimators 10/100/200/500/1000, max_depth 6-16 by 2,
+min_samples_split 3-6); 1,000 synthetic scenarios per category drawn
+separately from the 10,000 of the deposit; inputs are the trapezoid-cumulated
+2020-2100 values of 15 variables, Kyoto Gases excluded.
+
+## D13 — The electricity sum-check is not in the code deposit, and its AR6 reference does not reproduce. [ESTABLISHED 2026-10, Phase 0C]
+No notebook in either version of the deposit computes the electricity
+sum-check behind Fig. 5a, the "1.2% average error in the AR6 Scenarios
+Database", or the count of 258 synthetic scenarios below it. Recomputed on
+the 901-set from the deposited Real CSVs (`phase0/07_sumcheck_reference.py`,
+results/phase0c_sumcheck_reference.json), the AR6 average error is 1.43%
+when each scenario's error is averaged over the nine decades, 1.77% on
+cumulative 2020-2100 generation and 2.79% on each scenario's worst decade.
+None of the six aggregations fixed before the computation rounds to 1.2%, so,
+by the rule stated in the script beforehand, X3 keeps the mean over decades
+and the paper's stated 1.2% threshold, with the ambiguity recorded. Post hoc
+observation, not adopted: the decade mean for 2050 alone is 1.22%, and the
+mean over 2020-2080 is 1.16%. The errors are highly skewed. Half of all
+scenario-decades have errors below 0.011%, and in C56 more than half of the
+scenarios balance exactly in every decade (median of scenario means 2e-15),
+so the average the paper uses as benchmark is driven by a minority of
+scenarios. The per-decade mean rises from 0.39% (2020) to 2.50% (2100).
+
+## D14 — Unreported variants with 7 to 9 variables. [ESTABLISHED 2026-10, Phase 0C]
+The v1.0.0 deposit contains Top7, Top8 and Top9 variants of all three
+generators, each with its own label-transfer code ("Top-n" counts Kyoto
+Gases, so 6 to 8 key features, against 5 in the reported Top6 set). The variables are added in the order of the
+eight-category importance ranking of SI Fig. S3b (Primary Energy, then
+Secondary Energy|Gases, then Final Energy|Solids), not of the aggregated
+ranking behind Fig. 2a and SI Fig. S3a. The paper mentions only the six-variable
+set (Fig. 5b timings) and the extended configuration. None of the Top7-Top9
+notebooks carries saved outputs, so their results cannot be recovered from
+the deposit. Factor G3 (4 to 9 key features) spans the authors' own
+exploration.

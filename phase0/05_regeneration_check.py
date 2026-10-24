@@ -153,6 +153,8 @@ def main():
         vrep = {}
         for c in CATEGORIES:
             out = decoders[c](z[c].astype("float32"))
+            # tsgm's inverse_transform subtracts in place; pass the TF tensor as the
+            # notebook does (np.asarray of an eager tensor is read-only), then convert
             out = np.asarray(scalers[c].inverse_transform(out))
             ref = gen_ref[c]
             if out.shape != ref.shape:

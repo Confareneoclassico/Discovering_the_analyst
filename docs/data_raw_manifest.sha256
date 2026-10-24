@@ -1,0 +1,435 @@
+7c4cb08176bfb1647c7fc9c0ba2ce0ebf12dcd29aea9c15c5b5e2cb420fdb5a3  data/raw/2025_Li_Using_DeepLearning.pdf
+4cf39b6b0d968e25ed389318acb1674f92146f977e9db4bfb7970f048ff73977  data/raw/AR6_Scenarios_Database_World_v1.1/AR6_Scenarios_Database_World_v1.1.csv
+1c1d70208bcf48c531c178899a7ce8ffd0fa905700bb3739770a796f0f2db12d  data/raw/AR6_Scenarios_Database_World_v1.1/AR6_Scenarios_Database_metadata_indicators_v1.1.xlsx
+fa0001e0505cdcb85349d10ba49350d8452588a71c47529106c0df59eabd6822  data/raw/Anderson111/Deep-IAM_v1.0.0/Code execution guidance.txt
+29ad0f3318a436ce05f6f64c83f5f5e4ceafa5c9db0c05234bd277892ed2b4a4  data/raw/Anderson111/Deep-IAM_v1.0.0/Data processing and Kmeans/Kmeans Analysis.ipynb
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.0/Data processing and Kmeans/Kyoto Gases.csv
+7cc45597f1fafa07cd5dba57a996f52991b62385acfdff25b823296a691bcc46  data/raw/Anderson111/Deep-IAM_v1.0.0/Data processing and Kmeans/data_world_single_variable.ipynb
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Carbon_Sequestration_CCS_imputed.csv
+5ca274450e0591ed7e16380c41f6e6ff323d89415460eb42ed8c53e0bb457260  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Final Energy_Gases.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Final Energy_Liquids.csv
+d25226eb5a25ab7b6b02105df83309b1889f6a42822655fa6786196e26c97115  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Final Energy_Solids.csv
+6f8c590451e59bcfeaaf870c189487b6c27d960c638be02957991246f19fd287  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Final_Energy_ts_imputed.csv
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Kyoto Gases.csv
+0a2dadfbebda6fa69fd99e97b82bf949385b66a6b71eda6a62dcf02791c998fe  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Primary Energy_Gas.csv
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Primary Energy_Oil.csv
+475e03f56780234418148c91078490507b1d84c563ba56dff516729a01118f7e  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Primary Energy_Solar.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/PrimaryEnergy_Coal.csv
+313eefbc7c0c951e245292d8e49754ffbe45bd059a2f233c2d6f63a05370bf98  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/PrimaryEnergy_imputed.csv
+c65adcaf039d64aa10940fe4173c2e292f1950ae83729ab6a42e795257182e10  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Random forest(include time characteristics 2010-2050,2050-2100 ).ipynb
+3acb73452df263a28bfb7eb522b5b551465a840ccda7f32f6a8fe8dda4915558  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Random forest（2010-2030） + （2030 - 2050） + （cumulant） + （Model Feature）.ipynb
+5e8a9b3fcb59c7f18022b72e47e7f6456c3ca5d8504cab7f7896e89530c9f052  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Random forest（2010-2030） + （2030 - 2050） + （cumulant） .ipynb
+2a8ae30ab3f33d83a47635726a9be6e6906361e03e1f796e42281d7d4cf277ad  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Random forest（Model Feature + cumulant）.ipynb
+3e03e92ac3561c54036bc15ad2526aec20ddeaf055adb2eaa5746f1c404f53c0  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Secondary Energy_Gases.csv
+0c40c90f14975fd83465d2ee2d088174f6db76ec1cf97aaf318c6ae5fa0cd01f  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Secondary Energy_Liquids.csv
+4b7eb48af20fe5046c758761bc5c86222f053a35e1c857a1aac7d630314cf270  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/SecondaryEnergyElectricity_imputed.csv
+1339e4d0197b503d70267a45dd8deb941c4cceed7408be5a75757cfd6d4d3fb5  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Shap(include time characteristics).ipynb
+c0952778ce86b10839e9b122775c567abf95eda3caa79fa9e4f4e44d69c98e7e  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Shap-Kyoto_Gases.ipynb
+406a987f48a393faf5fbcab5a6c9bc2cec86f07c298bae6b6c765fe35d782ed7  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Variable boxplot between different categories.ipynb
+51fcb04aaa2e4c9e99d06405b27b69e0ed11e4ebb085ecab527c1ff35acfe9e8  data/raw/Anderson111/Deep-IAM_v1.0.0/Feature selection/Variable distribution between different models.ipynb
+5e96ada33f1142181592e942c5e60c85dbb02f3aade70a9d229889641fadaffe  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/CGAN Random forest.ipynb
+53bc7b116062d36630b5655454f0e56ec0ae6898da0cdbdb5b2d2f8775594cc2  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/CGAN.ipynb
+5b04f9d4fee8f25502008ec90730e15796d3c4bd82b5d2719b44447ae9df7a15  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/CGAN_discriminator.h5
+f64dbe507be23a5797ae41edd6b6a0cfb5b8a9f8e8ed673645458b8f41d0907e  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/CGAN_generator.h5
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/Carbon_Sequestration_CCS_imputed.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/Final Energy_Liquids.csv
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/Kyoto Gases.csv
+0a2dadfbebda6fa69fd99e97b82bf949385b66a6b71eda6a62dcf02791c998fe  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/Primary Energy_Gas.csv
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/Primary Energy_Oil.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/PrimaryEnergy_Coal.csv
+7025c2b15b45c062d353adc941d633adb6d07109274a531e9f5aa6ce4123ab23  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/RCGAN Random forest.ipynb
+03759674ee8c9520549170913ac3b030bc9ea0de148658418d995aeec077c7de  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/RCGAN.ipynb
+27635f8bf486e9fe988dac27127a52e31ffead6fe9af165ee21b2568d27cb55d  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/Rcgan_discriminator.h5
+5dc7551728be9d6a8e7a3376eaf3757278117e2d8c08ea2ea4448d9289407ee0  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/Rcgan_generator.h5
+5a33ecbe2cd147baebc83cf9106cf51b5b614b23a278980e8e643a56a2b511dc  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/VAE C123-C78.ipynb
+eaf4587c092680959de507bd8a6a669d6e7965ef98d9375a04387d1b4396c145  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/VAE Random forest.ipynb
+9f1acfb0685d54d894edc58408440dcc1019e3af2be9bc882513fe714f63f5c9  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/VAE model image generation.ipynb
+0ee9efddf5bb8c96686c0a27c3c9bcc191a8097b24ea4b5dacb4044ad893733c  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/decoder1_weights.h5
+f20d854919079fe484d0c27ee958c6c806f032138e398d431e54e7a65aa9936b  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/decoder2_weights.h5
+86728af314308f6d9aa65d95c78bbd70b40583b807b979de84199b02d71fb12e  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/decoder3_weights.h5
+baddfb803261c62b93b10dd12e17a2f1f83e46699d4ce43cc1e48d99fb53d3d9  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/encoder1_weights.h5
+facfe9cc917ea9153d0443fbbf2c5ed937fbf87a889dfb80b23ce5e65af97093  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/encoder2_weights.h5
+ed0164833f415f20622ed97e764e1e325ed48e528327857da0b9b963f717c1a0  data/raw/Anderson111/Deep-IAM_v1.0.0/Generative deep learning Model/encoder3_weights.h5
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Carbon_Sequestration_CCS_imputed.csv
+5ca274450e0591ed7e16380c41f6e6ff323d89415460eb42ed8c53e0bb457260  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Final Energy_Gases.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Final Energy_Liquids.csv
+d25226eb5a25ab7b6b02105df83309b1889f6a42822655fa6786196e26c97115  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Final Energy_Solids.csv
+6f8c590451e59bcfeaaf870c189487b6c27d960c638be02957991246f19fd287  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Final_Energy_ts_imputed.csv
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Kyoto Gases.csv
+04f7502faf4f817f04077b898dda382114d475fe5fad4d0cdf81008bb8156058  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Random forest(include time characteristics 2010-2050,2050-2100 ).ipynb
+00bd45b3d0b39153bc464bd8b189f3b14ad7061925408a380c5db256bf197d02  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Random forest（2010-2030） + （2030 - 2050） + （cumulant） + （Model Feature）.ipynb
+713b628f6274f22900c4e1e52918bd679b0fdccac0487d8d209ee3f28542cdb6  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Random forest（Model Feature + cumulant）.ipynb
+8dbaef1f39bcd818a1c768b4e075059fbdc94ace8784eccbd0f12ed7b712744b  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Shap(include time characteristics) without MESSAGEix .ipynb
+0e2af94581161f1bd96ad0230e64f35a164bbb4ee0e9afe3461ef81423b88cb8  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Shap(include time characteristics) without REMIND.ipynb
+7e02fde2f106b34edf2e60336f12a3f957b318128c96dda657f3639a1b776d38  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Shap(include time characteristics).ipynb
+97f4979647b7cd65dbe352ee45ab58936a033d94dbc7267c7a67f191ab32614a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Shap-Kyoto_Gases.ipynb
+2ca7c44a43de06c6997effa2ce5a03d86112f45c3790d76aa5a58f1ba8f42240  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Variable boxplot between different categories.ipynb
+137b9a97993507d3745620f2aca0a663b82ccd5ed130cbe5fabb48ac1b1f96c9  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy Variable distribution between different models.ipynb
+87c58d63abb972f6a7b24fffc33e8e5e97cc83d604e7e9395d6a59c6c3ac6511  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Policy-Random forest（2010-2030） + （2030 - 2050） + （cumulant）.ipynb
+0a2dadfbebda6fa69fd99e97b82bf949385b66a6b71eda6a62dcf02791c998fe  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Primary Energy_Gas.csv
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Primary Energy_Oil.csv
+475e03f56780234418148c91078490507b1d84c563ba56dff516729a01118f7e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Primary Energy_Solar.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/PrimaryEnergy_Coal.csv
+313eefbc7c0c951e245292d8e49754ffbe45bd059a2f233c2d6f63a05370bf98  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/PrimaryEnergy_imputed.csv
+87344b452b9d73a1cc5dee0f051297999ab4d521a58869771fe8c5a28c9c0aff  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/RandomForest with MESSIX.ipynb
+3306989c355d1231968eb70355051c95236d9e2ce982a0a506ad58df897917c5  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Randomforest 2010-2030-2050 without MESSix.ipynb
+36fecc5b2152e29d5f0784674927879d020102bbf05df934606bf68cedbfd9b8  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Randomforest 2010-2030-2050 without Remind.ipynb
+c8f932a080d5a70e48762cc8eb35ce2834d6309b7d9d8dd4a0020cbaf073b903  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Randomforest without Remind.ipynb
+3e03e92ac3561c54036bc15ad2526aec20ddeaf055adb2eaa5746f1c404f53c0  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Secondary Energy_Gases.csv
+0c40c90f14975fd83465d2ee2d088174f6db76ec1cf97aaf318c6ae5fa0cd01f  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Secondary Energy_Liquids.csv
+4b7eb48af20fe5046c758761bc5c86222f053a35e1c857a1aac7d630314cf270  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/SecondaryEnergyElectricity_imputed.csv
+e10e3fb2839ea2764baab12160e1d15fc8d7118ab338e7dbdddde739cde188a8  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Shap without MESSAGEix.ipynb
+ed8556bb6d2c6e1beb6ef7a3d6bcce7f85bef502ca022b10caadd023ea69fa09  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Shap without REMIND.ipynb
+b174bf7e96e369817690dfab6505472fd17356b0058d5acf996937ca70af7d26  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy Feature Selection/Without Model Feature.ipynb
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Carbon_Sequestration_CCS_imputed.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Final Energy_Liquids.csv
+d25226eb5a25ab7b6b02105df83309b1889f6a42822655fa6786196e26c97115  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Final Energy_Solids.csv
+f974409e8d82c968bb0ed044c6bf0d130173b56fe2a766b8548da7d83e4abbd0  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Generate comparison charts.ipynb
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Kyoto Gases.csv
+9b040da0e2ffbcf8ba5a77348ddde9b3f0cc68d779b2de450377bac610750cd4  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Policy-decoder1_weights-top6.h5
+43e4187a9d9dd68db5d38a230fbca7590e2d301d552543dd223d4db8587e8edb  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Policy-decoder2_weights-top6.h5
+41ad96329644406f614a08ad0280422dc2602bfccf18b05ecd9348ffc5f57a22  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Policy-decoder3_weights-top6.h5
+32b6dc42e3da4dd2a3bfd561145593517ae931f6c13133824044a27c9e843ab7  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Policy-encoder1_weights-top6.h5
+0f73ead87cba2cc0ef1b959b37f1d7233822d4701f00b24db71fb49db4ee5a88  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Policy-encoder2_weights-top6.h5
+a3192521cae69965e39014a7c786e0554de5f031c21f4f427fd0dda7cbdcaac6  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Policy-encoder3_weights-top6.h5
+0a2dadfbebda6fa69fd99e97b82bf949385b66a6b71eda6a62dcf02791c998fe  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Primary Energy_Gas.csv
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Primary Energy_Oil.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/PrimaryEnergy_Coal.csv
+313eefbc7c0c951e245292d8e49754ffbe45bd059a2f233c2d6f63a05370bf98  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/PrimaryEnergy_imputed.csv
+8417876cad15e25958521987939139779ee104b7b08fd3bdf49e0d4584f73ad8  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/SR15_mapping_class.csv
+3e03e92ac3561c54036bc15ad2526aec20ddeaf055adb2eaa5746f1c404f53c0  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Comparison Image/Secondary Energy_Gases.csv
+dee63c978640dfb9265dee2a1f0b5d3748b68c48bbf67ab01fe0e5f9fbcafe44  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/C1234-to-Cluster1.csv
+471afde11368b0b55d842c84a770278c77025da1f1b6217a23f1c1c082173d28  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/C1234.csv
+8f74c2926c801ec6b362c048a1f13f4829fd6769f015ddf7c4437a884217a366  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/C56-to-Cluster0.csv
+763b325b926bb9490b2df0687695a34b70ba68b2a9a6e534fda7be78a2944ceb  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/C56-to-Cluster2.csv
+b262b2c3174ace47ef5d28f1f3bc90d53c57d40a3db10c70ccde13c94b043140  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/C56.csv
+9c39ae2c1f15217e7f295b198bcdff105183a8a37330f9bd4c149767c5b10683  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/C78-to-Cluster1.csv
+5ce0d1eed23e07e5ee3fe5b76fe19ca156fb75a69b86d60ef93b2c14909b408a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/C78.csv
+7b49c8bdf4cfebda4021512cb90a5a1fb70c90d9b5f3a0adb1436df24bfeea4a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/Cluster-0.csv
+731e526d72bb943a8a528812fd59fbe2e56a0f472c4b70c0d212a5113c08b787  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/Cluster-1.csv
+23e447dd1592e53ac817d2696f5b3d93b64c902e307be6b4b8f356b7d995c502  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/Cluster-2.csv
+e9970214f5c6945b7d149f2f466463cddcce6795773f9ac8cff3b764cc8147e0  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/Kmeans Analysis based on new category.ipynb
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/Kyoto Gases.csv
+70d7d3439cf2271b5b5557448caf09e65ddc53403945c2f937709648343b628b  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/KyotoGasesMatrix.npy
+ab25dc95bd7f7a8e031b9debccd0bd2ab8633c024b48783d71067791bb5213eb  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/Kyoto_Gases C1234-C78 Average by year.csv
+609a10afdaf1e63e0c75532585faff140d427a8b3fb99c5290ba50779b822aa4  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/Kyoto_Gases average of clustering results by year.csv
+ab25dc95bd7f7a8e031b9debccd0bd2ab8633c024b48783d71067791bb5213eb  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/agg_category_statistics.csv
+609a10afdaf1e63e0c75532585faff140d427a8b3fb99c5290ba50779b822aa4  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/cluster_statistics.csv
+7cc45597f1fafa07cd5dba57a996f52991b62385acfdff25b823296a691bcc46  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Data Processing and Kmeans/data_world_single_variable.ipynb
+a88fb989e0f9dff24c3190eb1f951e74def04574dfc1ab54e585a1cc166c03bd  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/CGAN - Top6.ipynb
+89f2c72c68011db6e11d61a3a464abeaefff7071b3ecc59f95881f0f86bf2e43  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/CGAN - Top7 .ipynb
+2de3584261f0b4d00a6dbcfdc480deefa5a4891ea16deb379fd9c94a4afcab11  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/CGAN - Top8.ipynb
+a10392c1fc2760763f906bfae907673c6f8850bfdfa1964363dd3c3c3d3972a8  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/CGAN - Top9.ipynb
+343748744b25128b5afe3948f64a2082e32288139fd010f6b90f10bdaf2b1d6d  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/CGAN-SecondaryEle.ipynb
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Carbon_Sequestration_CCS_imputed.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Final Energy_Liquids.csv
+d25226eb5a25ab7b6b02105df83309b1889f6a42822655fa6786196e26c97115  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Final Energy_Solids.csv
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Kyoto Gases.csv
+5ec18f8b2503ecd39ad4a758ed6282f63cc590e295dac9ba0971b31f254514ff  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-SecondaryEle-CGAN_discriminator.h5
+067caffd07c34a23f222178fbac9b4332d27be43dca928c518ba3890c380992a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-SecondaryEle-CGAN_generator.h5
+a07d4166fb02fcf4eba6633fb5a1b92693395a5da0a1daf326dd4eba09f952b1  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-SecondaryEle-RCGAN_discriminator.h5
+4634233433c8e285a7fdb1ed7886cd03f10b6980526a6946e3b3b7200648d63a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-SecondaryEle-RCGAN_generator.h5
+b04050b8b7e8e0b96763e7529e4eefcc4b7c2eb37297d2642cf912c4a0f61ffd  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top6-CGAN_discriminator.h5
+f4535983e93f3f441cdd1f3e90b139f2e6e24123f99af616ad59d71e0246a1df  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top6-CGAN_generator.h5
+9920ab04f0a9f27eb711780721ce2f1d5f517f6e30498d32b7a9c7bfa6e3a306  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top6-RCGAN_discriminator.h5
+b756dbe2d9c9602b71467e48cf0d52a2894f3c2fd3b487d321eec4ce81b590b9  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top6-RCGAN_generator.h5
+08179fc392678d6d1f4c6d3479503aabb61f024cc406661cde206a896dc63142  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top7-CGAN_discriminator.h5
+9e49f8d2a239390a231a47430c5e425076501f82f95ec9d5e6d81cfb2f1c6a27  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top7-CGAN_generator.h5
+58b73126f428a4973514e5fb13e42cf39530f78f64196b76d9f1284ea4c6d6d1  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top7-RCGAN_discriminator.h5
+b8263c2504740b11887d9eb5933d69e3155bcfd15a71ff81381b00029ba33547  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top7-RCGAN_generator.h5
+732fe9f24ebd1a6ab63d0358e8c868d119ea7b9e767d1e77a2d00ecc1ce82b4a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top8-CGAN_discriminator.h5
+037a307457a4627e8ecd73df151f61c800bde56de49c8c5510601ca24d4585e2  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top8-CGAN_generator.h5
+cd32e4953d72043f125d16bd09debc0d078f33032d62e732e9113c4a15ca74ce  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top8-RCGAN_discriminator.h5
+93caf021e08fc5071ba3e811ba7772be427e0bebb23b9c4bdb6e3e8b5dd576bc  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top8-RCGAN_generator.h5
+1a4e2319e0fe0da04b5746d3f3a23783c3037d1ac193f522744f9b113ca1433d  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top9-CGAN_discriminator.h5
+65b73789f0f0a9f3baaa3742a33e54319af324a2b2940b85de93bacceada9f88  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top9-CGAN_generator.h5
+a92fc516c8717253a8c750674457c4c43de4256c1ef4f0e39bf051b8000372a8  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top9-RCGAN_discriminator.h5
+b598c924f02a39d319a4f96fcb3b31f4d951ef045211f8cc4321481bfbb282a0  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-Top9-RCGAN_generator.h5
+78ee8fea1466496560ec2dcffffa5381136c3ca03cd683fb0d90eb48f351bd26  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder1_weights-Se.h5
+9b040da0e2ffbcf8ba5a77348ddde9b3f0cc68d779b2de450377bac610750cd4  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder1_weights-top6.h5
+93e05a96641f168e7d80c29011d89f9ca96184102b7f104f1f57d0de8bbedc8d  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder1_weights-top7.h5
+5e99c44c5daa0dbe0d6157f74f509a135b67ea53ca3106ec791ecb1c3754eb0a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder1_weights-top8.h5
+5114435e8b49593704c590e6b550783d15eb79dcf27c08d348e49cb98527b5c2  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder1_weights-top9.h5
+8b52a95bcb01161b2ffeabec4b56e2c89126ffd9423935cb6398a7d0cac50c68  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder2_weights-Se.h5
+43e4187a9d9dd68db5d38a230fbca7590e2d301d552543dd223d4db8587e8edb  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder2_weights-top6.h5
+3dfa1bc6de7ce6e6829e4c089a188f47c75e434703e7e8ddeb7ede0a48d293ec  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder2_weights-top7.h5
+ce30db5b59214edc10c396384821d606594c5c097a65b0494ea882911bda3154  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder2_weights-top8.h5
+c7b0ad2863e68ccc8c63f75103a1d919328b90af866fe817ad42c704e054c0de  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder2_weights-top9.h5
+cf1102e032e26eaa3a1a7744bae93ffb29305ba69da27af230f69b3b47ae5bfd  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder3_weights-Se.h5
+41ad96329644406f614a08ad0280422dc2602bfccf18b05ecd9348ffc5f57a22  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder3_weights-top6.h5
+7ec3c296d2dc73c09a9676fbda286587c96bb67dbdf31f5004602d57497e2c6e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder3_weights-top7.h5
+ab447db93715ebe338e8111dbc4e8286a413deac73b933ceaeb19609a747acaf  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder3_weights-top8.h5
+80f816eeab3c69431e0a2611e7710d5cb78aff8fcfb11ff98adeb64adad51ac1  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-decoder3_weights-top9.h5
+a36043a766bca7932522a9486f3da862fcd5cba8ee7dd7272e6e957a6bbdb11e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder1_weights-Se.h5
+32b6dc42e3da4dd2a3bfd561145593517ae931f6c13133824044a27c9e843ab7  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder1_weights-top6.h5
+6415e27f56024af2bde68fd32656b9fb29cab01f59a14d50ed96c666642f7871  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder1_weights-top7.h5
+5fd54a5ef620910b1668c6b1802b51bd75e00f2e1ab03d035a1331db8e544d23  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder1_weights-top8.h5
+bc37d861ca3c3ddad4ae98e8f4b2c3c3934a94f6c95c9321b7d3a9c2f0334aed  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder1_weights-top9.h5
+23b2ca8ff89c61b2d779b3705199c605fc7df3bad89f15e8b3491817c81f37bf  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder2_weights-Se.h5
+0f73ead87cba2cc0ef1b959b37f1d7233822d4701f00b24db71fb49db4ee5a88  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder2_weights-top6.h5
+ef6d45262394e2f8a68f8af3969cdb6bd2a82721aa81710608b6c09743ffe6b5  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder2_weights-top7.h5
+1f49fc027eab1ab4c2fbd152719ba0f763d21c7c8f5a939d624eaea057a1e6de  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder2_weights-top8.h5
+ab3eba7c2d8ebd7166acc536152f992d99a36cf1b02b7b1c0d7da0731c4fe19e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder2_weights-top9.h5
+31dca188063500166f29b7749ae99af43969e650fed1ab88037f410118327190  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder3_weights-Se.h5
+a3192521cae69965e39014a7c786e0554de5f031c21f4f427fd0dda7cbdcaac6  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder3_weights-top6.h5
+3c0548097e4a9407a94ff1221393d1e2c42af87bd133d5f3c13af0887bbe7b54  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder3_weights-top7.h5
+30f753fb2a182b71332e4fe9b70c1437bca7bf6ec1af4b4764d8a022ad74012f  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder3_weights-top8.h5
+9a740e13592b8f5e0c5999c15f55aaf9149d05926ade5b26b042cfca112e7674  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Policy-encoder3_weights-top9.h5
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Primary Energy_Oil.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/PrimaryEnergy_Coal.csv
+313eefbc7c0c951e245292d8e49754ffbe45bd059a2f233c2d6f63a05370bf98  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/PrimaryEnergy_imputed.csv
+ce3a87da40129c82273eeff70d3f0e73924feba32d75dec472f8d8f846e38bf6  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/RCGAN - Top6.ipynb
+980c9e203be8c4a864e574fc3932eb969e33a611d5d877e295ce940103baf14c  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/RCGAN - Top7.ipynb
+8233f78df58563f42609b370b960bcc94427d62beaad8d1c93ee7b351a74b8b0  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/RCGAN - Top8.ipynb
+ea00f33993085430cf7a3db39842170ec3b48f6c7666931397bcbeb7aac26ef9  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/RCGAN - Top9.ipynb
+9cb636b4fdd1a920a97af2491dbdfe617a97e45c48fc40d1fbdfdb1740f0c44e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/RCGAN-Secondary.ipynb
+3e03e92ac3561c54036bc15ad2526aec20ddeaf055adb2eaa5746f1c404f53c0  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/Secondary Energy_Gases.csv
+4b7eb48af20fe5046c758761bc5c86222f053a35e1c857a1aac7d630314cf270  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity.csv
+308a14804108f170b285ccdff7a5d86b304a5067fba30ce70e00b940d47da52d  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Biomass.csv
+68de56bbac22c755b699c2c837b0b2c748be1ad318cd6a86f9785ee48231fed7  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Coal.csv
+9b5a3d806c7c0285bec571b40fa0f598ab93beaa2895aaf6bfaca969440b2202  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Gas.csv
+2e11776865cf3845bc757811c49ef53ac93a531cfd2b3dfceab886194de97eb5  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Geothermal.csv
+96469d37c4839ae9f35e874d831f9b4c52cface77e4ace22e580bf78ac6f8e0f  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Hydro.csv
+56f0d406e59068ff7d7e78beef25937bb81f2a90dfa2d253e63a82f6ab287c0a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Nuclear.csv
+a5f790374f5610e1d17373334d29157358dd20394753a3fcd0e3160713768643  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Oil.csv
+6a1b5d35dd5f5b78cda5176d120f13a12393de33626e20fe16383810de683cdb  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Solar.csv
+6c8e9b3b5738c3ffc22b06cda4f1f1d8a3103c23b4cc9e866c6b236c0d02d30a  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/SecondaryEnergy_Electricity_Wind.csv
+22d1ebbaa5688b3e48b262038dd1677e7b65a993cc57c0119c2584d48e4eab0c  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/VAE - Top6 .ipynb
+434d8d28d6fe263fe152dbbca46b56daea151454ad3427855f5536e2a2731963  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/VAE - Top7.ipynb
+1df801ca750803266d18d611e5f722ed6743dc4453b45234bbb1925ccac886b9  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/VAE - Top8.ipynb
+4dd86932c31fd7b4b96aaf891d18fafd13fb2f9243dbbb9185b8398f17416791  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/VAE - Top9.ipynb
+47b2505fc7f692463d350a6c725ef2086001c4cfd4cc7f0a33b7cc63dd6fd7fb  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/VAE Image-Top6.ipynb
+206c91c0981aa32643abcddc517b1e08db00e9b4fed437e77483b4585d413208  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/VAE Randomforest-Top6.ipynb
+2a377393f8e73820b65cfb5b9f5b7436c0f657029869f0b4f4e207e5d3f03db4  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/VAE-Secondary.ipynb
+0ee9efddf5bb8c96686c0a27c3c9bcc191a8097b24ea4b5dacb4044ad893733c  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/decoder1_weights.h5
+f20d854919079fe484d0c27ee958c6c806f032138e398d431e54e7a65aa9936b  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/decoder2_weights.h5
+86728af314308f6d9aa65d95c78bbd70b40583b807b979de84199b02d71fb12e  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/decoder3_weights.h5
+baddfb803261c62b93b10dd12e17a2f1f83e46699d4ce43cc1e48d99fb53d3d9  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/encoder1_weights.h5
+facfe9cc917ea9153d0443fbbf2c5ed937fbf87a889dfb80b23ce5e65af97093  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/encoder2_weights.h5
+ed0164833f415f20622ed97e764e1e325ed48e528327857da0b9b963f717c1a0  data/raw/Anderson111/Deep-IAM_v1.0.0/Policy-Generative Model/encoder3_weights.h5
+99d14ab3a6621a87daffcbfcacba84aa639959a7cd8fd645091492d6102aeb32  data/raw/Anderson111/Deep-IAM_v1.0.0/README.md
+fa0001e0505cdcb85349d10ba49350d8452588a71c47529106c0df59eabd6822  data/raw/Anderson111/Deep-IAM_v1.0.1/Code execution guidance.txt
+8a8607146d20e404a612dacc72e4905c209f61cd0c7b10317d5305d4342af414  data/raw/Anderson111/Deep-IAM_v1.0.1/Configuration of Environments.txt
+29ad0f3318a436ce05f6f64c83f5f5e4ceafa5c9db0c05234bd277892ed2b4a4  data/raw/Anderson111/Deep-IAM_v1.0.1/Data processing and Kmeans/Kmeans Analysis.ipynb
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.1/Data processing and Kmeans/Kyoto Gases.csv
+7cc45597f1fafa07cd5dba57a996f52991b62385acfdff25b823296a691bcc46  data/raw/Anderson111/Deep-IAM_v1.0.1/Data processing and Kmeans/data_world_single_variable.ipynb
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Carbon_Sequestration_CCS_imputed.csv
+5ca274450e0591ed7e16380c41f6e6ff323d89415460eb42ed8c53e0bb457260  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Final Energy_Gases.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Final Energy_Liquids.csv
+d25226eb5a25ab7b6b02105df83309b1889f6a42822655fa6786196e26c97115  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Final Energy_Solids.csv
+6f8c590451e59bcfeaaf870c189487b6c27d960c638be02957991246f19fd287  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Final_Energy_ts_imputed.csv
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Kyoto Gases.csv
+0a2dadfbebda6fa69fd99e97b82bf949385b66a6b71eda6a62dcf02791c998fe  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Primary Energy_Gas.csv
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Primary Energy_Oil.csv
+475e03f56780234418148c91078490507b1d84c563ba56dff516729a01118f7e  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Primary Energy_Solar.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/PrimaryEnergy_Coal.csv
+313eefbc7c0c951e245292d8e49754ffbe45bd059a2f233c2d6f63a05370bf98  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/PrimaryEnergy_imputed.csv
+c65adcaf039d64aa10940fe4173c2e292f1950ae83729ab6a42e795257182e10  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Random forest(include time characteristics 2010-2050,2050-2100 ).ipynb
+3acb73452df263a28bfb7eb522b5b551465a840ccda7f32f6a8fe8dda4915558  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Random forest（2010-2030） + （2030 - 2050） + （cumulant） + （Model Feature）.ipynb
+5e8a9b3fcb59c7f18022b72e47e7f6456c3ca5d8504cab7f7896e89530c9f052  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Random forest（2010-2030） + （2030 - 2050） + （cumulant） .ipynb
+2a8ae30ab3f33d83a47635726a9be6e6906361e03e1f796e42281d7d4cf277ad  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Random forest（Model Feature + cumulant）.ipynb
+3e03e92ac3561c54036bc15ad2526aec20ddeaf055adb2eaa5746f1c404f53c0  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Secondary Energy_Gases.csv
+0c40c90f14975fd83465d2ee2d088174f6db76ec1cf97aaf318c6ae5fa0cd01f  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Secondary Energy_Liquids.csv
+4b7eb48af20fe5046c758761bc5c86222f053a35e1c857a1aac7d630314cf270  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/SecondaryEnergyElectricity_imputed.csv
+1339e4d0197b503d70267a45dd8deb941c4cceed7408be5a75757cfd6d4d3fb5  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Shap(include time characteristics).ipynb
+c0952778ce86b10839e9b122775c567abf95eda3caa79fa9e4f4e44d69c98e7e  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Shap-Kyoto_Gases.ipynb
+406a987f48a393faf5fbcab5a6c9bc2cec86f07c298bae6b6c765fe35d782ed7  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Variable boxplot between different categories.ipynb
+51fcb04aaa2e4c9e99d06405b27b69e0ed11e4ebb085ecab527c1ff35acfe9e8  data/raw/Anderson111/Deep-IAM_v1.0.1/Feature selection/Variable distribution between different models.ipynb
+5e96ada33f1142181592e942c5e60c85dbb02f3aade70a9d229889641fadaffe  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/CGAN Random forest.ipynb
+53bc7b116062d36630b5655454f0e56ec0ae6898da0cdbdb5b2d2f8775594cc2  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/CGAN.ipynb
+5b04f9d4fee8f25502008ec90730e15796d3c4bd82b5d2719b44447ae9df7a15  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/CGAN_discriminator.h5
+f64dbe507be23a5797ae41edd6b6a0cfb5b8a9f8e8ed673645458b8f41d0907e  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/CGAN_generator.h5
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/Carbon_Sequestration_CCS_imputed.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/Final Energy_Liquids.csv
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/Kyoto Gases.csv
+0a2dadfbebda6fa69fd99e97b82bf949385b66a6b71eda6a62dcf02791c998fe  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/Primary Energy_Gas.csv
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/Primary Energy_Oil.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/PrimaryEnergy_Coal.csv
+7025c2b15b45c062d353adc941d633adb6d07109274a531e9f5aa6ce4123ab23  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/RCGAN Random forest.ipynb
+03759674ee8c9520549170913ac3b030bc9ea0de148658418d995aeec077c7de  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/RCGAN.ipynb
+27635f8bf486e9fe988dac27127a52e31ffead6fe9af165ee21b2568d27cb55d  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/Rcgan_discriminator.h5
+5dc7551728be9d6a8e7a3376eaf3757278117e2d8c08ea2ea4448d9289407ee0  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/Rcgan_generator.h5
+5a33ecbe2cd147baebc83cf9106cf51b5b614b23a278980e8e643a56a2b511dc  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/VAE C123-C78.ipynb
+eaf4587c092680959de507bd8a6a669d6e7965ef98d9375a04387d1b4396c145  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/VAE Random forest.ipynb
+9f1acfb0685d54d894edc58408440dcc1019e3af2be9bc882513fe714f63f5c9  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/VAE model image generation.ipynb
+0ee9efddf5bb8c96686c0a27c3c9bcc191a8097b24ea4b5dacb4044ad893733c  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/decoder1_weights.h5
+f20d854919079fe484d0c27ee958c6c806f032138e398d431e54e7a65aa9936b  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/decoder2_weights.h5
+86728af314308f6d9aa65d95c78bbd70b40583b807b979de84199b02d71fb12e  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/decoder3_weights.h5
+baddfb803261c62b93b10dd12e17a2f1f83e46699d4ce43cc1e48d99fb53d3d9  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/encoder1_weights.h5
+facfe9cc917ea9153d0443fbbf2c5ed937fbf87a889dfb80b23ce5e65af97093  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/encoder2_weights.h5
+ed0164833f415f20622ed97e764e1e325ed48e528327857da0b9b963f717c1a0  data/raw/Anderson111/Deep-IAM_v1.0.1/Generative deep learning Model/encoder3_weights.h5
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Carbon_Sequestration_CCS_imputed.csv
+5ca274450e0591ed7e16380c41f6e6ff323d89415460eb42ed8c53e0bb457260  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Final Energy_Gases.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Final Energy_Liquids.csv
+d25226eb5a25ab7b6b02105df83309b1889f6a42822655fa6786196e26c97115  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Final Energy_Solids.csv
+6f8c590451e59bcfeaaf870c189487b6c27d960c638be02957991246f19fd287  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Final_Energy_ts_imputed.csv
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Kyoto Gases.csv
+04f7502faf4f817f04077b898dda382114d475fe5fad4d0cdf81008bb8156058  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Random forest(include time characteristics 2010-2050,2050-2100 ).ipynb
+00bd45b3d0b39153bc464bd8b189f3b14ad7061925408a380c5db256bf197d02  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Random forest（2010-2030） + （2030 - 2050） + （cumulant） + （Model Feature）.ipynb
+713b628f6274f22900c4e1e52918bd679b0fdccac0487d8d209ee3f28542cdb6  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Random forest（Model Feature + cumulant）.ipynb
+8dbaef1f39bcd818a1c768b4e075059fbdc94ace8784eccbd0f12ed7b712744b  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Shap(include time characteristics) without MESSAGEix .ipynb
+0e2af94581161f1bd96ad0230e64f35a164bbb4ee0e9afe3461ef81423b88cb8  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Shap(include time characteristics) without REMIND.ipynb
+7e02fde2f106b34edf2e60336f12a3f957b318128c96dda657f3639a1b776d38  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Shap(include time characteristics).ipynb
+97f4979647b7cd65dbe352ee45ab58936a033d94dbc7267c7a67f191ab32614a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Shap-Kyoto_Gases.ipynb
+2ca7c44a43de06c6997effa2ce5a03d86112f45c3790d76aa5a58f1ba8f42240  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Variable boxplot between different categories.ipynb
+137b9a97993507d3745620f2aca0a663b82ccd5ed130cbe5fabb48ac1b1f96c9  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy Variable distribution between different models.ipynb
+87c58d63abb972f6a7b24fffc33e8e5e97cc83d604e7e9395d6a59c6c3ac6511  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Policy-Random forest（2010-2030） + （2030 - 2050） + （cumulant）.ipynb
+0a2dadfbebda6fa69fd99e97b82bf949385b66a6b71eda6a62dcf02791c998fe  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Primary Energy_Gas.csv
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Primary Energy_Oil.csv
+475e03f56780234418148c91078490507b1d84c563ba56dff516729a01118f7e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Primary Energy_Solar.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/PrimaryEnergy_Coal.csv
+313eefbc7c0c951e245292d8e49754ffbe45bd059a2f233c2d6f63a05370bf98  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/PrimaryEnergy_imputed.csv
+87344b452b9d73a1cc5dee0f051297999ab4d521a58869771fe8c5a28c9c0aff  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/RandomForest with MESSIX.ipynb
+3306989c355d1231968eb70355051c95236d9e2ce982a0a506ad58df897917c5  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Randomforest 2010-2030-2050 without MESSix.ipynb
+36fecc5b2152e29d5f0784674927879d020102bbf05df934606bf68cedbfd9b8  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Randomforest 2010-2030-2050 without Remind.ipynb
+c8f932a080d5a70e48762cc8eb35ce2834d6309b7d9d8dd4a0020cbaf073b903  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Randomforest without Remind.ipynb
+3e03e92ac3561c54036bc15ad2526aec20ddeaf055adb2eaa5746f1c404f53c0  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Secondary Energy_Gases.csv
+0c40c90f14975fd83465d2ee2d088174f6db76ec1cf97aaf318c6ae5fa0cd01f  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Secondary Energy_Liquids.csv
+4b7eb48af20fe5046c758761bc5c86222f053a35e1c857a1aac7d630314cf270  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/SecondaryEnergyElectricity_imputed.csv
+e10e3fb2839ea2764baab12160e1d15fc8d7118ab338e7dbdddde739cde188a8  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Shap without MESSAGEix.ipynb
+ed8556bb6d2c6e1beb6ef7a3d6bcce7f85bef502ca022b10caadd023ea69fa09  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Shap without REMIND.ipynb
+b174bf7e96e369817690dfab6505472fd17356b0058d5acf996937ca70af7d26  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy Feature Selection/Without Model Feature.ipynb
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Carbon_Sequestration_CCS_imputed.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Final Energy_Liquids.csv
+d25226eb5a25ab7b6b02105df83309b1889f6a42822655fa6786196e26c97115  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Final Energy_Solids.csv
+f974409e8d82c968bb0ed044c6bf0d130173b56fe2a766b8548da7d83e4abbd0  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Generate comparison charts.ipynb
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Kyoto Gases.csv
+9b040da0e2ffbcf8ba5a77348ddde9b3f0cc68d779b2de450377bac610750cd4  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Policy-decoder1_weights-top6.h5
+43e4187a9d9dd68db5d38a230fbca7590e2d301d552543dd223d4db8587e8edb  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Policy-decoder2_weights-top6.h5
+41ad96329644406f614a08ad0280422dc2602bfccf18b05ecd9348ffc5f57a22  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Policy-decoder3_weights-top6.h5
+32b6dc42e3da4dd2a3bfd561145593517ae931f6c13133824044a27c9e843ab7  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Policy-encoder1_weights-top6.h5
+0f73ead87cba2cc0ef1b959b37f1d7233822d4701f00b24db71fb49db4ee5a88  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Policy-encoder2_weights-top6.h5
+a3192521cae69965e39014a7c786e0554de5f031c21f4f427fd0dda7cbdcaac6  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Policy-encoder3_weights-top6.h5
+0a2dadfbebda6fa69fd99e97b82bf949385b66a6b71eda6a62dcf02791c998fe  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Primary Energy_Gas.csv
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Primary Energy_Oil.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/PrimaryEnergy_Coal.csv
+313eefbc7c0c951e245292d8e49754ffbe45bd059a2f233c2d6f63a05370bf98  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/PrimaryEnergy_imputed.csv
+8417876cad15e25958521987939139779ee104b7b08fd3bdf49e0d4584f73ad8  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/SR15_mapping_class.csv
+3e03e92ac3561c54036bc15ad2526aec20ddeaf055adb2eaa5746f1c404f53c0  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Comparison Image/Secondary Energy_Gases.csv
+dee63c978640dfb9265dee2a1f0b5d3748b68c48bbf67ab01fe0e5f9fbcafe44  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/C1234-to-Cluster1.csv
+471afde11368b0b55d842c84a770278c77025da1f1b6217a23f1c1c082173d28  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/C1234.csv
+8f74c2926c801ec6b362c048a1f13f4829fd6769f015ddf7c4437a884217a366  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/C56-to-Cluster0.csv
+763b325b926bb9490b2df0687695a34b70ba68b2a9a6e534fda7be78a2944ceb  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/C56-to-Cluster2.csv
+b262b2c3174ace47ef5d28f1f3bc90d53c57d40a3db10c70ccde13c94b043140  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/C56.csv
+9c39ae2c1f15217e7f295b198bcdff105183a8a37330f9bd4c149767c5b10683  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/C78-to-Cluster1.csv
+5ce0d1eed23e07e5ee3fe5b76fe19ca156fb75a69b86d60ef93b2c14909b408a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/C78.csv
+7b49c8bdf4cfebda4021512cb90a5a1fb70c90d9b5f3a0adb1436df24bfeea4a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/Cluster-0.csv
+731e526d72bb943a8a528812fd59fbe2e56a0f472c4b70c0d212a5113c08b787  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/Cluster-1.csv
+23e447dd1592e53ac817d2696f5b3d93b64c902e307be6b4b8f356b7d995c502  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/Cluster-2.csv
+e9970214f5c6945b7d149f2f466463cddcce6795773f9ac8cff3b764cc8147e0  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/Kmeans Analysis based on new category.ipynb
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/Kyoto Gases.csv
+70d7d3439cf2271b5b5557448caf09e65ddc53403945c2f937709648343b628b  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/KyotoGasesMatrix.npy
+ab25dc95bd7f7a8e031b9debccd0bd2ab8633c024b48783d71067791bb5213eb  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/Kyoto_Gases C1234-C78 Average by year.csv
+609a10afdaf1e63e0c75532585faff140d427a8b3fb99c5290ba50779b822aa4  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/Kyoto_Gases average of clustering results by year.csv
+ab25dc95bd7f7a8e031b9debccd0bd2ab8633c024b48783d71067791bb5213eb  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/agg_category_statistics.csv
+609a10afdaf1e63e0c75532585faff140d427a8b3fb99c5290ba50779b822aa4  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/cluster_statistics.csv
+7cc45597f1fafa07cd5dba57a996f52991b62385acfdff25b823296a691bcc46  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Data Processing and Kmeans/data_world_single_variable.ipynb
+a88fb989e0f9dff24c3190eb1f951e74def04574dfc1ab54e585a1cc166c03bd  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/CGAN - Top6.ipynb
+89f2c72c68011db6e11d61a3a464abeaefff7071b3ecc59f95881f0f86bf2e43  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/CGAN - Top7 .ipynb
+2de3584261f0b4d00a6dbcfdc480deefa5a4891ea16deb379fd9c94a4afcab11  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/CGAN - Top8.ipynb
+a10392c1fc2760763f906bfae907673c6f8850bfdfa1964363dd3c3c3d3972a8  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/CGAN - Top9.ipynb
+343748744b25128b5afe3948f64a2082e32288139fd010f6b90f10bdaf2b1d6d  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/CGAN-SecondaryEle.ipynb
+343d369a1d54bf79e66b3059b79834b9618a6588fe2e0661ed680991d21b5706  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Carbon_Sequestration_CCS_imputed.csv
+736a84e793b69b6ccbdd2a611380c4a64567ec5c2b0910f471b526e31736d87e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Final Energy_Liquids.csv
+d25226eb5a25ab7b6b02105df83309b1889f6a42822655fa6786196e26c97115  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Final Energy_Solids.csv
+8fbbd34e8613839fad8ac290c729ecf3615f5c86aeaa13539d9b69aae00584c1  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Kyoto Gases.csv
+5ec18f8b2503ecd39ad4a758ed6282f63cc590e295dac9ba0971b31f254514ff  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-SecondaryEle-CGAN_discriminator.h5
+067caffd07c34a23f222178fbac9b4332d27be43dca928c518ba3890c380992a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-SecondaryEle-CGAN_generator.h5
+a07d4166fb02fcf4eba6633fb5a1b92693395a5da0a1daf326dd4eba09f952b1  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-SecondaryEle-RCGAN_discriminator.h5
+4634233433c8e285a7fdb1ed7886cd03f10b6980526a6946e3b3b7200648d63a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-SecondaryEle-RCGAN_generator.h5
+b04050b8b7e8e0b96763e7529e4eefcc4b7c2eb37297d2642cf912c4a0f61ffd  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top6-CGAN_discriminator.h5
+f4535983e93f3f441cdd1f3e90b139f2e6e24123f99af616ad59d71e0246a1df  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top6-CGAN_generator.h5
+9920ab04f0a9f27eb711780721ce2f1d5f517f6e30498d32b7a9c7bfa6e3a306  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top6-RCGAN_discriminator.h5
+b756dbe2d9c9602b71467e48cf0d52a2894f3c2fd3b487d321eec4ce81b590b9  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top6-RCGAN_generator.h5
+08179fc392678d6d1f4c6d3479503aabb61f024cc406661cde206a896dc63142  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top7-CGAN_discriminator.h5
+9e49f8d2a239390a231a47430c5e425076501f82f95ec9d5e6d81cfb2f1c6a27  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top7-CGAN_generator.h5
+58b73126f428a4973514e5fb13e42cf39530f78f64196b76d9f1284ea4c6d6d1  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top7-RCGAN_discriminator.h5
+b8263c2504740b11887d9eb5933d69e3155bcfd15a71ff81381b00029ba33547  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top7-RCGAN_generator.h5
+732fe9f24ebd1a6ab63d0358e8c868d119ea7b9e767d1e77a2d00ecc1ce82b4a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top8-CGAN_discriminator.h5
+037a307457a4627e8ecd73df151f61c800bde56de49c8c5510601ca24d4585e2  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top8-CGAN_generator.h5
+cd32e4953d72043f125d16bd09debc0d078f33032d62e732e9113c4a15ca74ce  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top8-RCGAN_discriminator.h5
+93caf021e08fc5071ba3e811ba7772be427e0bebb23b9c4bdb6e3e8b5dd576bc  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top8-RCGAN_generator.h5
+1a4e2319e0fe0da04b5746d3f3a23783c3037d1ac193f522744f9b113ca1433d  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top9-CGAN_discriminator.h5
+65b73789f0f0a9f3baaa3742a33e54319af324a2b2940b85de93bacceada9f88  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top9-CGAN_generator.h5
+a92fc516c8717253a8c750674457c4c43de4256c1ef4f0e39bf051b8000372a8  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top9-RCGAN_discriminator.h5
+b598c924f02a39d319a4f96fcb3b31f4d951ef045211f8cc4321481bfbb282a0  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-Top9-RCGAN_generator.h5
+78ee8fea1466496560ec2dcffffa5381136c3ca03cd683fb0d90eb48f351bd26  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder1_weights-Se.h5
+9b040da0e2ffbcf8ba5a77348ddde9b3f0cc68d779b2de450377bac610750cd4  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder1_weights-top6.h5
+93e05a96641f168e7d80c29011d89f9ca96184102b7f104f1f57d0de8bbedc8d  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder1_weights-top7.h5
+5e99c44c5daa0dbe0d6157f74f509a135b67ea53ca3106ec791ecb1c3754eb0a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder1_weights-top8.h5
+5114435e8b49593704c590e6b550783d15eb79dcf27c08d348e49cb98527b5c2  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder1_weights-top9.h5
+8b52a95bcb01161b2ffeabec4b56e2c89126ffd9423935cb6398a7d0cac50c68  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder2_weights-Se.h5
+43e4187a9d9dd68db5d38a230fbca7590e2d301d552543dd223d4db8587e8edb  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder2_weights-top6.h5
+3dfa1bc6de7ce6e6829e4c089a188f47c75e434703e7e8ddeb7ede0a48d293ec  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder2_weights-top7.h5
+ce30db5b59214edc10c396384821d606594c5c097a65b0494ea882911bda3154  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder2_weights-top8.h5
+c7b0ad2863e68ccc8c63f75103a1d919328b90af866fe817ad42c704e054c0de  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder2_weights-top9.h5
+cf1102e032e26eaa3a1a7744bae93ffb29305ba69da27af230f69b3b47ae5bfd  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder3_weights-Se.h5
+41ad96329644406f614a08ad0280422dc2602bfccf18b05ecd9348ffc5f57a22  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder3_weights-top6.h5
+7ec3c296d2dc73c09a9676fbda286587c96bb67dbdf31f5004602d57497e2c6e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder3_weights-top7.h5
+ab447db93715ebe338e8111dbc4e8286a413deac73b933ceaeb19609a747acaf  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder3_weights-top8.h5
+80f816eeab3c69431e0a2611e7710d5cb78aff8fcfb11ff98adeb64adad51ac1  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-decoder3_weights-top9.h5
+a36043a766bca7932522a9486f3da862fcd5cba8ee7dd7272e6e957a6bbdb11e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder1_weights-Se.h5
+32b6dc42e3da4dd2a3bfd561145593517ae931f6c13133824044a27c9e843ab7  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder1_weights-top6.h5
+6415e27f56024af2bde68fd32656b9fb29cab01f59a14d50ed96c666642f7871  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder1_weights-top7.h5
+5fd54a5ef620910b1668c6b1802b51bd75e00f2e1ab03d035a1331db8e544d23  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder1_weights-top8.h5
+bc37d861ca3c3ddad4ae98e8f4b2c3c3934a94f6c95c9321b7d3a9c2f0334aed  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder1_weights-top9.h5
+23b2ca8ff89c61b2d779b3705199c605fc7df3bad89f15e8b3491817c81f37bf  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder2_weights-Se.h5
+0f73ead87cba2cc0ef1b959b37f1d7233822d4701f00b24db71fb49db4ee5a88  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder2_weights-top6.h5
+ef6d45262394e2f8a68f8af3969cdb6bd2a82721aa81710608b6c09743ffe6b5  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder2_weights-top7.h5
+1f49fc027eab1ab4c2fbd152719ba0f763d21c7c8f5a939d624eaea057a1e6de  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder2_weights-top8.h5
+ab3eba7c2d8ebd7166acc536152f992d99a36cf1b02b7b1c0d7da0731c4fe19e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder2_weights-top9.h5
+31dca188063500166f29b7749ae99af43969e650fed1ab88037f410118327190  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder3_weights-Se.h5
+a3192521cae69965e39014a7c786e0554de5f031c21f4f427fd0dda7cbdcaac6  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder3_weights-top6.h5
+3c0548097e4a9407a94ff1221393d1e2c42af87bd133d5f3c13af0887bbe7b54  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder3_weights-top7.h5
+30f753fb2a182b71332e4fe9b70c1437bca7bf6ec1af4b4764d8a022ad74012f  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder3_weights-top8.h5
+9a740e13592b8f5e0c5999c15f55aaf9149d05926ade5b26b042cfca112e7674  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Policy-encoder3_weights-top9.h5
+df92507ab87e9055b50f8d4e14202033a1ddffaae33f93ae64d6de494fe513b4  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Primary Energy_Oil.csv
+0985ba4821506d01b0a8f859867b0e8e9cecf8c13be74fef2192f51bd7f0647d  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/PrimaryEnergy_Coal.csv
+313eefbc7c0c951e245292d8e49754ffbe45bd059a2f233c2d6f63a05370bf98  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/PrimaryEnergy_imputed.csv
+ce3a87da40129c82273eeff70d3f0e73924feba32d75dec472f8d8f846e38bf6  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/RCGAN - Top6.ipynb
+980c9e203be8c4a864e574fc3932eb969e33a611d5d877e295ce940103baf14c  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/RCGAN - Top7.ipynb
+8233f78df58563f42609b370b960bcc94427d62beaad8d1c93ee7b351a74b8b0  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/RCGAN - Top8.ipynb
+ea00f33993085430cf7a3db39842170ec3b48f6c7666931397bcbeb7aac26ef9  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/RCGAN - Top9.ipynb
+9cb636b4fdd1a920a97af2491dbdfe617a97e45c48fc40d1fbdfdb1740f0c44e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/RCGAN-Secondary.ipynb
+3e03e92ac3561c54036bc15ad2526aec20ddeaf055adb2eaa5746f1c404f53c0  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Secondary Energy_Gases.csv
+e4df00bbf7a079b9e04401db2838b9fb80cc001dc3053bb8d88335eaef7c0d17  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/Secondary-data-generate.ipynb
+4b7eb48af20fe5046c758761bc5c86222f053a35e1c857a1aac7d630314cf270  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity.csv
+308a14804108f170b285ccdff7a5d86b304a5067fba30ce70e00b940d47da52d  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Biomass.csv
+68de56bbac22c755b699c2c837b0b2c748be1ad318cd6a86f9785ee48231fed7  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Coal.csv
+9b5a3d806c7c0285bec571b40fa0f598ab93beaa2895aaf6bfaca969440b2202  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Gas.csv
+2e11776865cf3845bc757811c49ef53ac93a531cfd2b3dfceab886194de97eb5  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Geothermal.csv
+96469d37c4839ae9f35e874d831f9b4c52cface77e4ace22e580bf78ac6f8e0f  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Hydro.csv
+56f0d406e59068ff7d7e78beef25937bb81f2a90dfa2d253e63a82f6ab287c0a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Nuclear.csv
+a5f790374f5610e1d17373334d29157358dd20394753a3fcd0e3160713768643  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Oil.csv
+6a1b5d35dd5f5b78cda5176d120f13a12393de33626e20fe16383810de683cdb  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Solar.csv
+6c8e9b3b5738c3ffc22b06cda4f1f1d8a3103c23b4cc9e866c6b236c0d02d30a  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/SecondaryEnergy_Electricity_Wind.csv
+22d1ebbaa5688b3e48b262038dd1677e7b65a993cc57c0119c2584d48e4eab0c  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/VAE - Top6 .ipynb
+434d8d28d6fe263fe152dbbca46b56daea151454ad3427855f5536e2a2731963  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/VAE - Top7.ipynb
+1df801ca750803266d18d611e5f722ed6743dc4453b45234bbb1925ccac886b9  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/VAE - Top8.ipynb
+4dd86932c31fd7b4b96aaf891d18fafd13fb2f9243dbbb9185b8398f17416791  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/VAE - Top9.ipynb
+47b2505fc7f692463d350a6c725ef2086001c4cfd4cc7f0a33b7cc63dd6fd7fb  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/VAE Image-Top6.ipynb
+206c91c0981aa32643abcddc517b1e08db00e9b4fed437e77483b4585d413208  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/VAE Randomforest-Top6.ipynb
+2a377393f8e73820b65cfb5b9f5b7436c0f657029869f0b4f4e207e5d3f03db4  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/VAE-Secondary.ipynb
+0ee9efddf5bb8c96686c0a27c3c9bcc191a8097b24ea4b5dacb4044ad893733c  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/decoder1_weights.h5
+f20d854919079fe484d0c27ee958c6c806f032138e398d431e54e7a65aa9936b  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/decoder2_weights.h5
+86728af314308f6d9aa65d95c78bbd70b40583b807b979de84199b02d71fb12e  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/decoder3_weights.h5
+baddfb803261c62b93b10dd12e17a2f1f83e46699d4ce43cc1e48d99fb53d3d9  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/encoder1_weights.h5
+facfe9cc917ea9153d0443fbbf2c5ed937fbf87a889dfb80b23ce5e65af97093  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/encoder2_weights.h5
+ed0164833f415f20622ed97e764e1e325ed48e528327857da0b9b963f717c1a0  data/raw/Anderson111/Deep-IAM_v1.0.1/Policy-Generative Model/encoder3_weights.h5
+0771f166429919f3ebe4fab7811f33a0bc19acc53f767eb1a13d73792f152c3e  data/raw/Anderson111/Deep-IAM_v1.0.1/README.md
+7046b5b0f1706f37c21dc5af291a4ad817fe63808c643542bce9d89a10f23035  data/raw/Scenarios3000/Gen_C1234.csv
+fd957b50a0819fff73a50812b7158b8c2ad75306696fd6c2db9e6ff0b5eb7aae  data/raw/Scenarios3000/Gen_C56.csv
+af9afb445fcc07cb3ecc0890fb2e727f15222365a43d2cc188b662cbc94c0e19  data/raw/Scenarios3000/Gen_C78.csv
+2a7d7327c7945ef5978b75edd3ebf7e5ecbfff1d01b40eac93cbf939cdaa3751  data/raw/Scenarios3000/Real_C1234.csv
+bd5df3a919f2d4a52c0fffc6142f98e17071f3ec70967b592de8980bab6d8b87  data/raw/Scenarios3000/Real_C56.csv
+a773fa8cda1dd778fb818e3efac080671be72115ba8f04a489bf4432b0968c2d  data/raw/Scenarios3000/Real_C78.csv
+d303e48867ac667efad511dfe40eec823c6164367b7c7e41f7d99e82b16e0393  data/raw/Source_data_Fig2.xlsx
+2c33d046612555af82b129ce48e2a69923864ffdf216923fb976d93e8a479a38  data/raw/Source_data_Fig3.xlsx
+ac1cacc73626ac425f4c91c622959aa384dfc35d0bf5af77e493d52dcb1e8532  data/raw/Source_data_Fig4.xlsx
+1931995921536489f91ed3d69dcf4e903b73995ba9d41059ed160690e335c96d  data/raw/Source_data_Fig5.xlsx
+b066a84189e37fb35ebacfa71d498e0194e3f0fbeb78db7c00f0a03d3f369711  data/raw/Source_extended_data_Fig1.xlsx
+ee03d3da522ae697ae473a30d5b618fd17551364c6143038ab980aa2f852396a  data/raw/Source_extended_data_Fig2.xlsx
+77924fc40b081688b5783d073b91b0b56b41231b088e11e0a0f06792b416bfef  data/raw/Source_extended_data_Tab1.xlsx
+2df90d0e180c68e15348ada766dd7807b1496b490e5c7b9b6549215f6310d541  data/raw/Source_extended_data_Tab2.xlsx
+0a1db050b58c1ef07f5842f24364e9e7f6759dd79713b439aa78d4bd6a75e4b2  data/raw/Source_extended_data_Tab3.xlsx
+704f0773ec0f5e658bafd6b8e770ace622acb3309a3a6a70457d920215646a1e  data/raw/Supplementary_Texts_1–3.pdf
