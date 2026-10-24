@@ -1,0 +1,8 @@
+# Template. Copy to config/local_paths.yaml (git-ignored) and set absolute paths on your machine.
+ar6_metadata_xlsx: /path/to/data/raw/AR6_Scenarios_Database_metadata_indicators_v1_1.xlsx
+ar6_world_csv: /path/to/data/raw/AR6_Scenarios_Database_World_v1.1.csv
+scenarios3000_dir: /path/to/data/raw/Scenarios3000
+source_data_fig3_xlsx: /path/to/data/raw/Source_data_Fig3.xlsx
+deepiam_v100_dir: /path/to/data/raw/Deep-IAM_v1.0.0
+deepiam_v101_dir: /path/to/data/raw/Deep-IAM_v1.0.1
+deepiam_weights_dir: /path/to/data/raw/Deep-IAM_weights   # h5 decoders for the extended (16-var) model

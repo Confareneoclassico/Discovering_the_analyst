@@ -1,0 +1,21 @@
+# Raw deposits and AR6 data: cited by DOI and hashed in DATA.md, never committed
+# (the AR6 licence restricts redistribution; the World CSV also exceeds GitHub's 100 MB limit)
+data/raw/
+
+# Machine-specific paths; config/local_paths.example.yaml is the committed template
+config/local_paths.yaml
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# LaTeX build artefacts. The frozen v1.0 PDF is added once, with: git add -f protocol/preregistration.pdf
+protocol/*.aux
+protocol/*.log
+protocol/*.out
+protocol/*.synctex.gz
+protocol/*.pdf
+
+# OS
+.DS_Store
