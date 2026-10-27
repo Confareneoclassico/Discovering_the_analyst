@@ -1,7 +1,7 @@
 # DATA.md — artefact registry
 
 All raw artefacts live read-only under `data/raw/`, untracked since the v16
-clean-up of 24 October 2026. Every earlier commit contains them, which is why
+clean-up (2e1ea40, 24 October 2026). Every earlier commit contains them, which is why
 the repository stays private (history note in `docs/FREEZE_CHECKLIST.md`).
 `sha256` values below were computed on the copies in hand on 2026-09-16 and
 re-verified on 2026-10-24 against the copies committed in 7ee280d. The raw
@@ -66,7 +66,7 @@ with attribution to Li et al. and the record DOIs.
 | # | Artefact | Source | Version | sha256 | Status |
 |---|----------|--------|---------|--------|--------|
 | B1 | AR6 Scenarios Database metadata_indicators | IIASA AR6 Scenario Explorer (registration + licence) / 10.5281/zenodo.7197970 | **v1.1** | 1c1d70208bcf48c5… | ✔ verified: `meta_Ch3vetted_withclimate` = 1,202 rows; per-category counts match ED Table 1 exactly (see `results/phase0_metadata_check.json`) |
-| B2 | AR6 Scenarios Database World timeseries CSV (361,767,203 bytes) | same | **v1.1** | 4cf39b6b0d968e25ed389318acb1674f92146f977e9db4bfb7970f048ff73977 (Git LFS object id of the copy committed in 7ee280d) | ✔ pinned; ⬜ restore the full file in `data/raw/` on the analysis machine (see note) |
+| B2 | AR6 Scenarios Database World timeseries CSV (361,767,203 bytes) | same | **v1.1** | 4cf39b6b0d968e25ed389318acb1674f92146f977e9db4bfb7970f048ff73977 (Git LFS object id of the copy committed in 7ee280d) | ✔ pinned; full file restored on the analysis machine and verified against the manifest, 2026-10-24 (see note) |
 
 **B2 on the analysis machine.** On 2026-10-24 the copy in `data/raw/` hashed
 to 0e73f807742fdf748e86c9dab5f3de1f8fb29ba8bef8e3487f7a02e2017f7a69, which is
@@ -74,10 +74,13 @@ the SHA-256 of the 134-byte Git LFS pointer, not of the data: the folder was
 checked out without LFS. The pin above is the LFS object id, which is the
 SHA-256 of the file committed on 2026-09-21. The object is in the repository's
 LFS store on GitHub: on 2026-10-24 it was downloaded and its SHA-256
-recomputed, then deleted. Restore the full file with `git lfs pull` while
-`data/raw/` is tracked, or afterwards with `git lfs smudge` on the pointer,
-and confirm that `shasum -a 256` returns the pinned value before any script
-reads it.
+recomputed, then deleted. The full file was restored on the analysis machine
+the same day with `git lfs pull`, before `data/raw/` was untracked, and the
+manifest check passed. On any other machine, with Git LFS installed, run from
+the repository root
+`git show d501294:data/raw/AR6_Scenarios_Database_World_v1.1/AR6_Scenarios_Database_World_v1.1.csv | git lfs smudge > data/raw/AR6_Scenarios_Database_World_v1.1/AR6_Scenarios_Database_World_v1.1.csv`
+(tested on 2026-10-24: the output hashes to the pinned value) and confirm the
+SHA-256 before any script reads the file.
 
 **Availability (resolved in Phase 0).** Both reconstructed populations
 (680/308/172 and 554/237/110) were reproduced exactly from the downloadable

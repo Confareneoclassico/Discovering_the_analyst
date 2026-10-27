@@ -1,0 +1,810 @@
+{
+  "inputs_sha256": {
+    "Real_C1234.csv": "2a7d7327c7945ef5978b75edd3ebf7e5ecbfff1d01b40eac93cbf939cdaa3751",
+    "Real_C56.csv": "bd5df3a919f2d4a52c0fffc6142f98e17071f3ec70967b592de8980bab6d8b87",
+    "Real_C78.csv": "a773fa8cda1dd778fb818e3efac080671be72115ba8f04a489bf4432b0968c2d"
+  },
+  "definitions": {
+    "band": "Q90 - Q10 over the scenarios of the real 901-set, per key variable, category and decade (numpy quantile, linear interpolation)",
+    "sd": "sample standard deviation (ddof = 1) per variable of E, category and decade",
+    "ratio": "spread divided by the median of the same variable's spreads over the nine decades, within the category",
+    "floor": "a denominator is replaced by floor x median over decades when the ratio is below floor"
+  },
+  "x1a_floor_fraction": 0.1,
+  "standardisation_floor_fraction": 0.1,
+  "x1a_band": {
+    "n_cells": 162,
+    "n_zero_bands": 0,
+    "binding_cells": {
+      "0.05": [
+        {
+          "variable": "CarbonSequestration",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.4711,
+          "band": 4.727,
+          "median_band_over_decades": 13297.4,
+          "ratio": 0.000355482
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.5485,
+          "band": 2.8417,
+          "median_band_over_decades": 11322.0,
+          "ratio": 0.000250988
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2030,
+          "n_scenarios": 237,
+          "zero_fraction": 0.2025,
+          "band": 487.106,
+          "median_band_over_decades": 11322.0,
+          "ratio": 0.0430229
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.5364,
+          "band": 2.2146,
+          "median_band_over_decades": 1409.49,
+          "ratio": 0.00157121
+        }
+      ],
+      "0.1": [
+        {
+          "variable": "CarbonSequestration",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.4711,
+          "band": 4.727,
+          "median_band_over_decades": 13297.4,
+          "ratio": 0.000355482
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.5485,
+          "band": 2.8417,
+          "median_band_over_decades": 11322.0,
+          "ratio": 0.000250988
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2030,
+          "n_scenarios": 237,
+          "zero_fraction": 0.2025,
+          "band": 487.106,
+          "median_band_over_decades": 11322.0,
+          "ratio": 0.0430229
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.5364,
+          "band": 2.2146,
+          "median_band_over_decades": 1409.49,
+          "ratio": 0.00157121
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2030,
+          "n_scenarios": 110,
+          "zero_fraction": 0.4818,
+          "band": 74.5447,
+          "median_band_over_decades": 1409.49,
+          "ratio": 0.0528878
+        }
+      ],
+      "0.2": [
+        {
+          "variable": "PrimaryEnergy_Gas",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "band": 24.1818,
+          "median_band_over_decades": 153.947,
+          "ratio": 0.157079
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.4711,
+          "band": 4.727,
+          "median_band_over_decades": 13297.4,
+          "ratio": 0.000355482
+        },
+        {
+          "variable": "PrimaryEnergy_Gas",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "band": 16.7935,
+          "median_band_over_decades": 153.67,
+          "ratio": 0.109283
+        },
+        {
+          "variable": "PrimaryEnergy_Gas",
+          "category": "C56",
+          "year": 2030,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "band": 29.0533,
+          "median_band_over_decades": 153.67,
+          "ratio": 0.189063
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.5485,
+          "band": 2.8417,
+          "median_band_over_decades": 11322.0,
+          "ratio": 0.000250988
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2030,
+          "n_scenarios": 237,
+          "zero_fraction": 0.2025,
+          "band": 487.106,
+          "median_band_over_decades": 11322.0,
+          "ratio": 0.0430229
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2040,
+          "n_scenarios": 237,
+          "zero_fraction": 0.1139,
+          "band": 2232.18,
+          "median_band_over_decades": 11322.0,
+          "ratio": 0.197154
+        },
+        {
+          "variable": "Kyoto_Gases",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "band": 4215.93,
+          "median_band_over_decades": 24800.1,
+          "ratio": 0.169996
+        },
+        {
+          "variable": "PrimaryEnergy_Coal",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "band": 49.449,
+          "median_band_over_decades": 264.881,
+          "ratio": 0.186684
+        },
+        {
+          "variable": "PrimaryEnergy_Gas",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "band": 27.2064,
+          "median_band_over_decades": 151.926,
+          "ratio": 0.179077
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.5364,
+          "band": 2.2146,
+          "median_band_over_decades": 1409.49,
+          "ratio": 0.00157121
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2030,
+          "n_scenarios": 110,
+          "zero_fraction": 0.4818,
+          "band": 74.5447,
+          "median_band_over_decades": 1409.49,
+          "ratio": 0.0528878
+        },
+        {
+          "variable": "Kyoto_Gases",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "band": 5347.14,
+          "median_band_over_decades": 30043.1,
+          "ratio": 0.177982
+        }
+      ]
+    }
+  },
+  "ensemble_sd": {
+    "n_marginals": 432,
+    "n_zero_sds": 0,
+    "binding_marginals": {
+      "0.05": [
+        {
+          "variable": "CarbonSequestration",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.4711,
+          "sd": 27.739,
+          "median_sd_over_decades": 5475.32,
+          "ratio": 0.00506618
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 0.943185,
+          "median_sd_over_decades": 53.2263,
+          "ratio": 0.0177203
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 1.15499,
+          "median_sd_over_decades": 35.241,
+          "ratio": 0.032774
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.5485,
+          "sd": 16.7322,
+          "median_sd_over_decades": 4379.64,
+          "ratio": 0.00382044
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 0.867495,
+          "median_sd_over_decades": 34.6569,
+          "ratio": 0.0250309
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 0.994396,
+          "median_sd_over_decades": 24.0301,
+          "ratio": 0.0413813
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.5364,
+          "sd": 23.5055,
+          "median_sd_over_decades": 1870.26,
+          "ratio": 0.012568
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 0.917215,
+          "median_sd_over_decades": 43.4739,
+          "ratio": 0.021098
+        }
+      ],
+      "0.1": [
+        {
+          "variable": "CarbonSequestration",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.4711,
+          "sd": 27.739,
+          "median_sd_over_decades": 5475.32,
+          "ratio": 0.00506618
+        },
+        {
+          "variable": "SecondaryEle",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 4.62989,
+          "median_sd_over_decades": 54.9266,
+          "ratio": 0.0842923
+        },
+        {
+          "variable": "SecondaryEle_Biomass",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 0.713763,
+          "median_sd_over_decades": 10.2307,
+          "ratio": 0.0697671
+        },
+        {
+          "variable": "SecondaryEle_Nuclear",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 1.37188,
+          "median_sd_over_decades": 23.6486,
+          "ratio": 0.0580112
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 0.943185,
+          "median_sd_over_decades": 53.2263,
+          "ratio": 0.0177203
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 1.15499,
+          "median_sd_over_decades": 35.241,
+          "ratio": 0.032774
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.5485,
+          "sd": 16.7322,
+          "median_sd_over_decades": 4379.64,
+          "ratio": 0.00382044
+        },
+        {
+          "variable": "SecondaryEle",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 4.73371,
+          "median_sd_over_decades": 47.7913,
+          "ratio": 0.0990496
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 0.867495,
+          "median_sd_over_decades": 34.6569,
+          "ratio": 0.0250309
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 0.994396,
+          "median_sd_over_decades": 24.0301,
+          "ratio": 0.0413813
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.5364,
+          "sd": 23.5055,
+          "median_sd_over_decades": 1870.26,
+          "ratio": 0.012568
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 0.917215,
+          "median_sd_over_decades": 43.4739,
+          "ratio": 0.021098
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 1.16786,
+          "median_sd_over_decades": 15.6056,
+          "ratio": 0.0748359
+        }
+      ],
+      "0.2": [
+        {
+          "variable": "PrimaryEnergy_Gas",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 9.47144,
+          "median_sd_over_decades": 57.8666,
+          "ratio": 0.163677
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.4711,
+          "sd": 27.739,
+          "median_sd_over_decades": 5475.32,
+          "ratio": 0.00506618
+        },
+        {
+          "variable": "SecondaryEle",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 4.62989,
+          "median_sd_over_decades": 54.9266,
+          "ratio": 0.0842923
+        },
+        {
+          "variable": "SecondaryEle_Biomass",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 0.713763,
+          "median_sd_over_decades": 10.2307,
+          "ratio": 0.0697671
+        },
+        {
+          "variable": "SecondaryEle_Biomass",
+          "category": "C1234",
+          "year": 2030,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 1.93479,
+          "median_sd_over_decades": 10.2307,
+          "ratio": 0.189117
+        },
+        {
+          "variable": "SecondaryEle_Gas",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 3.40214,
+          "median_sd_over_decades": 20.4154,
+          "ratio": 0.166646
+        },
+        {
+          "variable": "SecondaryEle_Geothermal",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 0.265751,
+          "median_sd_over_decades": 1.61314,
+          "ratio": 0.164742
+        },
+        {
+          "variable": "SecondaryEle_Nuclear",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 1.37188,
+          "median_sd_over_decades": 23.6486,
+          "ratio": 0.0580112
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 0.943185,
+          "median_sd_over_decades": 53.2263,
+          "ratio": 0.0177203
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C1234",
+          "year": 2020,
+          "n_scenarios": 554,
+          "zero_fraction": 0.0,
+          "sd": 1.15499,
+          "median_sd_over_decades": 35.241,
+          "ratio": 0.032774
+        },
+        {
+          "variable": "PrimaryEnergy_Gas",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 8.57409,
+          "median_sd_over_decades": 62.865,
+          "ratio": 0.136389
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.5485,
+          "sd": 16.7322,
+          "median_sd_over_decades": 4379.64,
+          "ratio": 0.00382044
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C56",
+          "year": 2030,
+          "n_scenarios": 237,
+          "zero_fraction": 0.2025,
+          "sd": 533.102,
+          "median_sd_over_decades": 4379.64,
+          "ratio": 0.121723
+        },
+        {
+          "variable": "SecondaryEle",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 4.73371,
+          "median_sd_over_decades": 47.7913,
+          "ratio": 0.0990496
+        },
+        {
+          "variable": "SecondaryEle_Biomass",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 0.819795,
+          "median_sd_over_decades": 4.40411,
+          "ratio": 0.186143
+        },
+        {
+          "variable": "SecondaryEle_Gas",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 3.60438,
+          "median_sd_over_decades": 27.914,
+          "ratio": 0.129124
+        },
+        {
+          "variable": "SecondaryEle_Nuclear",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 1.4381,
+          "median_sd_over_decades": 13.787,
+          "ratio": 0.104309
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 0.867495,
+          "median_sd_over_decades": 34.6569,
+          "ratio": 0.0250309
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C56",
+          "year": 2020,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 0.994396,
+          "median_sd_over_decades": 24.0301,
+          "ratio": 0.0413813
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C56",
+          "year": 2030,
+          "n_scenarios": 237,
+          "zero_fraction": 0.0,
+          "sd": 3.87653,
+          "median_sd_over_decades": 24.0301,
+          "ratio": 0.16132
+        },
+        {
+          "variable": "PrimaryEnergy_Coal",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 19.3624,
+          "median_sd_over_decades": 115.571,
+          "ratio": 0.167538
+        },
+        {
+          "variable": "PrimaryEnergy_Gas",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 10.5006,
+          "median_sd_over_decades": 59.5981,
+          "ratio": 0.176191
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.5364,
+          "sd": 23.5055,
+          "median_sd_over_decades": 1870.26,
+          "ratio": 0.012568
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2030,
+          "n_scenarios": 110,
+          "zero_fraction": 0.4818,
+          "sd": 199.105,
+          "median_sd_over_decades": 1870.26,
+          "ratio": 0.106458
+        },
+        {
+          "variable": "CarbonSequestration",
+          "category": "C78",
+          "year": 2040,
+          "n_scenarios": 110,
+          "zero_fraction": 0.4727,
+          "sd": 312.604,
+          "median_sd_over_decades": 1870.26,
+          "ratio": 0.167144
+        },
+        {
+          "variable": "Kyoto_Gases",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 2209.36,
+          "median_sd_over_decades": 14377.2,
+          "ratio": 0.15367
+        },
+        {
+          "variable": "SecondaryEle",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 4.5371,
+          "median_sd_over_decades": 39.418,
+          "ratio": 0.115102
+        },
+        {
+          "variable": "SecondaryEle_Biomass",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 0.576729,
+          "median_sd_over_decades": 3.46876,
+          "ratio": 0.166264
+        },
+        {
+          "variable": "SecondaryEle_Coal",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 4.30164,
+          "median_sd_over_decades": 32.315,
+          "ratio": 0.133116
+        },
+        {
+          "variable": "SecondaryEle_Gas",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 3.55958,
+          "median_sd_over_decades": 29.9267,
+          "ratio": 0.118943
+        },
+        {
+          "variable": "SecondaryEle_Nuclear",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 1.53097,
+          "median_sd_over_decades": 9.24738,
+          "ratio": 0.165557
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 0.917215,
+          "median_sd_over_decades": 43.4739,
+          "ratio": 0.021098
+        },
+        {
+          "variable": "SecondaryEle_Solar",
+          "category": "C78",
+          "year": 2030,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 5.77961,
+          "median_sd_over_decades": 43.4739,
+          "ratio": 0.132944
+        },
+        {
+          "variable": "SecondaryEle_Wind",
+          "category": "C78",
+          "year": 2020,
+          "n_scenarios": 110,
+          "zero_fraction": 0.0,
+          "sd": 1.16786,
+          "median_sd_over_decades": 15.6056,
+          "ratio": 0.0748359
+        }
+      ]
+    },
+    "max_magnification_without_floor": 262.0
+  }
+}

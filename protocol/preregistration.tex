@@ -41,7 +41,7 @@ optimal-transport GSA case}
 %   $^{4}$School of Geography, Earth and Environmental Sciences, University of Birmingham, UK\\
 %   $^{5}$Centre for the Study of the Sciences and the Humanities, University of Bergen, Norway}}
 \author{}
-\date{Version \iffrozen 1.0\else 0.3 (release candidate)\fi, \todo{date of deposit},
+\date{Version \iffrozen 1.0\else 0.4 (release candidate)\fi, \todo{date of deposit},
 DOI: \todo{reserved on Zenodo before upload}}
 
 \begin{document}
@@ -49,11 +49,20 @@ DOI: \todo{reserved on Zenodo before upload}}
 
 \iffrozen\else
 \noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{\small
-Release candidate. Values agreed in the co-authors' review of 23 October 2026
-are in black. Text in \prop{blue} was added while transcribing that review and
-the Phase~0C adjudication, and awaits approval. Items in \todo{} are filled at
-deposit. This box, all colour and all placeholders disappear in the frozen
-version.}}
+Release candidate. Values agreed in the co-authors' review of 23 October 2026,
+and the items of v0.3 approved in reply (the X1a normalization, the withdrawal
+of G9, the evaluation set $E$ and the given-data design as primary), are in
+black. Text in \prop{blue} awaits approval. New in v0.4 are the per-category
+band, floor and maximum deviation of X1a, the same floor for the
+standardization of the ensemble distance (Phase~0D), and the projection of the
+OT index onto one-dimensional directions, without which its null value would
+approach $1-1/m$. Also new are dummy columns matched to each factor's cells as
+the null reference, with the seed as an ordinary factor, a pre-stated reading
+of interactions, the comparison across cases in relative terms, exact
+definitions of the primary index, units, stopping rule, input distributions
+and claim details, and the two-step deposit of \S\ref{sec:archive}. Items in
+\todo{} are filled at deposit. This box, all colour and all placeholders
+disappear in the frozen version.}}
 \fi
 
 \begin{abstract}
@@ -77,6 +86,8 @@ deposit, no claim rule (X1a--X5) has been evaluated at any factor setting,
 including the paper's own values, no retraining has been performed, and no
 noise-floor replicate has been run. The only pipeline stage executed is the
 deterministic regeneration check of Phase~0B, which evaluates no claim.
+\prop{The analysis code will be deposited as a new version of this record
+before the first run (\S\ref{sec:archive}).}
 \end{abstract}
 
 \section{Purpose and scope}
@@ -199,6 +210,22 @@ Completed before this deposit. Machine-readable reports are archived under
   aggregations fixed before the computation rounds to the paper's 1.2\%. The
   distribution is highly skewed: half of all scenario-decades have errors
   below 0.011\%, so the average is driven by a minority of scenarios (D13).}
+\item \prop{\textbf{Phase 0D, denominators of the normalizations.} From the
+  deposited Real CSVs alone, the real 10--90 bands that normalize X1a and
+  the standard deviations that standardize the ensemble marginals were
+  computed per variable, category and decade
+  (\path{phase0d_denominator_guard.json}). No synthetic file was read. No
+  band or standard deviation is zero, but some are small enough to make
+  the ratios ill-conditioned. Carbon sequestration has bands below a tenth
+  of its median band over the decades in five cells (2020 in all three
+  categories, 2030 in C56 and C78), where 20 to 55\% of the scenarios
+  report zero. Thirteen of the 432 variable--category--year marginals of
+  the ensemble distance, all in 2020, have standard deviations below a
+  tenth of their variable's median, because the scenarios are harmonized
+  to the base year or, for carbon sequestration, mostly report zero, and
+  would magnify synthetic spread up to 262 times relative
+  to the variable's typical decade. The floors of \S\ref{sec:claims} and
+  \S\ref{sec:estimators} follow from this check.}
 \end{enumerate}
 The full inconsistency catalogue (D1--\prop{D14}) is archived as
 \texttt{DISCREPANCIES.md}.
@@ -206,32 +233,47 @@ The full inconsistency catalogue (D1--\prop{D14}) is archived as
 \section{Claims and operational rules}\label{sec:claims}
 Each claim of the target paper is translated into a rule verifiable on the
 pipeline's output. Populations are declared explicitly, given D2 and D9.
-\prop{Claims are evaluated on the three aggregated categories (C1234, C56,
-C78) and on the evaluation set $E$ of \S\ref{sec:estimators}. When factor G2
-uses finer categories, the synthetic ensembles are pooled to the three
-aggregates with weights equal to the real category counts in the 901-set,
-and k-means clusters are mapped to the aggregate they overlap most.} No rule
+Claims are evaluated on the three aggregated categories (C1234, C56, C78)
+and on the evaluation set $E$ of \S\ref{sec:estimators}. \prop{When factor
+G2 uses finer categories, each finer category is trained with the settings
+of the aggregate it belongs to, receives a share of the G7 sample size
+proportional to its real count in the 901-set, and its synthetic ensemble
+is pooled into that aggregate. The three k-means clusters are mapped
+one-to-one to the three aggregates by the assignment that maximizes the
+number of real scenarios they share.} No rule
 will be altered after deposit except under the deviations policy
 (\S\ref{sec:deviations}).
 
 \begin{description}[style=nextline]
 \item[\claim{X1a} (distributional match).] ``[The VAE] closely matches the
   original AR6 scenarios in terms of mean and the spread, particularly for
-  C1234.'' Rule: for each of the six key variables and each category,
-  \prop{the median, over the nine decades and the five quantiles (Q10, Q25,
-  Q50, Q75, Q90), of the absolute difference between synthetic and real
-  quantiles divided by the real 10--90 percentile range of that variable
-  and decade (the band drawn in the paper's Fig.~3)} is at most
-  $\tau_{1}=0.15$, the real population being the 901-set. ``Particularly
-  C1234'' holds if the C1234 deviation, \prop{pooled over variables,
-  decades and quantiles,} is the smallest of the three categories.
-  \prop{This normalization replaces the deviation relative to the quantile
-  itself, which is ill-conditioned where quantiles approach or cross zero
-  (coal in C1234 late in the century, Kyoto gases in C1234 around net zero,
-  carbon sequestration in C78). In the Phase~0B check, a
-  synthetic-versus-synthetic comparison, relative deviations reached about
-  1{,}260\% (electricity from coal, C1234, 2070, Q10) in a category where no
-  spread-normalized deviation exceeded 0.34.}
+  C1234.'' Rule: for each of the six key variables and each category, the
+  median, over the nine decades and the five quantiles (Q10, Q25, Q50, Q75,
+  Q90), of the absolute difference between synthetic and real quantiles
+  divided by the real 10--90 percentile range of that variable \prop{in
+  that category and} decade (the band drawn in the paper's Fig.~3\prop{,
+  never pooled across categories}) is at most $\tau_{1}=0.15$, the real
+  population being the 901-set. \prop{A band smaller than a tenth of the
+  median of that variable's bands over the nine decades, in the same
+  category, is replaced by that tenth. Phase~0D found this floor binding
+  in five of the 162 cells, all carbon sequestration (2020 in all three
+  categories, 2030 in C56 and C78).} ``Particularly C1234'' holds if the
+  C1234 deviation, pooled over variables, decades and quantiles \prop{(the
+  median of its 270 elements)}, is the smallest of the three categories.
+  \prop{X1a holds if all 18 variable--category medians are at most
+  $\tau_1$, and ``particularly C1234'' is recorded as a separate indicator,
+  X1a$'$, with its own pass fraction and indices.} This normalization replaces the
+  deviation relative to the quantile itself, which is ill-conditioned where
+  quantiles approach or cross zero (coal in C1234 late in the century,
+  Kyoto gases in C1234 around net zero, carbon sequestration in C78). In
+  the Phase~0B check, a synthetic-versus-synthetic comparison, relative
+  deviations reached about 1{,}260\% (electricity from coal, C1234, 2070,
+  Q10) in a category where no spread-normalized deviation exceeded 0.34.
+  \prop{The floor keeps the ill-conditioning from moving to the band. The
+  pass fraction is also reported with floors of 5\% and 20\%, and the
+  maximum deviation over the 45 elements of each variable and category is
+  reported next to the median, since the median is insensitive to misfit
+  in the tails. Neither enters a decision.}
 \item[\claim{X1b} (narrower distributions).] ``Synthetic scenarios have
   narrower distributions for all climate categories.'' Rule:
   IQR$_{\mathrm{syn}} <$ IQR$_{\mathrm{real}}$ for all six key variables and
@@ -240,11 +282,13 @@ will be altered after deposit except under the deviations policy
   retained the correlations between key variables \dots\ matching closely
   those observed in the original AR6 scenarios.'' Rule, for C1234, the
   category shown in the paper's Fig.~4: (i) the maximum absolute
-  elementwise difference between the synthetic and real correlation
-  matrices of the six key variables, taken over the 15 pairs and the three
+  elementwise difference between the synthetic and real \prop{Pearson}
+  correlation matrices of the six key variables, taken over the 15 pairs and the three
   years 2030, 2050 and 2100 (45 elements), is at most $\tau_{2}=0.15$, and
   (ii) the paper's reported temporal ordering (coal--Kyoto correlation
-  stronger in 2030 than in 2100) holds in the synthetic data. The sampling
+  stronger in 2030 than in 2100) holds in the synthetic data\prop{, i.e.\
+  the signed Pearson correlation of coal and Kyoto Gases in 2030 exceeds
+  that in 2100 (0.82 and 0.21 in the real 901-set)}. The sampling
   noise of a correlation is at most about $1/\sqrt{n}$, i.e.\ about 0.04 at
   $n=554$, hence about 0.13 on the maximum of 45 elements, and larger in
   practice because scenarios from the same IAM are not independent.
@@ -267,13 +311,13 @@ will be altered after deposit except under the deviations policy
   transferring accuracy \dots\ compared to RCGAN and CGAN'' (Experiment~I,
   synthetic$\to$real, test population the 901-set). Rule: accuracy(VAE)
   $>$ accuracy(RCGAN) and accuracy(VAE) $>$ accuracy(CGAN) in the same
-  run. \prop{As in the authors' code, the classifier's inputs are the
+  \prop{evaluation}. \prop{As in the authors' code, the classifier's inputs are the
   trapezoid-cumulated 2020--2100 values of the fifteen variables of $E$
   other than Kyoto Gases, and the synthetic training set has 1{,}000
-  scenarios per category. The three generators are trained in the same run
-  on the same population and the same variables, so the comparison is
-  like-for-like by construction, as Phase~0C shows the published one was
-  (D12).}
+  scenarios per category. The three generators are trained together, on the
+  same population and the same variables, so the comparison is
+  like-for-like by construction, as Phase~0C shows the
+  published one was (D12). G7 does not act on X4.}
 \item[\claim{X5} (bias inheritance, secondary).] The paper positions
   synthetic generation as mitigating ``model-determined biases'' and
   ``non-random submission''. Rule: a source-model classifier (nine model
@@ -283,79 +327,107 @@ will be altered after deposit except under the deviations policy
   of the synthetic ensemble and the real ensemble's model shares is smaller
   than the distance to the uniform mix. A baseline model-identifiability
   check on real data (held-out accuracy above the majority-class rate)
-  gates the test.
+  gates the test. \prop{The classifier is the random forest of G8's paper
+  level, trained once on the real 901-set with the trapezoid-cumulated
+  2020--2100 values of the sixteen variables of $E$ as inputs. The gate is
+  passed if the lower bound of the 95\% binomial interval of its five-fold
+  stratified cross-validated accuracy exceeds the majority-class rate. If
+  the gate fails, X5 is reported as not testable and has no indices. G7
+  sets the size of the synthetic ensemble classified, and G8 does not act
+  on X5.}
 \end{description}
 
 \section{Factor space}\label{sec:factors}
 Factors, paper values and perturbation ranges are frozen in
 \path{config/paper_values.yaml}, archived with this deposit and summarized
 in Table~\ref{tab:factors}. Expensive factors require retraining, cheap
-factors vary per trained model.
+factors vary per trained model. \prop{Where the configuration file and this
+protocol disagree, the protocol governs.}
 
 \begin{table}[H]
 \caption{Factor space: paper values with provenance, ranges and cost.}
 \label{tab:factors}
 \footnotesize
-\begin{tabularx}{\textwidth}{@{}l Y Y l@{}}
+\begin{tabularx}{\textwidth}{@{}l Y Y l l@{}}
 \toprule
-Factor & Paper value (provenance) & Range or levels & Cost\\
+Factor & Paper value (provenance) & Range or levels & Declared & Cost\\
 \midrule
 G1 population & \prop{901-rule (D9, undeclared; see D12)} &
   \prop{\{901; 910, CS imputed; 828, Kyoto required; 1{,}160, D2 rule;
-  1{,}202, all vetted\}, missing values filled by G4} & exp.\\
+  1{,}202, all vetted\}, missing values filled by G4} & \prop{no} & exp.\\
 G2 aggregation & C1234/C56/C78 (Methods) &
   \{3-way; 4-way; 8-way; k-means labels\}\prop{, pooled for evaluation
-  (\S\ref{sec:claims})} & exp.\\
+  (\S\ref{sec:claims})} & \prop{yes} & exp.\\
 G3 variable selection & 5 key features ranked by RF (SI S2) &
-  pool completeness threshold 0.6--0.9; number of key features 4--9\prop{,
-  generated set united with $E$} & exp.\\
+  pool completeness threshold 0.6--0.9; number of key features 4--9,
+  generated set united with $E$ & \prop{yes} & exp.\\
 G4 preprocessing & mean imputation by year $\times$ category; (0,1)
   scaling & imputation \{mean yr$\times$cat.; mean yr; median
-  yr$\times$cat.; none\}; scaling \{(0,1); standardized\} & exp.\\
+  yr$\times$cat.; none\}; scaling \{(0,1); standardized\} & \prop{yes} & exp.\\
 G5 architecture & VAE latent dimension 10; \prop{training settings of the
   Secondary notebooks (ED Table~3 up to two slips, D4)} & latent dimension
-  4--20; epochs $\times$ 0.25--2 & exp.\\
+  4--20; epochs $\times$ 0.25--2\prop{, all three generators} & \prop{partly} & exp.\\
 G6 seed & seed 3; training non-reproducible (D1) & \prop{integer seed,
-  uniform; dummy reference (\S\ref{sec:criteria})} & exp.\\
+  uniform; an ordinary factor (\S\ref{sec:estimators})} & \prop{yes} & exp.\\
 G7 sample size & 10{,}000 per category\prop{, for X1--X3 and X5 (X4
-  uses 1{,}000, as in the code)} & 1{,}000--30{,}000 per category & cheap\\
+  uses 1{,}000, as in the code)} & 1{,}000--30{,}000 per category & \prop{yes} & cheap\\
 G8 transfer classifier & RF \prop{tuned by three-fold grid search, random
   state 42} (code) & \{RF as in code; RF defaults\prop{, no grid search};
-  logistic; XGBoost\} & cheap\\
+  logistic; XGBoost\} & \prop{partly} & cheap\\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\noindent \prop{Factor G9 (validation metrics) of the circulated version is
+\noindent Factor G9 (validation metrics) of the circulated version is
 withdrawn: its range was never specified, and varying the thresholds of
 the claim rules would turn the pre-registered rules into moving targets.
 The thresholds are frozen in \S\ref{sec:claims}, and their influence is
-reported descriptively (\S\ref{sec:estimators}).} \prop{The D4 documentation conflict (CGAN and RCGAN epochs, SI versus ED
-Table~3) is resolved by Phase~0C: the paper's configuration uses the
-Secondary notebooks' settings, so no nested factor is needed.}
+reported descriptively (\S\ref{sec:estimators}). \prop{The D4
+documentation conflict (CGAN and RCGAN epochs, SI versus ED Table~3) is
+resolved by Phase~0C: the paper's configuration uses the Secondary
+notebooks' settings, so no nested factor is needed.} \prop{The design also
+carries four dummy columns that are never passed to the pipeline, D1--D3
+drawn with G1--G6 and D4 with G7 and G8. They are the null reference of
+\S\ref{sec:criteria}.} \prop{Continuous factors are drawn uniformly on
+their ranges, except the epochs multiplier and the sample size, which act
+multiplicatively and are log-uniform. Integer factors are uniform on their
+integers, and categorical levels are equiprobable. The column Declared
+records whether the paper or its SI states the paper's value: the
+population filters are undeclared (D2, D9), the training settings are
+declared up to the slips of D4, and the classifier is declared while its
+tuning appears only in the code. G1 and G4 interact by construction: under
+G4's level none, scenarios with missing values are dropped, so every G1
+level shrinks to its complete cases on the generated set, which are the
+828-set when the generated set is $E$.}
 
 \section{Design and compute budget}\label{sec:design}
 \begin{enumerate}[nosep]
 \item \textbf{Noise floor.} $R_{0}=20$ seed-only replications at paper
   values for all factors. The floor $\delta_{0}$ is the 95th percentile of
-  pairwise distances between replicate ensembles, per category. \prop{The
+  pairwise distances between replicate ensembles, per category\prop{, in
+  the marginal distance of \S\ref{sec:estimators} with its floors}. \prop{The
   replicates also give the pass rate of every claim at the paper's own
   configuration, i.e.\ the statistical replication of the published
   results.}
 \item \textbf{Outer design.} \prop{Scrambled} Sobol' quasi-random sample of
-  size $N_{\mathrm{outer}}=512$ over the expensive factors G1--G6, one
-  training per point, environment pinned to A2's configuration.
-\item \textbf{Inner design.} \prop{Per trained model,
-  $N_{\mathrm{inner}}=8$ points of an independently scrambled Sobol'
-  sequence over the cheap factors G7 and G8. Each trained generator
-  produces 30{,}000 scenarios per category once, subsampled to the G7 value
-  of each inner point.}
+  size $N_{\mathrm{outer}}=512$ over the expensive factors G1--G6
+  \prop{and the dummy columns D1--D3}, one training per point, environment
+  pinned to A2's configuration.
+\item \textbf{Inner design.} Per trained model, $N_{\mathrm{inner}}=8$
+  points \prop{of an independently scrambled Sobol' sequence over the cheap
+  factors G7 and G8 and the dummy column D4. Each trained generator
+  produces 30{,}000 scenarios per category once, subsampled to the G7
+  value of each inner point. A training is one outer point and an
+  evaluation one inner point of one training, 4{,}096 in all.}
 \item \textbf{Stopping rule.} The budget is
-  $N_{\mathrm{outer}}\times$(training cost). If bootstrap CIs on the
-  leading OT indices have half-width below 0.05 at $N_{\mathrm{outer}}/2$,
-  the design may stop early. It may not be extended beyond
-  $N_{\mathrm{outer}}$ without a documented deviation.
-\item \textbf{Outputs stored per run:} \prop{per category, the standardized
+  $N_{\mathrm{outer}}\times$(training cost). \prop{At
+  $N_{\mathrm{outer}}/2=256$ trainings the 95\% bootstrap intervals of the
+  primary index (\S\ref{sec:criteria}) of every expensive coordinate and of
+  the matched dummies are computed. If all have half-widths below 0.05,
+  the design stops there, otherwise it runs to $N_{\mathrm{outer}}$.} It
+  may not be extended beyond $N_{\mathrm{outer}}$ without a documented
+  deviation.
+\item \textbf{Outputs stored per training:} \prop{per category, the standardized
   quantile vectors on $E$, the 200 projected quantile vectors and a
   2{,}000-point subsample of the 10{,}000-scenario ensemble}, all claim
   evaluations X1a--X5 \prop{for each inner point}, wall-clock time, and the
@@ -364,68 +436,124 @@ Secondary notebooks' settings, so no nested factor is needed.}
 
 \section{Estimators}\label{sec:estimators}
 \paragraph{Ensemble-level sensitivity.} Each training yields, per
-aggregated category, an ensemble of 10{,}000 synthetic scenarios
-\prop{(G7's paper value) represented on the evaluation set $E$: the six key
-variables and the ten electricity variables over the nine decades
-2020--2100.} Each variable--year marginal is standardized by its standard
-deviation in \prop{the corresponding category of} the real 901-set. The
-distance between ensembles is the exact one-dimensional Wasserstein
-distance on each variable--year marginal, aggregated by the mean \prop{of
-squared Wasserstein-2 distances and square-rooted, so that it is the
-Euclidean distance between the vectors of standardized quantile functions
-(99 probability levels)}. It is complemented by the sliced Wasserstein
+aggregated category, an ensemble of 10{,}000 synthetic scenarios (G7's
+paper value) represented on the evaluation set $E$: the six key variables
+and the ten electricity variables over the nine decades 2020--2100. Each
+variable--year marginal is standardized by its standard deviation in
+the corresponding category of the real 901-set\prop{, floored, as in X1a,
+at a tenth of the median of that variable's standard deviations over the
+nine decades in the same category. The floor binds for 13 of the 432
+variable--category--year marginals, all in 2020, where the scenarios are
+harmonized to the base year or, for carbon sequestration, mostly report
+zero (Phase~0D). Without it, synthetic spread in those marginals would be
+magnified up to 262 times relative to the variable's typical decade, and
+2020 could dominate the distance. Distances and indices are also reported
+with floors of 5\% and 20\%. Quantiles are computed by linear
+interpolation between order statistics, and standard deviations with the
+divisor $n-1$}. The distance between ensembles is the one-dimensional
+Wasserstein distance on each variable--year marginal, aggregated by the
+mean \prop{of squared Wasserstein-2 distances and square-rooted. It is
+computed on the quantiles at the 99 levels $(k-0.5)/99$, $k=1,\dots,99$,
+so that it is, up to a constant, the Euclidean distance between the
+vectors of standardized quantiles, and the outer half per cent of each
+tail is not represented}. It is complemented by the sliced Wasserstein
 distance on the joint, with $L=200$ projection directions fixed once,
-shared across all runs and replicates \prop{and archived with the
-harness}, so that projection noise is not confounded with training noise.
+shared across all trainings and replicates and archived with the harness,
+so that projection noise is not confounded with training noise.
 \prop{Both distances embed the output $Y$ of each training as a point of a
-Euclidean space, and the sensitivity index of factor $X_j$ is the
-given-data optimal-transport index of the Borgonovo--Chiani--Plischke class
-with quadratic cost,
+Euclidean space. The sensitivity index of factor $X_j$ is the given-data
+optimal-transport index of the Borgonovo--Chiani--Plischke class with
+quadratic cost, applied to one-dimensional projections of $Y$. For
+$L'=200$ unit directions $u_l$ of the embedding space, drawn once and
+archived like the slicing directions,
 \[
-\iota_j \;=\; \frac{\mathbb{E}\big[W_2^2\big(P_Y,\,P_{Y\mid X_j}\big)\big]}
-{\mathbb{E}\,\lVert Y-Y'\rVert^2},
+\iota_j \;=\; \frac{\sum_{l=1}^{L'}\mathbb{E}\big[W_2^2\big(P_{u_l^{\top}Y},\,P_{u_l^{\top}Y\mid X_j}\big)\big]}
+{\sum_{l=1}^{L'}\mathbb{E}\big(u_l^{\top}Y-u_l^{\top}Y'\big)^2},
 \]
-which lies in $[0,1]$, vanishes under independence and equals one when $Y$
-is a function of $X_j$. It is a first-order (main-effect) index. Because
-both embeddings are Euclidean, the variance-based total-order index
-aggregated over the coordinates of $Y$ (Gamboa et al.\ 2014), the ratio of
-$\mathbb{E}\,\mathrm{tr}\,\mathrm{Cov}(Y\mid X_{\sim j})$ to
-$\mathrm{tr}\,\mathrm{Cov}(Y)$, is also estimated, with the
-nearest-neighbour estimator and the caveats of the next paragraph.}
+each $W_2$ being the exact one-dimensional distance between the empirical
+distributions of all trainings and of the trainings in one cell. The index
+lies in $[0,1]$, vanishes under independence and equals one when $Y$ is a
+function of $X_j$. It is first-order in that it conditions on $X_j$ alone,
+and it responds to changes in the spread and shape of the output, not only
+in its mean. The projection is what makes the index estimable at this
+budget. The embedding has tens of thousands of coordinates, and in
+simulations with 20 to 2{,}000 dimensions the given-data estimator of the
+unprojected index takes null values of 0.45 to 0.73 for eight cells at
+$N=512$, approaching $1-1/m$ for $m$ cells, against about 0.02 for the
+projected index.} \prop{Because
+both embeddings are Euclidean, the variance-based indices aggregated over
+the coordinates of $Y$ (Gamboa et al.\ 2014) are also estimated, for the
+secondary criteria of \S\ref{sec:criteria}: the first-order index
+$\mathrm{tr}\,\mathrm{Cov}(\mathbb{E}[Y\mid X_j])/\mathrm{tr}\,\mathrm{Cov}(Y)$
+with the same partitions, and the total-order index
+$\mathbb{E}\,\mathrm{tr}\,\mathrm{Cov}(Y\mid X_{\sim j})/\mathrm{tr}\,\mathrm{Cov}(Y)$
+with the nearest-neighbour estimator and the caveats of the claim-level
+paragraph.}
 Conditional laws are estimated with $M=8$ bins at $N=512$ (about
-$N^{1/3}$, 64 runs per bin), a heuristic choice, with results also
-reported for $M\in\{5,8,12\}$. Discrete factors use exact level
-partitions, with the partition-collapse guard of our prior OT-GSA
-implementation. \prop{Indices are computed per aggregated category and for
-the three categories jointly.} As a robustness check, the \prop{debiased}
+$N^{1/3}$, 64 trainings per bin), a heuristic choice, with results also
+reported for $M\in\{5,8,12\}$. Discrete factors use their levels as cells.
+\prop{Concretely, the cells number 2 (G4 scaling), 4 (G2, G4 imputation,
+G8), 5 (G1), 6 (G3 number of key features) and $M$ equal-count bins (G3
+pool completeness, the G5 epochs multiplier, G6 and G7). The latent
+dimension's 17 integer values form $M$ cells of consecutive values with
+sizes as equal as possible, the larger ones last, so for $M=8$ the cells
+are 4--5, 6--7, \dots, 16--17 and 18--20. With equiprobable levels every
+cell holds at least a twelfth of the trainings for $M\le 12$, so no cell
+is merged.} \prop{Indices are computed per aggregated category and for the
+three categories jointly, the joint embedding concatenating the three
+categories' vectors.} As a robustness check, the \prop{debiased}
 Sinkhorn divergence is computed with $\varepsilon = 0.05$ times the median
 pairwise cost (squared Euclidean distance in the standardized space),
 computed on subsamples of 2{,}000 points per ensemble. \prop{$\varepsilon$ is
 computed once, on the deposited synthetic ensembles (A3), and held fixed
 for all comparisons. The index is then obtained with this divergence as
-the ground cost between runs.}
+the ground cost between trainings. A divergence admits no projection, so
+this variant keeps the large null value of the unprojected index and is
+read against its matched dummies only.}
+
+\paragraph{Null reference.} \prop{The dummy columns D1--D3 (outer design)
+and D4 (inner design) are drawn with the factors and never passed to the
+pipeline, so every index computed on them is a pure null. Each dummy is
+cut into cells with the same proportions as each factor it serves, and the
+reference for a factor is the mean index of the dummies of its design
+level, cut like that factor. A single reference would not do, because the
+null value of a binned estimator grows with the number of cells: about
+$(m-1)/N$ for the variance-based indices, i.e.\ 0.002 for two cells and
+0.014 for eight at $N=512$, and of the same order for the projected OT
+index (0.004 and 0.02 in simulation). The training seed is an ordinary
+factor. Each seed is used once, so any effect of the seed, if training is
+partly seed-controlled, is an erratic function of its value that no binned
+or nearest-neighbour estimator can resolve. Its index therefore behaves as
+a null either way and cannot show whether seeds control training.}
 
 \paragraph{Claim-level sensitivity.} For each rule X1a--X5, the fraction of
-runs in which the claim holds, \prop{over the full design and, separately,
-over the $R_0$ replicates at the paper's values. Given-data first-order
-indices $S_j$ of the binary pass indicator are estimated with the same
-partitions, as the between-bin variance of the pass rate over its total
-variance. Total-order indices $T_j$ are estimated from the same runs with the
+\prop{evaluations} in which the claim holds, \prop{over the full design
+and, separately, over the $R_0$ replicates at the paper's values.
+Given-data first-order indices $S_j$ of the binary pass indicator are
+estimated with the same cells, as the between-cell variance of the pass
+rate over its total variance, for all eleven coordinates. Total-order
+indices $T_j$ are estimated from the same evaluations with the
 nearest-neighbour estimator of the residual variance
 $\mathbb{E}[\mathrm{Var}(Y\mid X_{\sim j})]$ (Devroye et al.\ 2018; Broto
-et al.\ 2020), so that both orders are available for comparison with the
-companion analysis of Li P.-H.\ et al.\ (2023). Neighbours are found with the
-Gower distance on the coordinates of $X_{\sim j}$ and are never taken from
-the same training, nor in a bootstrap resample from a copy of it. The
-expensive factors G1--G6 span nine coordinates and vary only across the 512
-trainings, so a run's nearest neighbour is typically distant in them, which
-biases $T_j$ upward. Because training is not reproducible (D1), every $T_j$
-also contains the share of variance due to training noise. Total-order
-indices are therefore exploratory and enter no decision, and each is read
-against the same estimate for the seed (G6), which contains that share and
-the estimator's bias but no effect of its own. The residual
-$1-\sum_j S_j$, which contains interactions and training noise, is also
-reported.}
+et al.\ 2020). Neighbours are found with the Gower distance on the
+coordinates of $X_{\sim j}$, with equal weights, numeric coordinates scaled
+by their range, and categorical coordinates and the seed counted as
+mismatches. Dummy columns never enter a search. For an expensive
+coordinate a neighbour is never taken from the same training, nor in a
+bootstrap resample from a copy of it. The nine expensive coordinates vary
+only across the 512 trainings, so an evaluation's nearest neighbour is
+typically distant in them, which biases $T_j$ upward. Because training is
+not reproducible (D1), every $T_j$ also contains the share of variance
+due to training noise. The reference total $T_D$ is the same estimator
+conditioned on all factor coordinates, the share of variance that no
+factor explains, i.e.\ training noise plus the estimator's bias. Since
+dummies never enter a search, it is common to D1--D3. For G7, G8 and D4
+neighbours are taken within the same training, so their totals are
+conditional on the trained generator, and the reference for G7 and G8 is
+$T_{D4}$, computed in the same way. Total-order indices are exploratory
+and enter only the secondary criteria of \S\ref{sec:criteria}. The
+residual $1-\sum_j S_j$ contains interactions and training noise and is
+read as set out there.}
 
 \paragraph{Threshold sensitivity.} \prop{The pass fraction of each claim is
 also reported as a function of its threshold ($\tau_1$ and $\tau_2$ from
@@ -435,25 +563,59 @@ the paper's Fig.~5a). These curves are
 descriptive and enter no decision.}
 
 \paragraph{Inference.} Bootstrap with $R=1000$ resamples, with 95\%
-intervals on all reported indices. \prop{The resampling unit is the
+\prop{percentile} intervals on all reported indices. \prop{The resampling unit is the
 training (outer point), each resampled training carrying its eight inner
 points, so that evaluations sharing a trained generator are not treated as
 independent.}
 
+\paragraph{Comparison across cases.} \prop{Indices are compared with the
+other cases of the series, among them the analysis of Li P.-H.\ et al.\
+(2023) with Jansen's estimators, in relative terms only: the ranking of the
+factors and each index minus the mean index of its matched dummies. Ratios
+to a dummy are not used, because under Jansen's estimators the dummy's
+index is close to zero, and under binned estimators it shrinks like $1/N$,
+so that a ratio grows with the sample size. For a like-for-like check, the
+estimators of this section, with the same dummy construction, are also
+applied to the base matrices A and B of the companion pick-freeze designs,
+which are samples of the input distribution in their own right. Absolute
+values remain incomparable to the extent that training noise dilutes the
+first-order indices and enters the totals of this case.}
+
 \section{Decision criteria}\label{sec:criteria}
-\prop{A factor is influential for the ensemble output if the lower bound of
-the 95\% interval of its index exceeds the upper bound of the 95\% interval
-of the index of the training seed (G6). Since training is not reproducible
-even under a fixed seed (D1), the seed acts as a dummy factor: its index
-measures what training stochasticity and finite-sample estimation produce
-under the same estimator and partition. The same criterion applies to the
-claim-level indices. $\delta_0$ is reported as the distance below which two
-ensembles cannot be told apart from retrained replicates.} A claim is
-robust if it holds in at least 80\% of runs across the design, and fragile
-if it holds in fewer than 50\%. The study's headline question, whether the
+\prop{The primary index for the ensemble output is the projected OT index
+of \S\ref{sec:estimators} on the marginal-quantile embedding of the three
+categories jointly. Its variants per category, on the sliced embedding and
+with the Sinkhorn divergence are robustness checks. A coordinate is
+influential for the ensemble output if the lower bound of the 95\%
+interval of its primary index exceeds the upper bound of the 95\% interval
+of the mean index of its matched dummies, which measures what training
+stochasticity and finite-sample estimation produce under the same
+estimator and cells. Ensemble indices exist for the nine expensive
+coordinates only, since ensembles are compared at G7's paper value and G8
+does not act on them. The same criterion applies to the first-order index
+$S_j$ of each claim's pass indicator, for all eleven coordinates. A factor
+with two coordinates (G3, G4, G5) is influential if either is. These are
+the primary decisions. Two secondary criteria, reported separately, read
+the residual. Interactions are material if the lower bound of the 95\%
+interval of $1-\sum_j (S_j-D_j)-T_D$ exceeds zero, where $D_j$ is the mean
+first-order index of coordinate $j$'s matched dummies. A coordinate that
+is not influential acts through interactions if the lower bound of its
+$T_j$ exceeds the upper bound of its reference total, $T_D$, or $T_{D4}$
+for G7 and G8. Both readings are expected to be conservative, because the
+reference totals carry the largest nearest-neighbour bias, and the mock
+tests of \S\ref{sec:archive} check this. For the ensemble outputs they use
+the aggregated variance-based indices of \S\ref{sec:estimators}.
+$\delta_0$ is reported as the distance below which two ensembles cannot
+be told apart from retrained replicates.} A claim is robust if it holds
+in at least 80\% of \prop{evaluations} across the design, and fragile if
+it holds in fewer than 50\%\prop{, judged on the point estimate, with its
+bootstrap interval reported. A claim that holds in all or in none of the
+evaluations has no indices}. The study's headline question, whether the
 paper's findings are properties of the framework or of the analyst's
 choices, is answered by the joint pattern of (i) claim fragility and (ii)
-the identity of the dominant factors (declared versus undeclared choices).
+the identity of the dominant factors (declared versus undeclared
+choices\prop{, as classified in Table~\ref{tab:factors}, the dominant
+factors being those influential by the primary criterion}).
 
 \section{Deviations policy}\label{sec:deviations}
 Any departure from this protocol is logged in \texttt{DEVIATIONS.md} with
@@ -461,14 +623,27 @@ date, reason, and the analysis state at the time of the change. Results
 affected by deviations are reported separately from the pre-registered
 analysis. Adjudications of placeholders completed before the Zenodo freeze
 are part of this protocol. The deposited PDF contains no placeholders.
+\prop{The authors of the target paper will be informed of the deposit and
+invited to comment. Any change their comments prompt is a deviation,
+recorded before the first run if the comments arrive before it.}
 
-\section{Archive contents at deposit}
+\section{Archive contents at deposit}\label{sec:archive}
 Protocol PDF, \texttt{DATA.md}, \texttt{DISCREPANCIES.md},
 \prop{\texttt{DEVIATIONS.md} (empty),} \path{config/paper_values.yaml}
-(frozen), Phase-0 reports (\texttt{results/*.json}, including the
-Phase~0B \prop{and Phase~0C} reports), v1.0.0/v1.0.1 diff, commit hash of
-the analysis harness (\todo{hash}). GSA results: none, no claim rule
-evaluated at any factor setting (the paper's own values included), no
-retraining performed, no noise-floor replicate run.
+(frozen), Phase-0 reports (\texttt{results/}, including the
+Phase~0B\prop{, Phase~0C and Phase~0D} reports)\prop{, the scripts that
+produced them (\texttt{phase0/}), the raw-data manifest}, v1.0.0/v1.0.1
+diff. GSA
+results: none, no claim rule evaluated at any factor setting (the paper's
+own values included), no retraining performed, no noise-floor replicate
+run. \prop{The analysis code is deposited afterwards, as a new version of
+this Zenodo record, before the first run, a run being any training of a
+generator or any evaluation of a claim rule on generated data, pilots
+included. That version holds the analysis harness with the commit hash it
+was taken from, its tests on mock data (arrays of the right shapes,
+generated without the pipeline), which also measure the null values of the
+indices and check that the secondary criteria of \S\ref{sec:criteria} are
+conservative, and the environment lock. No run precedes
+it, and the Zenodo timestamps of the two versions fix the order.}
 
 \end{document}

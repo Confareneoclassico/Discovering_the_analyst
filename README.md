@@ -30,17 +30,17 @@ given data.
 - **Fingerprint test** (to come): source-IAM classifier on real vs synthetic
   scenarios (claim X5).
 
-## Noise-floor design principle
+## Noise and null reference
 
 The authors state (repo README, v1.0.0/v1.0.1) that TSGM training is not
-reproducible even with fixed seeds; they distribute trained weights (h5).
-We therefore estimate the training-stochasticity noise floor — the OT
-distance between synthetic ensembles from seed-only replications with all
-factors at paper values — and pre-register that a factor counts as
-influential only if its OT displacement exceeds this floor. Replication has
-two modes: (a) regenerate from the authors' shipped h5 weights (should be
-near-exact up to the latent-sampling seed, numpy seed 3 per SI S3);
-(b) retrain from scratch (bounded below by the authors' own admission).
+reproducible even with fixed seeds, and Phase 0B found that regeneration from
+the shipped weights reproduces the deposit only distributionally (D11).
+Training noise is therefore part of every output. The protocol measures it in
+two ways: the noise floor, the distance between ensembles from 20 retrained
+replicates at the paper's values, and dummy columns drawn with the factors but
+never passed to the pipeline. A factor counts as influential only if its index
+clearly exceeds the mean index of the dummies with the same partition
+(protocol section 8).
 
 ## Layout
 
@@ -56,6 +56,7 @@ phase0/04_evaluation_subset.py         1,160 -> 901 reconstruction (D9)
 phase0/05_regeneration_check.py        Phase 0B: regeneration from shipped weights
 phase0/06_code_scan.py                 Phase 0C: static scan of v1.0.0 notebooks (D4, D12, X3, G8)
 phase0/07_sumcheck_reference.py        Phase 0C: AR6 sum-check reference, real data only
+phase0/08_denominator_guard.py         Phase 0D: real-data denominators of X1a and the ensemble standardisation
 protocol/preregistration.tex           protocol; \frozenfalse = release candidate
 docs/FREEZE_CHECKLIST.md               ordered steps from release candidate to deposit
 docs/data_raw_manifest.sha256          SHA-256 of every raw file as committed in 7ee280d (World CSV: LFS object id)
