@@ -1,0 +1,617 @@
+{
+  "inputs_sha256": {
+    "B1, AR6 metadata_indicators v1.1": "1c1d70208bcf48c531c178899a7ce8ffd0fa905700bb3739770a796f0f2db12d",
+    "B2, AR6 World CSV v1.1": "4cf39b6b0d968e25ed389318acb1674f92146f977e9db4bfb7970f048ff73977",
+    "data/derived/dropped42_2020_2100_5features.csv": "b57d331a4cc8ef5fbabf192425ae0f64e7db61989fac6f4b12a9ed09380a826a",
+    "data/derived/kept901_5feat+elec10.csv": "64e6311addbea1c46e6696332acb43382e9fad39fea554696b7cef402fe0565b"
+  },
+  "definitions": {
+    "1202": "meta_Ch3vetted_withclimate, categories C1 to C8 (Extended Data Table 1)",
+    "1160": "1202 minus data/derived/dropped42_2020_2100_5features.csv (D2 rule, SI S3.1 counts)",
+    "901": "data/derived/kept901_5feat+elec10.csv (D9 rule, the deposited Real_*.csv)",
+    "groups": "AR6 model names merged into frameworks as in config/paper_values.yaml, fixed.claims.X5.labels (SI S2.3 and Table S3)",
+    "electricity": "World region, decades 2020-2100; absent = variable not reported for the scenario, gaps = reported with at least one decade missing"
+  },
+  "mapping": {
+    "AIM": [
+      "AIM/CGE 2.0",
+      "AIM/CGE 2.1",
+      "AIM/CGE 2.2",
+      "AIM/Hub-Global 2.0"
+    ],
+    "COFFEE": [
+      "COFFEE 1.1"
+    ],
+    "GCAM": [
+      "GCAM 4.2",
+      "GCAM 5.2",
+      "GCAM 5.3",
+      "GCAM-PR 5.3"
+    ],
+    "GEM-E3": [
+      "GEM-E3_V2021"
+    ],
+    "IMAGE": [
+      "IMAGE 3.0",
+      "IMAGE 3.0.1",
+      "IMAGE 3.0.2",
+      "IMAGE 3.2"
+    ],
+    "MESSAGE": [
+      "MESSAGE-GLOBIOM 1.0",
+      "MESSAGEix-GLOBIOM 1.0",
+      "MESSAGEix-GLOBIOM_1.1",
+      "MESSAGEix-GLOBIOM_1.2",
+      "MESSAGEix-GLOBIOM_GEI 1.0"
+    ],
+    "POLES": [
+      "POLES ADVANCE",
+      "POLES CD-LINKS",
+      "POLES EMF30",
+      "POLES EMF33",
+      "POLES ENGAGE",
+      "POLES GECO2019"
+    ],
+    "REMIND": [
+      "REMIND 1.6",
+      "REMIND 1.7",
+      "REMIND 2.1",
+      "REMIND-Buildings 2.0",
+      "REMIND-MAgPIE 1.5",
+      "REMIND-MAgPIE 1.7-3.0",
+      "REMIND-MAgPIE 2.0-4.1",
+      "REMIND-MAgPIE 2.1-4.2",
+      "REMIND-MAgPIE 2.1-4.3",
+      "REMIND-Transport 2.1"
+    ],
+    "TIAM-ECN": [
+      "TIAM-ECN 1.1"
+    ],
+    "WITCH": [
+      "WITCH 4.6",
+      "WITCH 5.0",
+      "WITCH-GLOBIOM 3.1",
+      "WITCH-GLOBIOM 4.2",
+      "WITCH-GLOBIOM 4.4"
+    ],
+    "not grouped": [
+      "C-ROADS-5.005",
+      "EPPA 6",
+      "MERGE-ETL 6.0"
+    ]
+  },
+  "counts": {
+    "1202": {
+      "AIM": {
+        "C1234": 32,
+        "C56": 17,
+        "C78": 6,
+        "total": 55
+      },
+      "COFFEE": {
+        "C1234": 34,
+        "C56": 30,
+        "C78": 1,
+        "total": 65
+      },
+      "GCAM": {
+        "C1234": 34,
+        "C56": 7,
+        "C78": 7,
+        "total": 48
+      },
+      "GEM-E3": {
+        "C1234": 30,
+        "C56": 8,
+        "C78": 3,
+        "total": 41
+      },
+      "IMAGE": {
+        "C1234": 68,
+        "C56": 38,
+        "C78": 36,
+        "total": 142
+      },
+      "MESSAGE": {
+        "C1234": 161,
+        "C56": 77,
+        "C78": 28,
+        "total": 266
+      },
+      "POLES": {
+        "C1234": 64,
+        "C56": 31,
+        "C78": 19,
+        "total": 114
+      },
+      "REMIND": {
+        "C1234": 185,
+        "C56": 53,
+        "C78": 59,
+        "total": 297
+      },
+      "TIAM-ECN": {
+        "C1234": 26,
+        "C56": 14,
+        "C78": 5,
+        "total": 45
+      },
+      "WITCH": {
+        "C1234": 56,
+        "C56": 33,
+        "C78": 26,
+        "total": 115
+      },
+      "not grouped": {
+        "C1234": 10,
+        "C56": 1,
+        "C78": 3,
+        "total": 14
+      },
+      "all": {
+        "C1234": 700,
+        "C56": 309,
+        "C78": 193,
+        "total": 1202
+      }
+    },
+    "1160": {
+      "AIM": {
+        "C1234": 32,
+        "C56": 17,
+        "C78": 1,
+        "total": 50
+      },
+      "COFFEE": {
+        "C1234": 34,
+        "C56": 30,
+        "C78": 1,
+        "total": 65
+      },
+      "GCAM": {
+        "C1234": 33,
+        "C56": 7,
+        "C78": 4,
+        "total": 44
+      },
+      "GEM-E3": {
+        "C1234": 30,
+        "C56": 8,
+        "C78": 3,
+        "total": 41
+      },
+      "IMAGE": {
+        "C1234": 68,
+        "C56": 38,
+        "C78": 36,
+        "total": 142
+      },
+      "MESSAGE": {
+        "C1234": 151,
+        "C56": 77,
+        "C78": 19,
+        "total": 247
+      },
+      "POLES": {
+        "C1234": 64,
+        "C56": 31,
+        "C78": 19,
+        "total": 114
+      },
+      "REMIND": {
+        "C1234": 185,
+        "C56": 53,
+        "C78": 58,
+        "total": 296
+      },
+      "TIAM-ECN": {
+        "C1234": 26,
+        "C56": 14,
+        "C78": 5,
+        "total": 45
+      },
+      "WITCH": {
+        "C1234": 56,
+        "C56": 33,
+        "C78": 26,
+        "total": 115
+      },
+      "not grouped": {
+        "C1234": 1,
+        "C56": 0,
+        "C78": 0,
+        "total": 1
+      },
+      "all": {
+        "C1234": 680,
+        "C56": 308,
+        "C78": 172,
+        "total": 1160
+      }
+    },
+    "901": {
+      "AIM": {
+        "C1234": 32,
+        "C56": 17,
+        "C78": 1,
+        "total": 50
+      },
+      "COFFEE": {
+        "C1234": 34,
+        "C56": 30,
+        "C78": 1,
+        "total": 65
+      },
+      "GCAM": {
+        "C1234": 33,
+        "C56": 7,
+        "C78": 4,
+        "total": 44
+      },
+      "GEM-E3": {
+        "C1234": 30,
+        "C56": 8,
+        "C78": 3,
+        "total": 41
+      },
+      "IMAGE": {
+        "C1234": 0,
+        "C56": 0,
+        "C78": 0,
+        "total": 0
+      },
+      "MESSAGE": {
+        "C1234": 150,
+        "C56": 77,
+        "C78": 19,
+        "total": 246
+      },
+      "POLES": {
+        "C1234": 64,
+        "C56": 31,
+        "C78": 19,
+        "total": 114
+      },
+      "REMIND": {
+        "C1234": 185,
+        "C56": 53,
+        "C78": 58,
+        "total": 296
+      },
+      "TIAM-ECN": {
+        "C1234": 26,
+        "C56": 14,
+        "C78": 5,
+        "total": 45
+      },
+      "WITCH": {
+        "C1234": 0,
+        "C56": 0,
+        "C78": 0,
+        "total": 0
+      },
+      "not grouped": {
+        "C1234": 0,
+        "C56": 0,
+        "C78": 0,
+        "total": 0
+      },
+      "all": {
+        "C1234": 554,
+        "C56": 237,
+        "C78": 110,
+        "total": 901
+      }
+    }
+  },
+  "removed_by_D9_rule_1160_to_901": {
+    "AIM": {
+      "C1234": 0,
+      "C56": 0,
+      "C78": 0,
+      "total": 0
+    },
+    "COFFEE": {
+      "C1234": 0,
+      "C56": 0,
+      "C78": 0,
+      "total": 0
+    },
+    "GCAM": {
+      "C1234": 0,
+      "C56": 0,
+      "C78": 0,
+      "total": 0
+    },
+    "GEM-E3": {
+      "C1234": 0,
+      "C56": 0,
+      "C78": 0,
+      "total": 0
+    },
+    "IMAGE": {
+      "C1234": 68,
+      "C56": 38,
+      "C78": 36,
+      "total": 142
+    },
+    "MESSAGE": {
+      "C1234": 1,
+      "C56": 0,
+      "C78": 0,
+      "total": 1
+    },
+    "POLES": {
+      "C1234": 0,
+      "C56": 0,
+      "C78": 0,
+      "total": 0
+    },
+    "REMIND": {
+      "C1234": 0,
+      "C56": 0,
+      "C78": 0,
+      "total": 0
+    },
+    "TIAM-ECN": {
+      "C1234": 0,
+      "C56": 0,
+      "C78": 0,
+      "total": 0
+    },
+    "WITCH": {
+      "C1234": 56,
+      "C56": 33,
+      "C78": 26,
+      "total": 115
+    },
+    "not grouped": {
+      "C1234": 1,
+      "C56": 0,
+      "C78": 0,
+      "total": 1
+    },
+    "all": {
+      "C1234": 126,
+      "C56": 71,
+      "C78": 62,
+      "total": 259
+    }
+  },
+  "lost_in_C78_1202_to_901": {
+    "AIM": 5,
+    "COFFEE": 0,
+    "GCAM": 3,
+    "GEM-E3": 0,
+    "IMAGE": 36,
+    "MESSAGE": 9,
+    "POLES": 0,
+    "REMIND": 1,
+    "TIAM-ECN": 0,
+    "WITCH": 26,
+    "not grouped": 3,
+    "all": 83
+  },
+  "not_grouped_by_model_name": {
+    "C-ROADS-5.005": {
+      "1202": {
+        "C1234": 5,
+        "C56": 0,
+        "C78": 1
+      },
+      "1160": {
+        "C1234": 0,
+        "C56": 0,
+        "C78": 0
+      },
+      "901": {
+        "C1234": 0,
+        "C56": 0,
+        "C78": 0
+      }
+    },
+    "EPPA 6": {
+      "1202": {
+        "C1234": 4,
+        "C56": 1,
+        "C78": 2
+      },
+      "1160": {
+        "C1234": 0,
+        "C56": 0,
+        "C78": 0
+      },
+      "901": {
+        "C1234": 0,
+        "C56": 0,
+        "C78": 0
+      }
+    },
+    "MERGE-ETL 6.0": {
+      "1202": {
+        "C1234": 1,
+        "C56": 0,
+        "C78": 0
+      },
+      "1160": {
+        "C1234": 1,
+        "C56": 0,
+        "C78": 0
+      },
+      "901": {
+        "C1234": 0,
+        "C56": 0,
+        "C78": 0
+      }
+    }
+  },
+  "electricity_variables_incomplete_among_removed": {
+    "IMAGE": {
+      "n_removed": 142,
+      "absent": {
+        "Secondary Energy|Electricity|Biomass": 1,
+        "Secondary Energy|Electricity|Geothermal": 142
+      },
+      "gaps": {}
+    },
+    "MESSAGE": {
+      "n_removed": 1,
+      "absent": {
+        "Secondary Energy|Electricity": 1
+      },
+      "gaps": {}
+    },
+    "WITCH": {
+      "n_removed": 115,
+      "absent": {
+        "Secondary Energy|Electricity|Geothermal": 115
+      },
+      "gaps": {}
+    },
+    "not grouped": {
+      "n_removed": 1,
+      "absent": {
+        "Secondary Energy|Electricity|Geothermal": 1
+      },
+      "gaps": {}
+    }
+  },
+  "paper_nine_absent_from_901": [
+    "IMAGE",
+    "WITCH"
+  ],
+  "labels_901": [
+    "AIM",
+    "COFFEE",
+    "GCAM",
+    "GEM-E3",
+    "MESSAGE",
+    "POLES",
+    "REMIND",
+    "TIAM-ECN"
+  ],
+  "n_labels_901": 8,
+  "smallest_label_901": {
+    "group": "GEM-E3",
+    "n": 41
+  },
+  "majority_label_901": {
+    "group": "REMIND",
+    "n": 296,
+    "n_total": 901,
+    "rate": 0.328524
+  },
+  "majority_label_901_by_category": {
+    "C1234": {
+      "group": "REMIND",
+      "n": 185,
+      "n_total": 554,
+      "rate": 0.333935
+    },
+    "C56": {
+      "group": "MESSAGE",
+      "n": 77,
+      "n_total": 237,
+      "rate": 0.324895
+    },
+    "C78": {
+      "group": "REMIND",
+      "n": 58,
+      "n_total": 110,
+      "rate": 0.527273
+    }
+  },
+  "x5_folds": {
+    "file": "data/derived/x5_folds_901.csv",
+    "sha256": "0d2be6a4cee9e2fb30df23c08713888b836bcfe896a1032153588f7e95dd8ce4",
+    "rule": "order the 901 scenarios by category, group and SHA-256 of 'model|scenario'; deal folds 1-5 in turn; store and train in the order of the SHA-256 key",
+    "scenarios_per_fold_by_group": {
+      "AIM": [
+        11,
+        11,
+        9,
+        9,
+        10
+      ],
+      "COFFEE": [
+        13,
+        12,
+        14,
+        13,
+        13
+      ],
+      "GCAM": [
+        8,
+        10,
+        9,
+        9,
+        8
+      ],
+      "GEM-E3": [
+        8,
+        7,
+        8,
+        9,
+        9
+      ],
+      "MESSAGE": [
+        49,
+        50,
+        50,
+        49,
+        48
+      ],
+      "POLES": [
+        23,
+        23,
+        23,
+        22,
+        23
+      ],
+      "REMIND": [
+        60,
+        59,
+        58,
+        59,
+        60
+      ],
+      "TIAM-ECN": [
+        9,
+        8,
+        9,
+        10,
+        9
+      ],
+      "all": [
+        181,
+        180,
+        180,
+        180,
+        180
+      ]
+    },
+    "scenarios_per_fold_by_category": {
+      "C1234": [
+        111,
+        111,
+        111,
+        111,
+        110
+      ],
+      "C56": [
+        48,
+        47,
+        47,
+        47,
+        48
+      ],
+      "C78": [
+        22,
+        22,
+        22,
+        22,
+        22
+      ]
+    }
+  }
+}

@@ -102,7 +102,9 @@ match requires **raw** CS completeness, although the notebook loads
 in C78 (119 vs 110), i.e. 9 scenarios have everything but raw CS and were
 nonetheless excluded. So the intersection was computed on pre-imputation
 availability while training consumed the imputed file. Feeds G1 and the
-population declarations in the operational rules for X1–X4.
+population declarations in the operational rules for X1–X4. Which scenarios the rule removes,
+by model, is established under D15: all IMAGE and WITCH scenarios, for want of
+geothermal electricity.
 
 ## D10 — Unit inconsistency: deposit in Mt, Source Data in Gt. [RESOLVED 2026-09]
 All 514 pre-harmonization fidelity failures were exact ×1000 ratios confined
@@ -184,3 +186,36 @@ set (Fig. 5b timings) and the extended configuration. None of the Top7-Top9
 notebooks carries saved outputs, so their results cannot be recovered from
 the deposit. Factor G3 (4 to 9 key features) spans the authors' own
 exploration.
+
+## D15 — The 901-set contains no IMAGE or WITCH scenario. [ESTABLISHED 2026-11, Phase 0E]
+SI S2.3 merges model versions into frameworks following Dekker et al. (2023),
+Nature 624, 309–316 (SI ref. 13), and keeps the first nine rows of SI Table S3
+(IMAGE, TIAM-ECN, GCAM, POLES, AIM, MESSAGE, REMIND, WITCH, COFFEE) as the
+model feature of its variable ranking. The main text motivates synthetic
+generation by biases from "a model's idiosyncratic structures" (ref. 32,
+Dekker et al. 2023, Nat. Energy 8, 1395–1404, model fingerprints).
+`phase0/09_model_groups.py` (results/phase0e_model_groups.json) maps the 44 AR6
+model names of the 1,202 vetted scenarios to these groups and counts them per
+population, reading identifiers and, from the World CSV, only whether each of
+the ten electricity variables of the D9 rule is reported in each decade. Of the
+259 scenarios the D9 rule removes from the 1,160-set, 258 do not report
+`Secondary Energy|Electricity|Geothermal` at all: all 142 IMAGE scenarios, all
+115 WITCH scenarios and the single MERGE-ETL scenario (one IMAGE scenario also
+lacks biomass electricity). The remaining one, a MESSAGE scenario (C1234), does
+not report total electricity. No removed scenario has a variable reported with
+a gap: the removals are whole variables missing. The requirement of geothermal
+electricity, a minor fuel, thus removes two complete frameworks of the paper's
+nine from the data the generators learn from, and the 901-set contains seven
+of the nine groups plus GEM-E3 (Table S3 row 12, outside the nine, 41
+scenarios). IMAGE and WITCH also account for 62 of the 83 C78 scenarios lost
+between the 1,202 and the 901-set (IMAGE 36, WITCH 26; then MESSAGE 9, AIM 5,
+GCAM 3, C-ROADS and EPPA 3, REMIND 1), three quarters of the loss of the
+smallest category across D2 and D9 (193 → 110, 43%). This bears on the paper's positioning of synthetic
+generation as mitigating model-determined biases, since the ensemble the
+generators reproduce already lacks two frameworks. Consequences for the
+protocol: X5 uses the eight groups present in the 901-set (protocol Appendix
+A), with folds fixed from identifiers in `data/derived/x5_folds_901.csv`; under G1 levels 1160 and 1202 the training populations include IMAGE and
+WITCH, their geothermal electricity filled by G4's imputation (or the
+scenarios dropped again under G4's level none), while the references of X5
+stay those of the 901-set. Question for the authors: was the exclusion of
+IMAGE and WITCH intended?

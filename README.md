@@ -28,7 +28,8 @@ given data.
   factors, inner loop over cheap factors, OT indices on ensemble-level
   outputs, claim-level pass/fail tables.
 - **Fingerprint test** (to come): source-IAM classifier on real vs synthetic
-  scenarios (claim X5).
+  scenarios (claim X5), on the eight model groups present in the 901-set
+  (Phase 0E, protocol Appendix A; D15).
 
 ## Noise and null reference
 
@@ -57,12 +58,14 @@ phase0/05_regeneration_check.py        Phase 0B: regeneration from shipped weigh
 phase0/06_code_scan.py                 Phase 0C: static scan of v1.0.0 notebooks (D4, D12, X3, G8)
 phase0/07_sumcheck_reference.py        Phase 0C: AR6 sum-check reference, real data only
 phase0/08_denominator_guard.py         Phase 0D: real-data denominators of X1a and the ensemble standardisation
+phase0/09_model_groups.py              Phase 0E: model groups of X5 and the scenarios the D9 rule removes (D15)
 protocol/preregistration.tex           protocol; \frozenfalse = release candidate
 docs/FREEZE_CHECKLIST.md               ordered steps from release candidate to deposit
 docs/data_raw_manifest.sha256          SHA-256 of every raw file as committed in 7ee280d (World CSV: LFS object id)
 DEVIATIONS.md                          empty until the deposit
 data/raw/            read-only local copies of deposits (git-ignored; AR6 licence)
-data/derived/        outputs of phase0 scripts
+data/derived/        outputs of phase0 scripts: identifier lists of the D2 and D9 populations, X5 folds
+data/external/gsa2023/   results, script and README of the 2023 case, for the comparison across cases (DATA.md, C1)
 results/             machine-readable reports (JSON)
 ```
 

@@ -82,6 +82,11 @@ the repository root
 (tested on 2026-10-24: the output hashes to the pinned value) and confirm the
 SHA-256 before any script reads the file.
 
+On 2026-11-02 the LFS object was downloaded again to run
+`phase0/09_model_groups.py` (Phase 0E, which reads only whether the ten
+electricity variables are reported in each decade), its SHA-256 recomputed
+(match) and the copy deleted after the run.
+
 **Availability (resolved in Phase 0).** Both reconstructed populations
 (680/308/172 and 554/237/110) were reproduced exactly from the downloadable
 v1.1 World CSV, so no scenario the paper used is missing from the bulk
@@ -90,9 +95,22 @@ download.
 **Licence.** The AR6 Scenario Explorer licence permits scientific use but
 restricts redistribution of substantial parts of the data. Raw AR6 files
 (B1, B2) are therefore not tracked or deposited, only cited. The derived
-lists in `data/derived/` contain model and scenario identifiers and category
-labels, no data values; check them against the licence FAQ before the
-repository becomes public.
+lists in `data/derived/` (the 42 scenarios dropped by D2, the 901-set and the
+X5 folds) contain model and scenario identifiers and category labels, no data
+values. They are deposited with the protocol, so checking them against the
+licence terms is part of the freeze (`docs/FREEZE_CHECKLIST.md`, step 9).
+
+## External results (comparison across cases)
+
+| # | Artefact | Source | Version pinned | sha256 | Status |
+|---|----------|--------|----------------|--------|--------|
+| C1 | Results of the 2023 case of the series (GSA of Li P.-H. et al. (2023), Jansen design: 57,344 runs, N = 4,096, 12 factors; per run the 13 claim indicators, the number of scenarios, the number of selected features, the random-forest OOB accuracy and the regression coefficients), with the generating script and a README | G. Vannucci, `data/external/gsa2023/` | as added before the freeze | ⬜ results file: to be recorded on arrival and copied into the protocol placeholder (section 7) | ⬜ pending (G. Vannucci) |
+
+The README states the design, the column dictionary, which rows form the base
+matrices A and B (the first 8,192 runs) and the mapping of the 12 factors to
+G1–G8. Only A and B enter the comparison (protocol section 7), and nothing is
+computed on these runs before the code deposit. The files go into the Zenodo
+deposit with the protocol, subject to G. Vannucci's consent.
 
 ## Provenance rules
 

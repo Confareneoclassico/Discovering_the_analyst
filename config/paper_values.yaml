@@ -1,15 +1,16 @@
-# Factor space and fixed settings, release candidate v0.4.
-# Aligned one-to-one with protocol/preregistration.tex (Table 1, sections 4 to 8 and 10).
+# Factor space and fixed settings, release candidate v0.5.
+# Aligned one-to-one with protocol/preregistration.tex (Table 1, sections 4 to 8 and 10, appendix).
 # Where this file and the protocol disagree, the protocol governs.
 # Frozen at deposit. Tags: "agreed" = settled in the co-authors' review of 23 October 2026;
-# "approved" = proposed in v0.3 and approved in G. Vannucci's reply (relayed 27 October 2026);
-# "phase0c" / "phase0d" = adjudicated from results/phase0c_* (24 October 2026) and
-# results/phase0d_denominator_guard.json (27 October 2026); "proposed" = blue text in the
-# release-candidate PDF, awaiting approval ("proposed v0.4" = new in v0.4).
+# "approved" = proposed in v0.3 or v0.4 and approved in G. Vannucci's replies (relayed
+# 27 October and 2 November 2026); "phase0c" / "phase0d" / "phase0e" = adjudicated from
+# results/phase0c_* (24 October), results/phase0d_denominator_guard.json (27 October) and
+# results/phase0e_model_groups.json (2 November 2026); "proposed v0.5" = blue text in the
+# release-candidate PDF, new in v0.5 and awaiting approval.
 #
 # cost: expensive = requires retraining (outer design, 512 scrambled Sobol' points)
 #       cheap     = varies per trained model (inner design, 8 points per training)
-# declared: whether the paper or its SI states the paper's value (proposed v0.4)
+# declared: whether the paper or its SI states the paper's value (approved)
 
 factors:
 
@@ -17,14 +18,15 @@ factors:
     cost: expensive
     declared: "no"                # D2, D9
     type: categorical
-    paper: "901"            # proposed correction: the paper's figures, Table 1 and the deposit all rest on the 901-set (D9, D12)
-    levels:                 # proposed concretisation, counts from results/phase0_evaluation_subset.json and phase0_training_set.json
-      "901":  {rule: "complete 2020-2100 raw coverage on 5 features + 10 electricity variables, Kyoto exempt (D9)", counts: {C1234: 554, C56: 237, C78: 110}}
+    paper: "901"            # approved correction: the paper's figures, Table 1 and the deposit all rest on the 901-set (D9, D12)
+    levels:                 # approved concretisation, counts from results/phase0_evaluation_subset.json and phase0_training_set.json
+      "901":  {rule: "complete 2020-2100 raw coverage on 5 features + 10 electricity variables, Kyoto exempt (D9)", counts: {C1234: 554, C56: 237, C78: 110},
+               note: "contains no IMAGE or WITCH scenario: none of their 257 vetted scenarios reports World geothermal electricity (D15, phase0e)"}
       "910":  {rule: "as 901, carbon sequestration imputed rather than required", counts: {C1234: 554, C56: 237, C78: 119}}
       "828":  {rule: "as 901, Kyoto Gases also required", counts: {C1234: 508, C56: 219, C78: 101}}
       "1160": {rule: "D2 rule, 5 features only; missing electricity values filled by G4", counts: {C1234: 680, C56: 308, C78: 172}}
       "1202": {rule: "all vetted with climate category; missing values filled by G4", counts: {C1234: 700, C56: 309, C78: 193}}
-    note: >-                # proposed v0.4
+    note: >-                # approved
       G1 and G4 interact by construction: under G4 imputation "none_drop_incomplete" every
       level shrinks to its complete cases on the generated set, the 828-set when that set is E
 
@@ -38,7 +40,7 @@ factors:
       4way:   "C12 / C34 / C56 / C78"
       8way:   "C1 ... C8"
       kmeans: "DTW + UMAP(n_neighbors=15, metric=precomputed, random_state=30) + k-means, k=3 (SI S2.2)"
-    evaluation: >-              # proposed (finer-category rules and one-to-one mapping: proposed v0.4)
+    evaluation: >-              # approved (finer-category rules and one-to-one mapping: approved)
       claims and ensemble distances are computed on the three aggregates. Each finer category
       is trained with the G5 settings of the aggregate it belongs to, receives a share of the
       G7 sample size proportional to its real count in the 901-set, and its synthetic ensemble
@@ -53,8 +55,8 @@ factors:
       n_key_features: 5
       ranking: "random forest importance, SI S2.3 settings: n_estimators=100, max_depth=8, min_samples_split=6, random_state=8, split 80/20 with random_state=3"
     range:
-      pool_completeness: [0.60, 0.90]   # agreed; uniform (proposed v0.4)
-      n_key_features: [4, 9]            # agreed (G. Vannucci), integer, uniform on the integers (proposed v0.4)
+      pool_completeness: [0.60, 0.90]   # agreed; uniform (approved)
+      n_key_features: [4, 9]            # agreed (G. Vannucci), integer, uniform on the integers (approved)
     generated_set: >-                   # approved, with the evaluation set E
       top-ranked key features united with the evaluation set E, so that every
       run's output lives in the same space; at paper values the union is E itself
@@ -64,7 +66,7 @@ factors:
     declared: "yes"               # Methods: mean by year and category; TSFeatureWiseScaler((0,1))
     type: categorical
     paper: {imputation: mean_year_x_category, scaling: featurewise_01}
-    levels:                     # equiprobable (proposed v0.4)
+    levels:                     # equiprobable (approved)
       imputation: [mean_year_x_category, mean_year, median_year_x_category, none_drop_incomplete]
       scaling: [featurewise_01, standardize]
 
@@ -81,15 +83,15 @@ factors:
       cgan:  {lr: 1.0e-4, decay_steps: 200, decay_rate: 0.95, epochs: 1500, batch: 100}
       rcgan: {lr: 1.0e-3, decay_steps: 1000, decay_rate: 0.95, epochs: 1800, batch: 100}   # ED Table 3 says decay_steps 200 (slip)
     range:
-      vae_latent_dim: [4, 20]            # agreed, integer, uniform on the integers (proposed v0.4)
-      epochs_multiplier: [0.25, 2.0]     # agreed (G. Vannucci); applies to all three generators; log-uniform (proposed v0.4)
+      vae_latent_dim: [4, 20]            # agreed, integer, uniform on the integers (approved)
+      epochs_multiplier: [0.25, 2.0]     # agreed (G. Vannucci); applies to all three generators; log-uniform (approved)
 
   G6_seed:
     cost: expensive
     declared: "yes"               # SI S3 (seed 3; training not reproducible under a fixed seed)
     paper: 3
-    range: "integer, uniform on [0, 2147483647]"   # proposed
-    role: >-                           # proposed v0.4 (v0.3 used the seed as the dummy reference)
+    range: "integer, uniform on [0, 2147483647]"   # approved
+    role: >-                           # approved (v0.3 used the seed as the dummy reference)
       ordinary factor, judged against the dummy columns like any other (section 8). Each seed
       is used once, so an effect of the seed, if any, is an erratic function of its value that
       no binned or nearest-neighbour estimator can resolve; its index cannot show whether seeds
@@ -99,14 +101,14 @@ factors:
     cost: cheap
     declared: "yes"               # Fig. 3 caption (10,000 per category)
     paper: 10000                 # per category, for X1-X3 and X5; X4 uses 1,000 per category as in the code (phase0c)
-    range: [1000, 30000]         # agreed; log-uniform (proposed v0.4); each trained generator produces 30,000 per category once, subsampled per inner point
+    range: [1000, 30000]         # agreed; log-uniform (approved); each trained generator produces 30,000 per category once, subsampled per inner point
 
   G8_transfer_classifier:
     cost: cheap
     declared: "partly"            # random forest stated; grid search and random_state only in the code
     type: categorical
     paper: rf_code
-    levels:                     # equiprobable (proposed v0.4)
+    levels:                     # equiprobable (approved)
       rf_code: {model: "RandomForestClassifier(random_state=42)", tuning: "GridSearchCV, cv=3",
                 grid: {n_estimators: [10, 100, 200, 500, 1000], max_depth: [6, 8, 10, 12, 14, 16], min_samples_split: [3, 4, 5, 6]}}   # phase0c, Experiment I grid of the Secondary notebooks
       rf_defaults: "scikit-learn 1.3.2 RandomForestClassifier defaults, no grid search, random_state from the inner point"
@@ -133,15 +135,15 @@ fixed:
       quantiles: [0.10, 0.25, 0.50, 0.75, 0.90]
       normalisation: "real Q90-Q10 band of the variable in the same category and decade, never pooled across categories"   # approved; scope explicit in v0.4
       pooling: "median over 9 decades x 5 quantiles, per variable x category"   # approved
-      pass: "all 18 variable x category medians at most tau1"   # proposed v0.4 (explicit)
-      guard:                                  # proposed v0.4, phase0d
+      pass: "all 18 variable x category medians at most tau1"   # approved (explicit)
+      guard:                                  # approved, phase0d
         floor_fraction: 0.10
         reference: "median of the variable's bands over the nine decades in the same category"
         binding_at_floor: [CarbonSequestration C1234 2020, CarbonSequestration C56 2020, CarbonSequestration C56 2030,
                            CarbonSequestration C78 2020, CarbonSequestration C78 2030]
         descriptive_floor_fractions: [0.05, 0.20]
-      descriptive: "maximum guarded deviation over the 45 elements of each variable x category; no decision"   # proposed v0.4
-    X1a_prime:                                # proposed v0.4: "particularly C1234" as a separate indicator
+      descriptive: "maximum guarded deviation over the 45 elements of each variable x category; no decision"   # approved
+    X1a_prime:                                # approved: "particularly C1234" as a separate indicator
       rule: "the median of C1234's 270 guarded elements (6 variables x 9 decades x 5 quantiles) is the smallest of the three categories"
     X1b: {years: [2050, 2100]}
     X2:
@@ -149,69 +151,96 @@ fixed:
       category: C1234
       years: [2030, 2050, 2100]
       n_elements: 45
-      correlation: pearson                    # proposed v0.4
-      ordering: "signed Pearson correlation of PrimaryEnergy_Coal and Kyoto_Gases in 2030 exceeds that in 2100 (real 901-set: 0.82 and 0.21)"   # proposed v0.4
-    X3:  {sumcheck_threshold: 0.012, min_fraction: 0.0086, aggregation_over_years: mean}   # fraction proposed; aggregation phase0c (D13: no code, no aggregation reproduces 1.2%)
+      correlation: pearson                    # approved
+      ordering: "signed Pearson correlation of PrimaryEnergy_Coal and Kyoto_Gases in 2030 exceeds that in 2100 (real 901-set: 0.82 and 0.21)"   # approved
+    X3:  {sumcheck_threshold: 0.012, min_fraction: 0.0086, aggregation_over_years: mean}   # fraction approved; aggregation phase0c (D13: no code, no aggregation reproduces 1.2%)
     X4:  {experiment: "I, synthetic to real", test_population: "901-set", like_for_like: true,
           synthetic_per_category: 1000, inputs: "trapezoid-cumulated 2020-2100 values of the 15 variables of E other than Kyoto Gases",
-          G7_acts: false}   # phase0c (D12); G7 does not act on X4 (proposed v0.4)
-    X5:
-      model_groups: 9
-      merge: "Dekker et al. 2023"
-      classifier: "random forest of G8's paper level (rf_code), trained once on the real 901-set"   # proposed v0.4
-      inputs: "trapezoid-cumulated 2020-2100 values of the 16 variables of E"                       # proposed v0.4
-      gate: "lower bound of the 95% binomial interval of the five-fold stratified cross-validated accuracy exceeds the majority-class rate"   # proposed v0.4
-      gate_failure: "X5 reported as not testable, no indices"   # proposed v0.4
+          G7_acts: false}   # phase0c (D12); G7 does not act on X4 (approved)
+    X5:                                       # labels, reference mixes, folds: proposed v0.5
+      labels:
+        source: "SI S2.3 and Table S3: versions merged into frameworks following Dekker et al. 2023, Nature 624, 309-316; first nine kept"
+        paper_nine: [IMAGE, TIAM-ECN, GCAM, POLES, AIM, MESSAGE, REMIND, WITCH, COFFEE]
+        used: [AIM, COFFEE, GCAM, GEM-E3, MESSAGE, POLES, REMIND, TIAM-ECN]   # phase0e: the seven of the nine present in the 901-set plus GEM-E3 (D15)
+        versions:                             # AR6 v1.1 model names; counts in results/phase0e_model_groups.json
+          AIM: [AIM/CGE 2.0, AIM/CGE 2.1, AIM/CGE 2.2, AIM/Hub-Global 2.0]
+          COFFEE: [COFFEE 1.1]
+          GCAM: [GCAM 4.2, GCAM 5.2, GCAM 5.3, GCAM-PR 5.3]
+          GEM-E3: [GEM-E3_V2021]              # Table S3 row 12, outside the nine
+          IMAGE: [IMAGE 3.0, IMAGE 3.0.1, IMAGE 3.0.2, IMAGE 3.2]
+          MESSAGE: [MESSAGE-GLOBIOM 1.0, MESSAGEix-GLOBIOM 1.0, MESSAGEix-GLOBIOM_1.1, MESSAGEix-GLOBIOM_1.2, MESSAGEix-GLOBIOM_GEI 1.0]
+          POLES: [POLES ADVANCE, POLES CD-LINKS, POLES EMF30, POLES EMF33, POLES ENGAGE, POLES GECO2019]
+          REMIND: [REMIND 1.6, REMIND 1.7, REMIND 2.1, REMIND-Buildings 2.0, REMIND-MAgPIE 1.5, REMIND-MAgPIE 1.7-3.0,
+                   REMIND-MAgPIE 2.0-4.1, REMIND-MAgPIE 2.1-4.2, REMIND-MAgPIE 2.1-4.3, REMIND-Transport 2.1]
+          TIAM-ECN: [TIAM-ECN 1.1]
+          WITCH: [WITCH 4.6, WITCH 5.0, WITCH-GLOBIOM 3.1, WITCH-GLOBIOM 4.2, WITCH-GLOBIOM 4.4]
+        not_grouped: [C-ROADS-5.005, EPPA 6, MERGE-ETL 6.0]   # Table S3 rows 10, 11 and 13; none in the 901-set
+      merge_note: "the merge is the paper's own (SI S2.3), which cites Dekker et al. 2023, Nature; the X5 test idea relates to Dekker et al. 2023, Nature Energy 8, 1395-1404 (model fingerprints)"
+      classifier: "random forest of G8's paper level (rf_code), fitted in each of the five training folds with its grid search inside the fold; no classifier is refitted on the whole 901-set"   # approved; fold detail proposed v0.5
+      inputs: "trapezoid-cumulated 2020-2100 values of the 16 variables of E"   # approved
+      folds: "data/derived/x5_folds_901.csv (phase0e): scenarios ordered by category, group and SHA-256 of 'model|scenario', dealt to folds 1-5 in turn; rows in the order of the SHA-256 key for fitting, which also fixes the grid search's inner three-fold split"   # proposed v0.5
+      fitting: "fold classifiers, out-of-fold predictions, gates and references computed once with the deposited code, after the code deposit and before the first run, and archived"   # proposed v0.5
+      gate: "lower bound of the 95% Clopper-Pearson interval of the out-of-fold accuracy (correct out-of-fold predictions out of 901) exceeds the majority-class rate (REMIND, 296/901 = 0.329)"   # approved; interval type and counting proposed v0.5
+      gate_by_category: "the same test within each category against its own majority rate: C1234 REMIND 185/554 = 0.334, C56 MESSAGE 77/237 = 0.325, C78 REMIND 58/110 = 0.527"   # proposed v0.5
+      gate_failure: "X5 not testable, no indices, if the pooled gate fails or no category passes its gate; a category failing its gate is reported as not testable"   # approved; per-category part proposed v0.5
+      labels_predicted: "hard labels, as returned by predict"   # proposed v0.5
+      real_reference: "per category, the mix of the out-of-fold predicted labels of its real scenarios"   # proposed v0.5 (G. Vannucci)
+      uniform_reference: "per category, the mix predicted for a uniform mix of the eight groups: the mean of the rows (true groups) of that category's out-of-fold confusion matrix, each row normalised to sum to one"   # proposed v0.5
+      uniform_reference_variant: "the same from the confusion matrix of the whole 901-set; reported, no decision"   # proposed v0.5
+      synthetic_mix: "per category, the mix of labels the five fold classifiers assign to its synthetic scenarios, averaged over the five"   # proposed v0.5
+      rule: "X5 holds if, in each category that passes its gate, TV(synthetic mix, real reference) < TV(synthetic mix, uniform reference)"   # proposed v0.5
+      G1_note: "under every factor level the references are those of the 901-set, the real comparator of every claim"   # proposed v0.5
+      limitations: "each fold classifier has seen four fifths of the real scenarios the generator learns from, so it may label synthetic scenarios with less shrinkage than held-out real ones; scenarios of the same model and study can fall in different folds, so out-of-fold accuracy and the gates are optimistic"   # proposed v0.5
       G7_acts: true                     # sets the size of the synthetic ensemble classified
       G8_acts: false
 
   design:
     R0_replicates: 20                 # agreed
     delta0_percentile: 95             # agreed
-    delta0_distance: "marginal distance of section 7, with its floors"   # proposed v0.4
-    N_outer: 512                      # agreed, scrambled Sobol' (scrambling proposed)
-    N_inner: 8                        # agreed; scrambled Sobol' over G7, G8 per training (proposed)
-    units: {training: "one outer point", evaluation: "one inner point of one training, 4096 in all", run: "any training or any evaluation of a claim rule on generated data (deposit trigger)"}   # proposed v0.4
-    distributions:                    # proposed v0.4
+    delta0_distance: "marginal distance of section 7, with its floors"   # approved
+    N_outer: 512                      # agreed, scrambled Sobol' (scrambling approved)
+    N_inner: 8                        # agreed; scrambled Sobol' over G7, G8 per training (approved)
+    units: {training: "one outer point", evaluation: "one inner point of one training, 4096 in all", run: "any training or any evaluation of a claim rule on generated data (deposit trigger)"}   # approved
+    distributions:                    # approved
       continuous: "uniform on the range, except G5 epochs_multiplier and G7 sample size, which are log-uniform"
       integer: "uniform on the integers"
       categorical: "equiprobable levels"
-    dummies:                          # proposed v0.4; drawn with the factors, never passed to the pipeline
+    dummies:                          # approved; drawn with the factors, never passed to the pipeline
       outer: [D1, D2, D3]             # three further coordinates of the outer design
       inner: [D4]                     # one further coordinate of the inner design
       cells: "cut with the same cell proportions as each factor served (2, 4, 5, 6 equal cells, M equal bins, the latent dimension's cells)"
       reference: "mean index of the dummies of the factor's design level (D1-D3 for G1-G6, D4 for G7-G8), cut like the factor"
-    stopping_rule: >-                 # agreed values (0.05 at N_outer/2); deterministic form proposed v0.4
+    stopping_rule: >-                 # agreed values (0.05 at N_outer/2); deterministic form approved
       at 256 trainings, if the 95% bootstrap intervals of the primary index of every expensive
       coordinate and of the matched dummies all have half-width below 0.05, stop; otherwise run to 512
     stopping_halfwidth: 0.05          # agreed, checked at N_outer/2 = 256
-    robust_threshold: 0.80            # agreed; fraction of evaluations, point estimate (unit proposed v0.4)
+    robust_threshold: 0.80            # agreed; fraction of evaluations, point estimate (unit approved)
     fragile_threshold: 0.50
 
   estimator:
-    marginal_distance: "mean of squared 1-D W2 over the 144 standardised variable-year marginals, square-rooted (proposed instantiation of the agreed mean)"
+    marginal_distance: "mean of squared 1-D W2 over the 144 standardised variable-year marginals, square-rooted (approved instantiation of the agreed mean)"
     standardisation: "SD of each variable-year marginal in the corresponding category of the real 901-set"   # agreed
-    standardisation_guard:            # proposed v0.4, phase0d
+    standardisation_guard:            # approved, phase0d
       floor_fraction: 0.10
       reference: "median of the variable's SDs over the nine decades in the same category"
       binding_at_floor: "13 of 432 variable-category-year marginals, all 2020 (listed in results/phase0d_denominator_guard.json)"
       descriptive_floor_fractions: [0.05, 0.20]
-    quantile_definition: "linear interpolation between order statistics (numpy default, Hyndman-Fan type 7)"   # proposed v0.4
-    sd_definition: "sample standard deviation, ddof = 1"   # proposed v0.4
-    quantile_levels: {n: 99, levels: "(k - 0.5)/99, k = 1..99"}   # proposed (levels explicit in v0.4)
+    quantile_definition: "linear interpolation between order statistics (numpy default, Hyndman-Fan type 7)"   # approved
+    sd_definition: "sample standard deviation, ddof = 1"   # approved
+    quantile_levels: {n: 99, levels: "(k - 0.5)/99, k = 1..99"}   # approved (levels explicit in v0.4)
     sliced_wasserstein: {L: 200, directions: "drawn once, archived, shared across all trainings and replicates"}   # agreed
-    sinkhorn: {epsilon: "0.05 x median pairwise squared Euclidean cost in standardised space", subsample: 2000, epsilon_source: "deposited synthetic ensembles A3, computed once (proposed)", debiased: true,
-               index_note: "no projection possible; keeps the large null value of the unprojected index; read against matched dummies only (proposed v0.4)"}
-    index:                             # proposed v0.4 (v0.3 used the unprojected multivariate W2, whose null value approaches 1 - 1/m)
+    sinkhorn: {epsilon: "0.05 x median pairwise squared Euclidean cost in standardised space", subsample: 2000, epsilon_source: "deposited synthetic ensembles A3, computed once (approved)", debiased: true,
+               index_note: "no projection possible; keeps the large null value of the unprojected index; read against matched dummies only (approved)"}
+    index:                             # approved (v0.3 used the unprojected multivariate W2, whose null value approaches 1 - 1/m)
       form: "given-data OT index, quadratic cost, on one-dimensional projections of the embedding"
       directions: {L_prime: 200, note: "unit directions of the embedding space, drawn once and archived"}
       w2: "exact one-dimensional W2 between the empirical distributions of all trainings and of the trainings in one cell"
       primary: "marginal-quantile embedding, three categories jointly (concatenated vectors), per expensive coordinate"
       robustness: ["per category", "sliced embedding", "Sinkhorn divergence as ground cost"]
-    first_order_ensemble_aggregated: "tr Cov(E[Y|X_j]) / tr Cov(Y), same cells; for the secondary criteria of section 8 (proposed v0.4)"
-    total_order_ensemble: "variance-based total-order index aggregated over the coordinates of Y (Gamboa et al. 2014), nearest-neighbour estimator as in claim_indices; secondary criteria only (proposed)"
+    first_order_ensemble_aggregated: "tr Cov(E[Y|X_j]) / tr Cov(Y), same cells; for the secondary criteria of section 8 (approved)"
+    total_order_ensemble: "variance-based total-order index aggregated over the coordinates of Y (Gamboa et al. 2014), nearest-neighbour estimator as in claim_indices; secondary criteria only (approved)"
     bins_M: 8                          # agreed; sensitivity M in {5, 8, 12}
-    partitions:                        # proposed v0.4; cells per factor coordinate; no cell is merged
+    partitions:                        # approved; cells per factor coordinate; no cell is merged
       G1_population: 5
       G2_category_aggregation: 4
       G3_pool_completeness: M
@@ -223,7 +252,7 @@ fixed:
       G6_seed: M
       G7_sample_size: M
       G8_transfer_classifier: 4
-    claim_indices:                     # proposed
+    claim_indices:                     # approved
       first_order: "given-data S_j of the binary pass indicator, same cells, all eleven coordinates; enters the primary decision (section 8)"
       total_order:
         estimator: "nearest-neighbour residual variance (Devroye et al. 2018; Broto et al. 2020)"
@@ -233,11 +262,11 @@ fixed:
         reference_totals: "T_D: the same estimator conditioned on all factor coordinates (training noise plus estimator bias), common to D1-D3; T_D4: within-training analogue, the reference for G7 and G8"
         status: "exploratory; secondary criteria only"
       residual: "1 - sum_j S_j: interactions plus training noise, read by the secondary criteria of section 8"
-      undefined: "a claim that holds in all or none of the evaluations has no indices"   # proposed v0.4
-    bootstrap: {R: 1000, unit: "training (outer point), inner points carried along (proposed)", interval: "95% percentile"}
-    threshold_curves: {tau1: [0.05, 0.30], tau2: [0.05, 0.30], sumcheck: [0.0001, 0.020], sumcheck_scale: log}   # proposed, descriptive only
+      undefined: "a claim that holds in all or none of the evaluations has no indices"   # approved
+    bootstrap: {R: 1000, unit: "training (outer point), inner points carried along (approved)", interval: "95% percentile"}
+    threshold_curves: {tau1: [0.05, 0.30], tau2: [0.05, 0.30], sumcheck: [0.0001, 0.020], sumcheck_scale: log}   # approved, descriptive only
 
-  decision:                            # proposed; the dummy columns replace the seed as reference in v0.4
+  decision:                            # approved; the dummy columns replace the seed as reference in v0.4
     primary: >-
       a coordinate is influential if the lower 95% bound of its index (primary projected OT
       index for the ensemble, nine expensive coordinates; S_j for each claim, eleven
@@ -248,12 +277,23 @@ fixed:
     conservativeness: "expected, checked by the mock tests of the code deposit"
     headline: "declared versus undeclared factors as classified in Table 1 (field declared above); dominant = influential by the primary rule"
 
-  comparison_across_cases:             # proposed v0.4
-    metrics: ["ranking of the factors", "index minus the mean index of its matched dummies"]
+  comparison_across_cases:             # approved; case_2023 proposed v0.5
+    metrics: ["ranking of the shared factors", "index minus the mean index of its matched dummies"]
     not_used: "ratios to a dummy (near zero under Jansen's estimators, shrinking like 1/N under binned estimators)"
-    like_for_like: "the given-data estimators and dummy construction of this protocol are also applied to the base matrices A and B of the companion pick-freeze designs (Li P.-H. et al. 2023, Jansen estimators)"
+    case_2023:                          # proposed v0.5 (G. Vannucci)
+      archive: "data/external/gsa2023/: results file, generating script, README with the design, the column dictionary, the rows forming the base matrices A and B, and the mapping of the 12 factors to the coordinates of G1-G8; results file pinned by SHA-256 in DATA.md (C1) and in the protocol"
+      sha256: "to be filled at deposit (protocol placeholder)"
+      runs: "the rows the README identifies as the base matrices A and B, pooled (8,192 of 57,344 runs; N = 4,096 each); the AB rows are not used"
+      outputs: "the 13 claim indicators"
+      matching: "at the level of coordinates (eleven in this case: G3, G4 and G5 have two); only factors the README maps to a coordinate are compared; where several map to one coordinate, all are reported and the largest of their dummy-corrected indices represents them"
+      estimator: "binned first-order index of section 7: M = 8 equal-count bins for continuous factors (M = 5 and 12 also reported), levels for discrete ones"
+      dummies: "numpy.random.default_rng(2023).random((8192, 3)), rows in the order of A then B as the README lists them, each column cut like the factor it serves; pseudo-random, since the design has already been run"
+      inference: "bootstrap resampling runs, R = 1000, 95% percentile intervals"
+      reported: "in both cases, the shared coordinates ranked by their dummy-corrected first-order indices, per claim and averaged over the claims that have indices in that case; the original Jansen indices (N = 4,096) alongside"
+      timing: "computed with the deposited analysis code (deposit step 2)"
+      decision: "descriptive, no decision"
 
-  deposit:                             # proposed v0.4 (two-step, G. Vannucci)
-    step_1: "protocol, configuration, DATA.md, DISCREPANCIES.md, DEVIATIONS.md (empty), Phase 0 reports and scripts, raw-data manifest and v1.0.0/v1.0.1 diff, with a Zenodo DOI"
+  deposit:                             # approved (two-step, G. Vannucci)
+    step_1: "protocol, configuration, DATA.md, DISCREPANCIES.md, DEVIATIONS.md (empty), Phase 0 reports and scripts, data/derived/ (identifier lists and X5 folds), raw-data manifest, v1.0.0/v1.0.1 diff and data/external/gsa2023/ (proposed v0.5), with a Zenodo DOI"
     step_2: "analysis harness with its commit hash, its tests on mock data (including the null values of the indices and the conservativeness of the secondary criteria) and the environment lock, as a new version of the same Zenodo record, before the first run"
     run: "any training of a generator or any evaluation of a claim rule on generated data, pilots included"
