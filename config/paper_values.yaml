@@ -282,7 +282,8 @@ fixed:
     not_used: "ratios to a dummy (near zero under Jansen's estimators, shrinking like 1/N under binned estimators)"
     case_2023:                          # proposed v0.5 (G. Vannucci)
       archive: "data/external/gsa2023/: results file, generating script, README with the design, the column dictionary, the rows forming the base matrices A and B, and the mapping of the 12 factors to the coordinates of G1-G8; results file pinned by SHA-256 in DATA.md (C1) and in the protocol"
-      sha256: "to be filled at deposit (protocol placeholder)"
+      sha256: "e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56"   # final_results.rds, commit 3d26d6d, verified 2026-11-05 with the folder's sha256.txt
+      readme_sha256: "recorded in DATA.md (C1) at the freeze, once the mapping in its last section is final"
       runs: "the rows the README identifies as the base matrices A and B, pooled (8,192 of 57,344 runs; N = 4,096 each); the AB rows are not used"
       outputs: "the 13 claim indicators"
       matching: "at the level of coordinates (eleven in this case: G3, G4 and G5 have two); only factors the README maps to a coordinate are compared; where several map to one coordinate, all are reported and the largest of their dummy-corrected indices represents them"

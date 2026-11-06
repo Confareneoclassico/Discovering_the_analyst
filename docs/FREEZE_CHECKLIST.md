@@ -34,12 +34,13 @@ a claim rule.
    Her two X5 questions and her plan for the 2023 runs are blue text in
    v0.5: the out-of-fold reference mixes, the model groups with their
    mapping and the Dekker et al. paper (Appendix A, after Phase 0E and D15),
-   and the comparison on the A and B matrices of the 2023 design. Pending:
-   approval of the v0.5 blue text, which an independent review of 2 November
-   2026 also tightened (per-category gates and uniform references for X5,
-   folds fixed from identifiers, the A and B rows identified by the README,
-   matching at the level of coordinates). Record approvals with date in this
-   file.
+   and the comparison on the A and B matrices of the 2023 design, tightened
+   by an independent review of 2 November 2026 (per-category gates and
+   uniform references for X5, folds fixed from identifiers, the A and B rows
+   identified by the README, matching at the level of coordinates). Approved
+   by all co-authors at the meeting of 5 November 2026. Any later blue text
+   (for instance a threshold layer, if adopted) needs its own approval,
+   recorded here with date.
 
 3. External results, blocking. G. Vannucci adds the 2023 results file, the
    script that generated it and a README to `data/external/gsa2023/`. Check,
@@ -50,7 +51,12 @@ a claim rule.
    partial. The freeze waits until these checks pass. Record the SHA-256 of
    the results file in DATA.md (C1); it fills the protocol's third
    placeholder in step 7. Confirm her consent to deposit the files publicly
-   with the protocol.
+   with the protocol. Done on 5 November 2026: files added in 3d26d6d, all 19
+   hashes of the folder's `sha256.txt` verified (`final_results.rds`
+   e13147fc...b47dac56, now in DATA.md and in the protocol), README checked on
+   all points, rows of A and B confirmed from the design matrix alone, consent
+   given. Still open: the final mapping in the README's last section, after
+   which the README's SHA-256 goes into DATA.md (C1).
 
 4. Author block: include or not (commented block with full affiliations is in
    the .tex header); confirm order. Deferred by the co-authors.
@@ -63,14 +69,14 @@ a claim rule.
 6. Zenodo: create a new manual upload, press "Reserve DOI", copy the DOI.
 
 7. Build v1.0: in `protocol/preregistration.tex` set `\frozentrue`, fill the
-   date, the reserved DOI and the SHA-256 of the 2023 results file, and
-   accept or delete each `\prop{...}` (and the `\propblock` of the Appendix A
-   table). The frozen build fails on any remaining `\todo`, so a successful
-   build is the placeholder check: v0.5 fails on exactly these three. Also
-   confirm that
+   date and the reserved DOI (the SHA-256 of the 2023 results file was filled
+   on 5 November 2026), and accept or delete each `\prop{...}` (and the
+   `\propblock` of the Appendix A table). The frozen build fails on any
+   remaining `\todo`, so a successful build is the placeholder check: the
+   protocol now fails on exactly these two. Also confirm that
    `grep -n "proposed\|approved\|phase0c\|phase0d\|phase0e" config/paper_values.yaml`
-   returns only comments that are still true, and fill
-   `comparison_across_cases.case_2023.sha256` there.
+   returns only comments that are still true, and record the README's
+   SHA-256 in DATA.md (C1).
 
 8. Git: commit the frozen YAML, DATA.md, DISCREPANCIES.md, DEVIATIONS.md,
    results/, data/external/gsa2023/ and the frozen PDF

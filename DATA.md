@@ -104,13 +104,20 @@ licence terms is part of the freeze (`docs/FREEZE_CHECKLIST.md`, step 9).
 
 | # | Artefact | Source | Version pinned | sha256 | Status |
 |---|----------|--------|----------------|--------|--------|
-| C1 | Results of the 2023 case of the series (GSA of Li P.-H. et al. (2023), Jansen design: 57,344 runs, N = 4,096, 12 factors; per run the 13 claim indicators, the number of scenarios, the number of selected features, the random-forest OOB accuracy and the regression coefficients), with the generating script and a README | G. Vannucci, `data/external/gsa2023/` | as added before the freeze | ⬜ results file: to be recorded on arrival and copied into the protocol placeholder (section 7) | ⬜ pending (G. Vannucci) |
+| C1 | Results of the 2023 case of the series (GSA of Li P.-H. et al. (2023), Jansen design: 57,344 runs, N = 4,096, 12 factors; per run the 13 claim indicators, the number of scenarios, the number of selected features, the random-forest OOB accuracy and the regression coefficients), with the two R scripts, the 2023 indices, tables and figures, a README and `sha256.txt` | G. Vannucci, `data/external/gsa2023/` (commit 3d26d6d, 5 November 2026) | as committed in 3d26d6d | `final_results.rds` e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56 (also in the protocol, section 7); every other file except the README in the folder's `sha256.txt`; README: ⬜ recorded at the freeze, once its mapping is final | ✅ all 19 hashes of `sha256.txt` verified 2026-11-05; README checked; consent to public deposit given 2026-11-05 |
 
-The README states the design, the column dictionary, which rows form the base
-matrices A and B (the first 8,192 runs) and the mapping of the 12 factors to
-G1–G8. Only A and B enter the comparison (protocol section 7), and nothing is
-computed on these runs before the code deposit. The files go into the Zenodo
-deposit with the protocol, subject to G. Vannucci's consent.
+The README states the design (`sensobol::sobol_matrices`, N = 4,096, k = 12),
+the column dictionary, which rows form the base matrices A and B (rows 1 to
+4,096 and 4,097 to 8,192) and the mapping of the 12 factors to the coordinates
+of G1–G8. The rows were also checked from the design matrix `mat` alone, without
+reading any claim value: blocks 3 to 14 equal A with one column taken from B,
+in the order of `params`. A and B share one point, the centre of the cube (row
+1 of each, the first Sobol' point), run with different seeds. Only A and B
+enter the comparison (protocol section 7), and nothing is computed on these
+runs before the code deposit. The input data (SR1.5 database) are not
+included, as their terms restrict redistribution; the README gives the source
+and `paper_replicate_analysis.R` rebuilds them. G. Vannucci agreed on 5
+November 2026 that the whole folder be deposited publicly with the protocol.
 
 ## Provenance rules
 
