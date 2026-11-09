@@ -148,16 +148,43 @@ C3_2C 83.0%, C4_2C 74.7%.
 
 The 2023 factors belong to the pipeline of Li P.-H. et al. (2023) (random forest, ridge, PRIM); the
 audit concerns the pipeline of Li P. et al. (2025) (scenario generation). The two pipelines differ,
-so the correspondence is weak. Proposed mapping, one row per 2023 factor, against the
-coordinates of Table 1 of the protocol:
+so the correspondence is weak. Only the pairs below are compared (protocol, section 7); each
+coordinate of the audit has at most one 2023 factor, so no many-to-one rule is needed.
 
-| 2023 factor | Closest coordinate of the audit | Correspondence |
+### Factors of 2023 with a counterpart
+
+| 2023 factor | Coordinate of the audit | Correspondence |
 |---|---|---|
 | F7 cumulative importance threshold | G3, number of key features | partial: both set how many ranked variables are retained |
-| F1 correlation threshold | G3, pool completeness threshold | weak: both define the candidate pool, with different criteria (redundancy versus missing data) |
-| F6 importance metric | none | G3 does not vary the importance metric |
-| F3 ntree, F4 nodesize, F5 sampsize | none | the random forest of 2023 ranks the variables; G8 varies the transfer classifier, a different model with a different role (only the learner type is shared) |
-| F2, F9.1, F9.2, F10, F11, F12 | none | no counterpart |
+| F1 correlation threshold of the pre-screening | G3, pool completeness threshold | weak: both define the candidate pool, with different criteria (redundancy versus missing data); both can also shift the population through complete cases, because `na.omit` after the screening drops the scenarios that are incomplete on the remaining metrics, as the completeness threshold does in the audit when G4 is set to "none" |
+| F9.2 repeats of the train/test split (10, 20, 30) | G7, synthetic sample size | weak, proposed in addition: both set how much resampling stands behind the claim statistic (averaged repeats of the split in 2023, synthetic draws in the audit), and change its noise more than its estimate |
+
+### Factors of 2023 without a counterpart
+
+| 2023 factor | Reason |
+|---|---|
+| F3 ntree, F4 nodesize, F5 sampsize, F6 importance metric | they set the random-forest ranking of the variables, which the audit holds fixed within G3 (settings of SI S2.3); the role matters more than the type of model, since G8 varies the transfer classifier, a different model in a different role |
+| F2 tie-break within a correlated group | it chooses which metric is kept, not how many |
+| F9.1 train fraction of the ridge regression | the audit does not vary the share of training data of a model of this kind |
+| F10, F11, F12 | they belong to the PRIM stage of claim C5, which has no analogue in the audit (G8 acts on X4) |
+
+### Coordinates of the audit by analogue in 2023
+
+| Coordinate of the audit | Analogue in 2023 |
+|---|---|
+| G3 pool completeness threshold | F1 (weak) |
+| G3 number of key features | F7 (partial) |
+| G7 synthetic sample size | F9.2 (weak, proposed) |
+| G1 population | held fixed in 2023: SR1.5 release 2.0, 80% completeness filter (366 scenarios), complete cases after screening |
+| G2 category aggregation | held fixed: three temperature classes; ridge targets below 2C and below 1.5C |
+| G4 imputation | held fixed: complete cases |
+| G4 scaling | held fixed: standardisation inside `glmnet` |
+| G6 seed | not a factor in 2023: the seed is tied to the run index (10000 + i) |
+| G5 latent dimension, G5 epochs multiplier | no analogue: the 2023 case has no generative model |
+| G8 transfer classifier | no analogue |
+
+Where the analogue is held fixed on one side, the comparison is silent on that coordinate; it is
+not evidence of no effect.
 
 ## Use in the audit
 
