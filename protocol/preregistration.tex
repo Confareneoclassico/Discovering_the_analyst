@@ -3,6 +3,7 @@
 \usepackage{booktabs,array,tabularx}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
 \usepackage{amsmath,amssymb}
+\PassOptionsToPackage{obeyspaces,spaces}{url}   % keep the spaces of AR6 variable names inside \path
 \usepackage[hidelinks]{hyperref}
 \usepackage{xcolor}
 \usepackage{enumitem}
@@ -13,7 +14,7 @@
 
 % ---------------------------------------------------------------------------
 % Freeze switch. Release candidate: \frozenfalse. Deposit: \frozentrue, then
-% fill every \todo (grep -n 'todo{' must return nothing) and rebuild.
+% fill every \todo in the document; the frozen build stops at any that is left.
 \newif\iffrozen \frozenfalse
 \iffrozen
   \newcommand{\prop}[1]{#1}
@@ -43,7 +44,7 @@ optimal-transport GSA case}
 %   $^{4}$School of Geography, Earth and Environmental Sciences, University of Birmingham, UK\\
 %   $^{5}$Centre for the Study of the Sciences and the Humanities, University of Bergen, Norway}}
 \author{}
-\date{Version \iffrozen 1.0\else 0.5 (release candidate)\fi, \todo{date of deposit},
+\date{Version \iffrozen 1.0\else 0.6 (release candidate)\fi, \todo{date of deposit},
 DOI: \todo{reserved on Zenodo before upload}}
 
 \begin{document}
@@ -51,17 +52,25 @@ DOI: \todo{reserved on Zenodo before upload}}
 
 \iffrozen\else
 \noindent\fbox{\parbox{\dimexpr\textwidth-2\fboxsep-2\fboxrule}{\small
-Release candidate. Values agreed in the co-authors' review of 23 October
-2026, and the items of v0.3 and v0.4 approved in reply, are in black. Text
-in \prop{blue} awaits approval. New in v0.5 are Phase~0E and D15 (the
-901-set contains no IMAGE or WITCH scenario, because none of their 257
-vetted scenarios reports geothermal electricity at World level), the model
-groups of X5 with their AR6 versions (Appendix~\ref{app:groups}), the
-fixed folds, per-category gates and out-of-fold reference mixes of X5, and
-the specifics of the comparison with the 2023 case, whose results
-file is archived with this deposit (artefact C1). Items in \todo{} are
-filled at deposit. This box, all colour and all placeholders disappear in
-the frozen version.}}
+Release candidate. All text of v0.5 was approved by the co-authors on 5
+November 2026 and is in black. Text in \prop{blue} is new in v0.6 and
+awaits approval. It comes from the audit made before archiving, on 10 and
+11 November 2026: a correction to Phase~0B (its first run compared the
+regenerated and the deposited scenarios in the wrong order, so its
+scenario-level figures were void, and the text called the regenerated
+ensemble distributionally faithful although it deviates beyond Monte Carlo
+noise; the check is re-run with the corrected script, and its figures fill
+the placeholders of item~7 of \S\ref{sec:phase0}), the re-run of the
+fidelity check of item~4 with its 2\% rule applied exactly (its count fills
+the placeholder there), Phase~0F (the deposited real files are matched to AR6
+scenario by scenario, which confirms the D9 reconstruction and yields the
+crosswalk that X5 needs), D16 (the deposit's Kyoto Gases are an AR6
+diagnostic that is never missing from 2020 to 2100, which corrects the note on G1 and G4 in
+\S\ref{sec:factors}), D17 (66 duplicated scenarios in the 901-set, which the
+X5 folds now keep together, in the grid search too), the estimators of the
+2023 case named as its README documents them, and the disclosure of the
+timing benchmark. The other items in \todo{} are filled at deposit. This
+box, all colour and all placeholders disappear in the frozen version.}}
 \fi
 
 \begin{abstract}
@@ -83,8 +92,11 @@ and inference procedure (\S\ref{sec:estimators}), and the decision criteria
 \S\ref{sec:phase0}) is reported for transparency. At the time of this
 deposit, no claim rule (X1a--X5) has been evaluated at any factor setting,
 including the paper's own values, no retraining has been performed, and no
-noise-floor replicate has been run. The only pipeline stage executed is the
-deterministic regeneration check of Phase~0B, which evaluates no claim.
+noise-floor replicate has been run. \prop{Apart from a timing benchmark and
+a software test, both on random arrays and random weights
+(\S\ref{sec:design}, \S\ref{sec:phase0}),} the only pipeline stage executed
+is the deterministic regeneration check of Phase~0B, which evaluates no
+claim.
 The analysis code will be deposited as a new version of this record
 before the first run (\S\ref{sec:archive}).
 \end{abstract}
@@ -117,10 +129,10 @@ Zenodo's MD5. The principal items follow.
   (Gen and Real CSVs, validated in Phase~0).
 \item[B1--B2] AR6 Scenarios Database v1.1 (metadata and World
   timeseries), \path{doi:10.5281/zenodo.7197970}.
-\item[C1] \prop{Results of the earlier case of the series, the analysis of
-  Li P.-H.\ et al.\ (2023) with Jansen's estimators, with the script that
+\item[C1] Results of the earlier case of the series, the analysis of
+  Li P.-H.\ et al.\ (2023) \prop{on a pick-freeze design}, with the script that
   generated them and a README, archived under \path{data/external/gsa2023/}
-  for the comparison of \S\ref{sec:estimators}.}
+  for the comparison of \S\ref{sec:estimators}.
 \end{description}
 
 \section{Phase 0: completed replication record}\label{sec:phase0}
@@ -141,15 +153,18 @@ Completed before this deposit. Machine-readable reports are archived under
   underlying the paper's figures and label-transfer benchmark (Fig.~4a,
   ED~Fig.~2, Table~1: 554/237/110, $n=901$) is reproduced exactly by
   complete 2020--2100 coverage on the five feature variables and all ten
-  electricity variables \prop{(the total and nine fuels)}, Kyoto Gases exempt, raw
+  electricity variables (the total and nine fuels), Kyoto Gases exempt, raw
   (pre-imputation) CS availability required. Across the two silent drops
   the smallest category (C78) loses 43\% of its vetted scenarios
-  (193$\to$110).
+  (193$\to$110). \prop{Phase~0F confirms the rule scenario by scenario and
+  explains the exemption of Kyoto Gases.}
 \item \textbf{Deposit validated.} After harmonizing a Mt-versus-Gt unit
   inconsistency (deposit in Mt, the paper's Source Data Fig.~3 in Gt), all
   1{,}620 quantile comparisons (6 variables $\times$ 6 series $\times$ 9
-  years $\times$ 5 quantiles) pass at 2\% relative tolerance. Gen files
-  hold 10{,}000 scenarios per category.
+  years $\times$ 5 quantiles) pass at 2\% relative tolerance.
+  \todo{count of the re-run of \path{03_synthetic_fidelity.py}, which now
+  applies the 2\% exactly}
+  Gen files hold 10{,}000 scenarios per category.
 \item \textbf{Version provenance (D7).} v1.0.0 cannot reproduce the
   deposited synthetic data or Fig.~5. The generating notebook appeared in
   v1.0.1 ten months after publication, without changelog.
@@ -169,11 +184,31 @@ Completed before this deposit. Machine-readable reports are archived under
   used Windows x86-64 and Python 3.8; report
   \path{phase0b_regeneration.json}). Executability is confirmed: the weights
   load, the architectures match and generation runs end to end from the
-  archived artefacts alone. Sample-level reproduction fails under all three
-  latent-stream readings of the documentation (TensorFlow global seed, a
-  second-execution probe and the SI's NumPy reading), with median
-  elementwise relative deviation 0.33--0.45, i.e.\ entirely different
-  draws. The distributions agree in the bulk, with median quantile
+  archived artefacts alone. \prop{The generating notebook labels the $i$-th
+  scenario \texttt{Scenario:}$i$ and writes the files sorted by that label as
+  text, so the comparison aligns scenarios by label. Scenario by scenario,
+  under the three latent-stream readings of the documentation (TensorFlow
+  global seed, a second-execution probe and the SI's NumPy reading),}
+  \todo{figures of the re-run of Phase 0B with the corrected script}.
+  \prop{The first run of this check, on 19 September 2026, took the scenarios
+  in file order and so compared unrelated scenarios: its median elementwise
+  relative deviations of 0.33--0.45, cited up to v0.5, were those of
+  unrelated draws and said nothing about reproduction. The corrected script
+  decides each category on its own, since the notebook saves the three
+  files separately, and carries a positive control, which the first one
+  lacked: the regenerated arrays, written with a transcription of the
+  notebook's saving routine and read back, must pass the scenario-level
+  test (they come back to within about $10^{-8}$). Before its run on the
+  deposit it was tested on mock deposits made with randomly initialized
+  decoders, without the shipped weights or the deposited synthetic files
+  (\path{docs/checks/mock_deposit_for_phase0b.py}). It recovered a mock
+  deposit drawn with the documented seed, also through weights perturbed by
+  $10^{-5}$ of their value, rejected those drawn with another seed or
+  through weights perturbed by 5\%, and identified deposits whose
+  categories came from different executions. Independent reviews of the
+  Phase~0 scripts found the error on 10 November 2026 and checked the
+  corrections on 11 November.} The
+  distributions agree in the bulk, with median quantile
   deviation 1.8\% of the reference spread (Q90--Q10) and 95th percentile
   10.3\%, yet about 4.4 times the Monte Carlo floor obtained from two
   independent 10{,}000-draw ensembles through the same decoder, the excess
@@ -183,9 +218,10 @@ Completed before this deposit. Machine-readable reports are archived under
   residual is most plausibly a checkpoint mismatch (the shipped weights
   differing from those that generated the deposit), consistent with the
   repository README's account of multiple training sessions with
-  ``comparable'' results. The generation stage is therefore executable and
-  distributionally faithful, but the deposited outputs cannot be tied to
-  the documented seed or, apparently, to the shipped weights. The
+  ``comparable'' results. The generation stage is therefore executable.
+  \prop{Its output matches the deposit in the bulk of the distributions,
+  but not within Monte Carlo noise, and} the deposited outputs cannot be
+  tied to the documented seed or, apparently, to the shipped weights. The
   determinism gap the authors acknowledge for training (D1) extends to
   generation (D11). This check answers no question posed in
   \S\ref{sec:claims}--\S\ref{sec:criteria}.
@@ -229,10 +265,11 @@ Completed before this deposit. Machine-readable reports are archived under
   would magnify synthetic spread up to 262 times relative
   to the variable's typical decade. The floors of \S\ref{sec:claims} and
   \S\ref{sec:estimators} follow from this check.
-\item \prop{\textbf{Phase 0E, model groups.} From identifiers (model,
+\item \textbf{Phase 0E, model groups.} From identifiers (model,
   scenario and category in the AR6 metadata and the two derived scenario
   lists), and from whether each of the ten electricity variables is
-  reported in each decade of the World CSV, the AR6 model names were
+  reported in each decade of the World CSV \prop{(and, for the folds, which
+  scenarios have coinciding values)}, the AR6 model names were
   mapped to the frameworks of SI~Table~S3 and counted in the 1{,}202
   vetted scenarios, the 1{,}160 of D2 and the 901-set
   (\path{phase0e_model_groups.json}). No scenario value enters the report,
@@ -244,11 +281,37 @@ Completed before this deposit. Machine-readable reports are archived under
   of SI~S2.3, together with GEM-E3, a model outside them. IMAGE and WITCH
   also account for 62 of the 83 C78 scenarios lost between the 1{,}202 and
   the 901-set. The groups and counts are in Appendix~\ref{app:groups}
-  (D15). The same script fixes the five folds of the X5 classifier from
-  identifiers alone (\path{data/derived/x5_folds_901.csv},
-  \S\ref{sec:claims}).}
+  (D15). The same script fixes the five folds of the X5 classifier
+  (\path{data/derived/x5_folds_901.csv}, \S\ref{sec:claims}).
+\item \prop{\textbf{Phase 0F, identity of the deposited real set.} The
+  deposited \path{Real_*.csv} carry anonymous identifiers
+  (\texttt{Scenario:1}, \dots), no model and no AR6 scenario name. Matching
+  them to AR6 by value (\path{phase0/10_deposit_crosswalk.py},
+  \path{phase0f_deposit_crosswalk.json}; real data only) shows that, within
+  each category, \texttt{Scenario:}$k$ is the $k$-th scenario of the D9
+  reconstruction in ascending order of model and scenario name. Under this
+  rule all 901 deposited scenarios equal the AR6 values on all sixteen
+  variables and nine decades, to within $3.1\times10^{-9}$ of each variable's
+  largest value. The D9 rule is thereby confirmed scenario by scenario, and
+  so are the model counts of Phase~0E. The crosswalk
+  (\path{data/derived/crosswalk_901.csv}) attaches AR6 identifiers, hence
+  model groups and folds, to the deposited rows. Two facts follow. First,
+  the deposit's Kyoto Gases are not the native \path{Emissions|Kyoto Gases},
+  which equals the deposit for none of the 828 scenarios that report it, but
+  the infilled diagnostic \path{AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR6-GWP100)},
+  which every vetted scenario has in every decade from 2020 to 2100. This
+  is why Kyoto Gases never bind in D2 and D9, whose rules use that grid
+  (D16). Second, 66 of the 901 scenarios, in 32 groups of two or
+  three, duplicate one another: their values on the fifteen variables of
+  the D9 rule coincide in every decade, always within one model version and
+  one category (D17). Coinciding means agreeing to within $10^{-6}$ of each
+  variable's largest value. The tolerance only absorbs floating-point
+  representation, since duplicates agree to $10^{-9}$ in AR6 and exactly in
+  the deposit, while the closest pair of distinct scenarios lies
+  $2\times10^{-5}$ apart. The Kyoto Gases coincide as well in 29 of the
+  groups, identically in 28.}
 \end{enumerate}
-The full inconsistency catalogue (D1--\prop{D15}) is archived as
+The full inconsistency catalogue (D1--\prop{D17}) is archived as
 \texttt{DISCREPANCIES.md}.
 
 \section{Claims and operational rules}\label{sec:claims}
@@ -341,31 +404,37 @@ will be altered after deposit except under the deviations policy
   published one was (D12). G7 does not act on X4.
 \item[\claim{X5} (bias inheritance, secondary).] The paper positions
   synthetic generation as mitigating ``model-determined biases'' and
-  ``non-random submission''. Rule: a source-model classifier (\prop{model
+  ``non-random submission''. Rule: a source-model classifier (model
   versions merged into frameworks as in SI~S2.3, which follows Dekker et
   al.\ (2023), \emph{Nature} 624:309--316, on the eight groups present in
-  the 901-set; Appendix~\ref{app:groups}, D15}) is trained on the real
+  the 901-set; Appendix~\ref{app:groups}, D15) is trained on the real
   901-set and applied to the synthetic scenarios. X5 (inheritance) holds
-  if, \prop{in each category that passes its gate}, the total-variation
+  if, in each category that passes its gate, the total-variation
   distance between the predicted model mix of the synthetic ensemble and
-  the \prop{real reference mix} is smaller than the distance to the
-  \prop{uniform reference mix}. A baseline model-identifiability check on
+  the real reference mix is smaller than the distance to the
+  uniform reference mix. A baseline model-identifiability check on
   real data (held-out accuracy above the majority-class rate) gates the
   test. The classifier is the random forest of G8's paper level, trained
-  \prop{in the five folds of} the real 901-set with the trapezoid-cumulated
+  in the five folds of the real 901-set with the trapezoid-cumulated
   2020--2100 values of the sixteen variables of $E$ as inputs. The gate is
-  passed if the lower bound of the 95\% \prop{Clopper--Pearson} interval of
+  passed if the lower bound of the 95\% Clopper--Pearson interval of
   its five-fold stratified cross-validated accuracy exceeds the
-  majority-class rate\prop{, $296/901=0.329$ (REMIND)}. If the gate fails,
+  majority-class rate, $296/901=0.329$ (REMIND). If the gate fails,
   X5 is reported as not testable and has no indices. G7 sets the size of
-  the synthetic ensemble classified, and G8 does not act on X5. \prop{The
-  folds are fixed in this deposit from identifiers alone (Phase~0E,
-  \path{data/derived/x5_folds_901.csv}): the 901 scenarios are ordered by
-  category, group and the SHA-256 of \texttt{model|scenario} and dealt to folds 1
-  to 5 in turn, so that each category, and each group within it, is spread
-  evenly. Each fold is predicted by a classifier fitted on the other four,
-  with the grid search of G8's paper level inside them and rows in the
-  order of the SHA-256 key, which also fixes the grid search's inner split.
+  the synthetic ensemble classified, and G8 does not act on X5. The
+  folds are fixed in this deposit (Phase~0E,
+  \path{data/derived/x5_folds_901.csv}). \prop{Duplicates (Phase~0F)
+  form one unit, so that no scenario is predicted by a classifier that has
+  seen its duplicate. The 867 units are ordered by category, group and the
+  SHA-256 of \texttt{model|scenario}, the smallest among a unit's members,}
+  and dealt to folds 1 to 5 in turn, so that each category, and each group
+  within it, is spread evenly. Each fold is predicted by a classifier fitted
+  on the other four, with the grid search of G8's paper level inside them
+  and rows in the order of the SHA-256 \prop{key. The three inner folds of
+  the grid search are dealt in the same way from the units of the four
+  training folds, so that duplicates stay together there too. Model groups
+  and folds are attached to the deposited rows through the crosswalk of
+  Phase~0F.}
   No classifier is refitted on the whole 901-set, and accuracy counts
   correct out-of-fold predictions. The fold classifiers, gates and
   references are computed once with the deposited code, after the code
@@ -389,9 +458,12 @@ will be altered after deposit except under the deviations policy
   the real comparator of every claim. Two limitations are stated in
   advance. Each fold classifier has seen four fifths of the real scenarios
   the generator learns from, so it may label synthetic scenarios with less
-  shrinkage than held-out real ones. Scenarios of the same model and study
-  can fall in different folds, so out-of-fold accuracy and the gates are
-  optimistic.}
+  shrinkage than held-out real ones. \prop{Duplicates aside,
+  scenarios} of the same model and study can fall in different folds, so
+  out-of-fold accuracy and the gates are \prop{optimistic: 40 pairs of
+  distinct scenarios differ by less than 1\% of each variable's largest
+  value on the fifteen variables, 18 of them by less than 0.1\%, and the
+  folds separate 35 and 16 of these pairs (Phase~0E).}
 \end{description}
 
 \section{Factor space}\label{sec:factors}
@@ -409,8 +481,8 @@ protocol disagree, the protocol governs.
 \toprule
 Factor & Paper value (provenance) & Range or levels & Declared & Cost\\
 \midrule
-G1 population & 901-rule (D9, undeclared; see D12 \prop{and D15}) &
-  \{901; 910, CS imputed; 828, Kyoto required; 1{,}160, D2 rule;
+G1 population & 901-rule (D9, undeclared; see D12 and D15) &
+  \{901; 910, CS imputed; 828, \prop{native} Kyoto required; 1{,}160, D2 rule;
   1{,}202, all vetted\}, missing values filled by G4 & no & exp.\\
 G2 aggregation & C1234/C56/C78 (Methods) &
   \{3-way; 4-way; 8-way; k-means labels\}, pooled for evaluation
@@ -455,7 +527,13 @@ declared up to the slips of D4, and the classifier is declared while its
 tuning appears only in the code. G1 and G4 interact by construction: under
 G4's level none, scenarios with missing values are dropped, so every G1
 level shrinks to its complete cases on the generated set, which are the
-828-set when the generated set is $E$.
+\prop{901-set when the generated set is $E$ (the 828-set at G1's level
+828), because the Kyoto Gases of the pipeline are never missing from 2020
+to 2100 (Phase~0F). Training data are built from the AR6 World CSV with the
+variables identified in Phase~0F, Kyoto Gases being the infilled
+diagnostic at every level, and at the paper's values of G1 and G3 they
+reproduce the deposited real files. Level 828 keeps the scenarios that also
+report native Kyoto Gases and changes no variable.}
 
 \section{Design and compute budget}\label{sec:design}
 \begin{enumerate}[nosep]
@@ -484,6 +562,14 @@ level shrinks to its complete cases on the generated set, which are the
   the design stops there, otherwise it runs to $N_{\mathrm{outer}}$. It
   may not be extended beyond $N_{\mathrm{outer}}$ without a documented
   deviation.
+\item \prop{\textbf{Timing.} The cost of a training was measured on 5 November
+  2026 by fitting the three generator architectures (tsgm 0.0.7, TensorFlow
+  2.13) and running the grid search of G8's paper level on random arrays
+  shaped like the study's data, on one core of a 2.1~GHz Intel Xeon: about
+  3.5 core-hours per training at paper values, 2.7 of them in the CGAN, and
+  about 2{,}350 core-hours for the full design. No AR6, Deep-IAM or
+  synthetic data entered this benchmark, and no claim rule was evaluated.
+  Its scripts are part of this deposit (\path{docs/timing/}).}
 \item \textbf{Outputs stored per training:} per category, the standardized
   quantile vectors on $E$, the 200 projected quantile vectors and a
   2{,}000-point subsample of the 10{,}000-scenario ensemble, all claim
@@ -627,16 +713,16 @@ independent.
 
 \paragraph{Comparison across cases.} Indices are compared with the
 other cases of the series, among them the analysis of Li P.-H.\ et al.\
-(2023) with Jansen's estimators, in relative terms only: the ranking of the
+(2023) \prop{on a pick-freeze design}, in relative terms only: the ranking of the
 factors and each index minus the mean index of its matched dummies. Ratios
-to a dummy are not used, because under Jansen's estimators the dummy's
+to a dummy are not used, because under \prop{pick-freeze} estimators the dummy's
 index is close to zero, and under binned estimators it shrinks like $1/N$,
 so that a ratio grows with the sample size. For a like-for-like check, the
 estimators of this section, with the same dummy construction, are also
 applied to the base matrices A and B of the companion pick-freeze designs,
 which are samples of the input distribution in their own right. Absolute
 values remain incomparable to the extent that training noise dilutes the
-first-order indices and enters the totals of this case. \prop{For the
+first-order indices and enters the totals of this case. For the
 2023 case, the runs are those of the results file archived as artefact C1
 (SHA-256 \texttt{e13147fcc7d4683046337fabdb0cfe99\allowbreak 153c3eece85f7a59fc419f0cb47dac56}), whose README gives the
 design, the column dictionary, the rows that form the base matrices A and
@@ -655,9 +741,10 @@ order of A and then B as the README lists them, each cut like the factor
 it serves. The bootstrap resamples runs. In both cases the shared
 coordinates are ranked by their dummy-corrected first-order indices, per
 claim and averaged over the claims that have indices in that case, and
-the original Jansen indices at $N=4{,}096$ are reported alongside. The
+the original \prop{first-order indices (Saltelli's estimator, as the
+README of C1 documents)} at $N=4{,}096$ are reported alongside. The
 comparison is computed with the deposited analysis code and enters no
-decision.}
+decision.
 
 \section{Decision criteria}\label{sec:criteria}
 The primary index for the ensemble output is the projected OT index
@@ -709,11 +796,13 @@ recorded before the first run if the comments arrive before it.
 Protocol PDF, \texttt{DATA.md}, \texttt{DISCREPANCIES.md},
 \texttt{DEVIATIONS.md} (empty), \path{config/paper_values.yaml}
 (frozen), Phase-0 reports (\texttt{results/}, including the
-reports of Phases~0B to~\prop{0E}), the scripts that
-produced them (\texttt{phase0/}) \prop{and their identifier lists,
-including the X5 folds (\texttt{data/derived/})}, the raw-data manifest, v1.0.0/v1.0.1
-diff\prop{, and the 2023 results file with its script and README
-(\path{data/external/gsa2023/}, artefact C1)}. GSA
+reports of Phases~0B to~\prop{0F}), the scripts that
+produced them (\texttt{phase0/}) and their identifier lists,
+including the X5 folds \prop{and the crosswalk of Phase~0F}
+(\texttt{data/derived/}), the raw-data manifest, v1.0.0/v1.0.1
+diff, \prop{the timing benchmark, the checks and the list of archived files
+(\texttt{docs/}),} and the 2023 results file with its script and README
+(\path{data/external/gsa2023/}, artefact C1). GSA
 results: none, no claim rule evaluated at any factor setting (the paper's
 own values included), no retraining performed, no noise-floor replicate
 run. The analysis code is deposited afterwards, as a new version of
@@ -728,7 +817,7 @@ it, and the Zenodo timestamps of the two versions fix the order.
 
 \appendix
 \section{Model groups of claim X5}\label{app:groups}
-\prop{SI~S2.3 merges model versions into frameworks, citing Dekker et al.\
+SI~S2.3 merges model versions into frameworks, citing Dekker et al.\
 (2023), \emph{Nature} 624:309--316 (reference 13 of the SI), and keeps the
 first nine rows of SI~Table~S3 as the model feature of its variable
 ranking. The main text cites the same authors' study of model
@@ -746,14 +835,14 @@ that every real scenario has a label. C-ROADS, EPPA and MERGE-ETL (rows
 GEM-E3, has 41 scenarios, enough for five stratified folds. In C78,
 however, AIM and COFFEE have one scenario each, so their rows of the C78
 confusion matrix rest on a single prediction. This is why the uniform
-reference computed from the whole 901-set is reported as a variant.}
+reference computed from the whole 901-set is reported as a variant.
 
 \begin{table}[H]
-\caption{\prop{Model groups of claim X5: AR6 v1.1 model names and
+\caption{Model groups of claim X5: AR6 v1.1 model names and
 scenarios per population (C1234/C56/C78). The paper's nine groups in the
-order of SI Table~S3, then GEM-E3 and the models left ungrouped.}}
+order of SI Table~S3, then GEM-E3 and the models left ungrouped.}
 \label{tab:groups}
-\footnotesize\propblock
+\footnotesize
 \begin{tabularx}{\textwidth}{@{}l Y r r r@{}}
 \toprule
 Group & AR6 model names & 1{,}202 & 1{,}160 & 901\\

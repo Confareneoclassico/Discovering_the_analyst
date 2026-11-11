@@ -8,9 +8,8 @@ re-verified on 2026-10-24 against the copies committed in 7ee280d. The raw
 files are also listed one by one in `docs/data_raw_manifest.sha256`, so the
 whole folder is verified from the repository root with
 `shasum -a 256 -c docs/data_raw_manifest.sha256 | grep -v ': OK$'`, which
-prints only mismatches and missing files. Entries marked ⬜ are pending on the
-analysis machine. Hashes are SHA-256 unless labelled otherwise (`shasum`
-without `-a 256` gives SHA-1).
+prints only mismatches and missing files. Hashes are SHA-256 unless labelled
+otherwise (`shasum` without `-a 256` gives SHA-1).
 
 ## Target-paper artefacts
 
@@ -18,7 +17,7 @@ without `-a 256` gives SHA-1).
 |---|----------|--------------|----------------|--------|--------|
 | A1 | Deep-IAM code deposit (audited object), CC BY 4.0 | 10.5281/zenodo.15280653 | **v1.0.0**, published 2025-04-25 (cited by the paper) | archive: Zenodo MD5 f79d8b2511ea5fa92c06ebec3f25693b (`Anderson111-maker/Deep-IAM-v1.0.0.zip`, 144.6 MB); unpacked tree: per file in the manifest (207 files); SHA-1 0b59a7bb97ee8ce9a0ca505f32aa191ca28b0c5c (recorded 2026-09) | ✔ |
 | A2 | Deep-IAM code deposit (2026 update), CC BY 4.0 | concept DOI 10.5281/zenodo.15280652 → version DOI of v1.0.1: 10.5281/zenodo.19751070 | v1.0.1, 2026-04-25 | archive: Zenodo MD5 2796d01e68e7a185172ee2685e26e1c7 (`Anderson111-maker/Deep-IAM-v1.0.1.zip`, 144.6 MB); unpacked tree: per file in the manifest (209 files); SHA-1 ff7817b5d9cac8ae4419447f565bbcf554df7248 (recorded 2026-09) | ✔ diff vs A1 archived in `docs/diff_v100_v101/` (D7) |
-| A3 | 30,000 synthetic scenarios (`Scenarios3000/`: Gen_/Real_ C1234, C56, C78), CC BY 4.0 | 10.5281/zenodo.15240553 | record labelled v2, published 2025-04-18 | per file, below | ✔ Phase 0 fidelity PASS (1,620/1,620, `results/phase0_synthetic_fidelity.json`) |
+| A3 | 30,000 synthetic scenarios (`Scenarios3000/`: Gen_/Real_ C1234, C56, C78), CC BY 4.0 | 10.5281/zenodo.15240553 | record labelled v2, published 2025-04-18 | per file, below | ✔ Phase 0 fidelity PASS in the first run (1,620/1,620, `results/phase0_synthetic_fidelity.json`; the re-run under the exact 2% rule is PENDING-RERUN, DISCREPANCIES.md D10); the Real files carry anonymous identifiers, matched to AR6 scenario by scenario in Phase 0F (`results/phase0f_deposit_crosswalk.json`, `data/derived/crosswalk_901.csv`) |
 | A4 | Paper PDF | 10.1038/s41558-025-02352-8 | VoR 2025-06-13 | 7c4cb08176bfb164… | ✔ in hand |
 | A5 | Supplementary Information (Texts 1–3, Figs S1–S10, Tables S1–S3) | article page | as published | 704f0773ec0f5e65… | ✔ in hand |
 | A6 | Source Data Fig. 2 | article page | as published | d303e48867ac667e… | ✔ |
@@ -83,9 +82,11 @@ the repository root
 SHA-256 before any script reads the file.
 
 On 2026-11-02 the LFS object was downloaded again to run
-`phase0/09_model_groups.py` (Phase 0E, which reads only whether the ten
-electricity variables are reported in each decade), its SHA-256 recomputed
-(match) and the copy deleted after the run.
+`phase0/09_model_groups.py` (Phase 0E), its SHA-256 recomputed (match) and the
+copy deleted after the run. The same was done on 2026-11-10 for the audit made
+before archiving: scripts 02, 04, 09 and 10 were re-run on it (Phase 0E reads
+which electricity variables are reported and which scenarios have coinciding
+values; Phase 0F compares the deposited real files with AR6 values).
 
 **Availability (resolved in Phase 0).** Both reconstructed populations
 (680/308/172 and 554/237/110) were reproduced exactly from the downloadable
@@ -95,23 +96,24 @@ download.
 **Licence.** The AR6 Scenario Explorer licence permits scientific use but
 restricts redistribution of substantial parts of the data. Raw AR6 files
 (B1, B2) are therefore not tracked or deposited, only cited. The derived
-lists in `data/derived/` (the 42 scenarios dropped by D2, the 901-set and the
-X5 folds) contain model and scenario identifiers and category labels, no data
-values. They are deposited with the protocol, so checking them against the
-licence terms is part of the freeze (`docs/FREEZE_CHECKLIST.md`, step 9).
+lists in `data/derived/` (the 42 scenarios dropped by D2, the 901-set, the
+X5 folds and the crosswalk between the deposited real rows and AR6) contain
+model and scenario names, category and group labels, no data values. They
+are deposited with the protocol, so checking them against the licence terms
+is part of the freeze (`docs/FREEZE_CHECKLIST.md`, step 10).
 
 ## External results (comparison across cases)
 
 | # | Artefact | Source | Version pinned | sha256 | Status |
 |---|----------|--------|----------------|--------|--------|
-| C1 | Results of the 2023 case of the series (GSA of Li P.-H. et al. (2023), Jansen design: 57,344 runs, N = 4,096, 12 factors; per run the 13 claim indicators, the number of scenarios, the number of selected features, the random-forest OOB accuracy and the regression coefficients), with the two R scripts, the 2023 indices, tables and figures, a README and `sha256.txt` | G. Vannucci, `data/external/gsa2023/` (commit 3d26d6d, 5 November 2026) | as committed in 3d26d6d | `final_results.rds` e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56 (also in the protocol, section 7); every other file except the README in the folder's `sha256.txt`; README: ⬜ recorded at the freeze, once its mapping is final | ✅ all 19 hashes of `sha256.txt` verified 2026-11-05; README checked; consent to public deposit given 2026-11-05 |
+| C1 | Results of the 2023 case of the series (GSA of Li P.-H. et al. (2023), pick-freeze design of `sensobol`: 57,344 runs, N = 4,096, 12 factors; per run the 13 claim indicators, the number of scenarios, the number of selected features, the random-forest OOB accuracy and the regression coefficients), with the two R scripts, the 2023 indices, tables and figures, a README and `sha256.txt` | G. Vannucci, `data/external/gsa2023/` (commit 3d26d6d, 5 November 2026) | as committed in 3d26d6d | `final_results.rds` e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56 (also in the protocol, section 7); every other file except the README in the folder's `sha256.txt`; README.md (final mapping, commit 2b57183, 9 November 2026) f68031806bf40a31929ae3772466db417656d39595ddf919a5c2c25806de346f | ✅ all 19 hashes of `sha256.txt` verified 2026-11-05 and again 2026-11-09; README checked; mapping final and approved by G. Vannucci 2026-11-09; consent to public deposit given 2026-11-05 |
 
 The README states the design (`sensobol::sobol_matrices`, N = 4,096, k = 12),
 the column dictionary, which rows form the base matrices A and B (rows 1 to
 4,096 and 4,097 to 8,192) and the mapping of the 12 factors to the coordinates
 of G1–G8. The rows were also checked from the design matrix `mat` alone, without
-reading any claim value: blocks 3 to 14 equal A with one column taken from B,
-in the order of `params`. A and B share one point, the centre of the cube (row
+reading any claim value (`docs/checks/check_design_2023.py`): blocks 3 to 14
+equal A with one column taken from B, in the order of `params`. A and B share one point, the centre of the cube (row
 1 of each, the first Sobol' point), run with different seeds. Only A and B
 enter the comparison (protocol section 7), and nothing is computed on these
 runs before the code deposit. The input data (SR1.5 database) are not
@@ -124,5 +126,6 @@ November 2026 that the whole folder be deposited publicly with the protocol.
 1. Nothing in `data/raw/` is ever edited; derived objects go to `data/derived/`
    with the generating script + config recorded in the filename or sidecar JSON.
 2. Every table in the pre-registration protocol cites the artefact IDs above.
-3. Access dates: all items above first retrieved 2026-09 (record exact dates
-   per item when hashing on the analysis machine).
+3. Access dates: the artefacts A and B were first retrieved in September 2026
+   and hashed on 2026-09-16 (`docs/sha256_uploads_2026-09-16.txt`); later
+   downloads of B2 are dated in the note above. C1 is dated by its commits.

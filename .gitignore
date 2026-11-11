@@ -1,11 +1,30 @@
-# Raw deposits and AR6 data: cited by DOI and hashed in DATA.md, not tracked.
-# Every commit before the v16 clean-up of 24 October 2026 contains them (the World
-# CSV via Git LFS), so the repository stays private; the AR6 licence restricts
-# redistribution.
-data/raw/
+# This folder also holds material that must never enter the repository or the deposit (the
+# group's manuscript, reading material, downloaded PDFs). Everything at the top level is
+# therefore ignored unless it is listed here.
+/*
+!/.gitignore
+!/.gitattributes
+!/README.md
+!/DATA.md
+!/DISCREPANCIES.md
+!/DEVIATIONS.md
+!/requirements.txt
+!/requirements-deepiam-env.txt
+!/config/
+!/data/
+!/docs/
+!/phase0/
+!/protocol/
+!/results/
+
+# Raw deposits and AR6 data: cited by DOI and hashed in DATA.md, not tracked. The commits before
+# the clean-up of 24 October 2026 contain them (the World CSV via Git LFS), and the commits of
+# 2 to 9 November 2026 contain the paper's PDF and the manuscript, so the repository stays
+# private; a public mirror is pushed from a fresh history only (docs/FREEZE_CHECKLIST.md).
+/data/raw/
 
 # Machine-specific paths; config/local_paths.example.yaml is the committed template
-config/local_paths.yaml
+/config/local_paths.yaml
 
 # Python
 __pycache__/
@@ -13,14 +32,11 @@ __pycache__/
 .ipynb_checkpoints/
 
 # LaTeX build artefacts. The frozen v1.0 PDF is added once, with: git add -f protocol/preregistration.pdf
-protocol/*.aux
-protocol/*.log
-protocol/*.out
-protocol/*.synctex.gz
-protocol/*.pdf
+/protocol/*.aux
+/protocol/*.log
+/protocol/*.out
+/protocol/*.synctex.gz
+/protocol/*.pdf
 
 # OS
 .DS_Store
-
-# Local archive of superseded working folders
-archive/

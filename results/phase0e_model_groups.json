@@ -523,93 +523,121 @@
   },
   "x5_folds": {
     "file": "data/derived/x5_folds_901.csv",
-    "sha256": "0d2be6a4cee9e2fb30df23c08713888b836bcfe896a1032153588f7e95dd8ce4",
-    "rule": "order the 901 scenarios by category, group and SHA-256 of 'model|scenario'; deal folds 1-5 in turn; store and train in the order of the SHA-256 key",
+    "sha256": "8094cfa4d75abe86c754c42b911ddaf82f91c143652ae12c7e4b30c41664d051",
+    "rule": "duplicates form one unit, keyed by the smallest SHA-256 of 'model|scenario' among its members; order the units by category, group and key; deal folds 1-5 in turn; store and train in the order of the scenarios' keys",
+    "duplicates": {
+      "definition": "scenarios of the 901-set whose AR6 values on the fifteen variables of the D9 rule coincide in every decade 2020-2100: every value differs by at most the tolerance times the variable's largest absolute value in the 901-set; groups are sets of scenarios connected by such pairs",
+      "tolerance": 1e-06,
+      "largest_deviation_within_groups_at_most": 1e-09,
+      "smallest_deviation_between_distinct_scenarios": 2.27e-05,
+      "n_groups": 32,
+      "n_scenarios": 66,
+      "largest_group": 3,
+      "groups_split_by_dealing_scenarios_singly": 29,
+      "n_units": 867,
+      "close_pairs_not_treated_as_duplicates": {
+        "definition": "pairs of scenarios of different units whose largest deviation over the fifteen variables and nine decades is at most the threshold, as a share of each variable's largest absolute value",
+        "0.001": {
+          "pairs": 18,
+          "scenarios": 23,
+          "pairs_in_different_folds": 16,
+          "pairs_of_different_model_groups": 0,
+          "pairs_of_different_categories": 0
+        },
+        "0.01": {
+          "pairs": 40,
+          "scenarios": 55,
+          "pairs_in_different_folds": 35,
+          "pairs_of_different_model_groups": 0,
+          "pairs_of_different_categories": 0
+        }
+      }
+    },
     "scenarios_per_fold_by_group": {
       "AIM": [
         11,
+        10,
         11,
         9,
-        9,
-        10
+        9
       ],
       "COFFEE": [
+        11,
         13,
-        12,
-        14,
         13,
+        15,
         13
       ],
       "GCAM": [
-        8,
+        10,
         10,
         9,
-        9,
+        7,
         8
       ],
       "GEM-E3": [
         8,
         7,
-        8,
         9,
+        8,
         9
       ],
       "MESSAGE": [
+        48,
+        49,
         49,
         50,
-        50,
-        49,
-        48
+        50
       ],
       "POLES": [
-        23,
-        23,
-        23,
+        24,
+        26,
         22,
-        23
+        21,
+        21
       ],
       "REMIND": [
+        61,
+        56,
+        59,
         60,
-        59,
-        58,
-        59,
         60
       ],
       "TIAM-ECN": [
         9,
+        10,
         8,
         9,
-        10,
         9
       ],
       "all": [
+        182,
         181,
         180,
-        180,
-        180,
-        180
+        179,
+        179
       ]
     },
     "scenarios_per_fold_by_category": {
       "C1234": [
+        113,
+        110,
+        109,
         111,
-        111,
-        111,
-        111,
-        110
+        111
       ],
       "C56": [
-        48,
         47,
-        47,
-        47,
-        48
+        49,
+        50,
+        45,
+        46
       ],
       "C78": [
         22,
         22,
-        22,
-        22,
+        21,
+        23,
         22
       ]
     }

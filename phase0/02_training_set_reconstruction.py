@@ -1,107 +1,118 @@
 #!/usr/bin/env python3
-"""Phase 0.2 — reconstruct the training set from the raw AR6 World CSV.
+"""Phase 0.2: reconstruct the training set from the AR6 World CSV (D2).
 
-Goal (DISCREPANCIES.md D2): starting from the 1,202 vetted scenarios, find
-the filter that yields the SI S3.1 training counts (C1234=680, C56=308,
-C78=172; total 1,160), i.e. identify the 42 silently dropped scenarios.
+Starting from the 1,202 vetted scenarios, find the filter that yields the
+training counts of SI S3.1 (C1234 = 680, C56 = 308, C78 = 172; total 1,160),
+that is, identify the 42 scenarios dropped without a stated rule.
 
-Strategy: test completeness filters on the candidate key variables over the
-2010–2100 (and, per D5, 2020–2100) grids, in increasing strictness, and
-report which — if any — reproduces the counts exactly. Everything is logged;
-failure to reproduce is a finding, not an error.
+Four completeness filters are tested: the five feature variables, with and
+without native Kyoto Gases, on the decades 2010-2100 and 2020-2100. A variable
+is complete for a scenario when it has a value in every decade of the grid.
+Every filter is logged; failing to reproduce the counts would be a finding, not
+an error. Result: complete 2020-2100 coverage of the five features, Kyoto Gases
+not required, reproduces the counts exactly.
 
-Runs on the analysis machine (World CSV ~400 MB, path in local_paths.yaml).
-Output: ../results/phase0_training_set.json and
-        ../data/derived/training_candidates_<filter>.csv
+The AR6 names of the five features are confirmed by Phase 0F, which matches
+the deposited real scenarios to these variables value by value
+(10_deposit_crosswalk.py). The Kyoto Gases tested here are the native
+"Emissions|Kyoto Gases". The pipeline uses an infilled diagnostic instead, which
+every vetted scenario has in every decade from 2020 to 2100 (it starts in 2015,
+so it has no 2010 value): on the 2020-2100 grid of the reproducing filter it
+cannot bind (D16).
 
-NOTE: the AR6 variable names for the paper's key variables must be confirmed
-against the Deep-IAM notebooks (Kmeans / data_world_single_variable.ipynb)
-before trusting results — edit KEY_VARIABLES below if the notebooks differ.
+Usage:  python3 02_training_set_reconstruction.py [--paths ../config/local_paths.yaml]
+Needs:  ar6_metadata_xlsx and ar6_world_csv in local_paths.yaml (DATA.md, B1 and B2)
+Output: ../results/phase0_training_set.json and, for a filter that reproduces the
+        counts, ../data/derived/dropped42_<grid>_<variant>.csv (the dropped scenarios)
 """
-import json, argparse, itertools
+import argparse, json
 from pathlib import Path
 import pandas as pd
 import yaml
 
-# Candidate mapping paper-name -> AR6 'Variable' string. CONFIRM AGAINST CODE (D3).
+ROOT = Path(__file__).resolve().parent.parent
 KEY_VARIABLES = {
     "PrimaryEnergy_Coal": "Primary Energy|Coal",
     "PrimaryEnergy_Oil": "Primary Energy|Oil",
     "PrimaryEnergy_Gas": "Primary Energy|Gas",
     "FinalEnergy_Liquid": "Final Energy|Liquids",
-    "CarbonSequestration": "Carbon Sequestration|CCS",   # alt: "Carbon Sequestration|CCS|Biomass"? confirm
-    "KyotoGases": "Emissions|Kyoto Gases",
+    "CarbonSequestration": "Carbon Sequestration|CCS",
+    "KyotoGases": "Emissions|Kyoto Gases",          # native variable; not the one the pipeline uses (D16)
 }
 AGG = {"C1234": ["C1", "C2", "C3", "C4"], "C56": ["C5", "C6"], "C78": ["C7", "C8"]}
 TARGET = {"C1234": 680, "C56": 308, "C78": 172}
 GRIDS = {"2010_2100": list(range(2010, 2101, 10)), "2020_2100": list(range(2020, 2101, 10))}
 
 
+def write_lf(path, text):
+    """Write text with LF line endings on every platform."""
+    Path(path).write_bytes(text.replace("\r\n", "\n").encode("utf-8"))
+
+
 def load_world_subset(csv_path, variables, chunksize=200_000):
-    """Stream the World CSV, keeping only rows for the requested variables."""
+    """World-region rows of the requested variables, streamed from the World CSV."""
     keep = []
-    usecols = None
-    for chunk in pd.read_csv(csv_path, chunksize=chunksize, usecols=usecols):
-        keep.append(chunk[chunk["Variable"].isin(variables)])
+    for chunk in pd.read_csv(csv_path, chunksize=chunksize):
+        keep.append(chunk[(chunk["Region"] == "World") & chunk["Variable"].isin(variables)])
     return pd.concat(keep, ignore_index=True)
 
 
 def completeness_table(df_long, years):
-    """scenario-key x variable -> True if all `years` present and non-null."""
-    ycols = [str(y) for y in years if str(y) in df_long.columns] or \
-            [y for y in years if y in df_long.columns]
-    ok = df_long[ycols].notna().all(axis=1)
-    t = df_long.assign(_complete=ok).pivot_table(
-        index=["Model", "Scenario"], columns="Variable", values="_complete",
-        aggfunc="max", fill_value=False)
+    """Scenario x variable: True if the variable has a value in every one of `years`."""
+    ycols = [str(y) for y in years]
+    missing = [y for y in ycols if y not in df_long.columns]
+    if missing:
+        raise SystemExit(f"year columns missing from the World CSV: {missing}")
+    t = pd.DataFrame({"Model": df_long["Model"], "Scenario": df_long["Scenario"], "Variable": df_long["Variable"],
+                      "_complete": df_long[ycols].notna().all(axis=1)})
+    t = t.pivot_table(index=["Model", "Scenario"], columns="Variable", values="_complete",
+                      aggfunc="max", fill_value=False)
     return t.astype(bool)
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--paths", default=str(Path(__file__).parent.parent / "config" / "local_paths.yaml"))
+    ap.add_argument("--paths", default=str(ROOT / "config" / "local_paths.yaml"))
     args = ap.parse_args()
     paths = yaml.safe_load(open(args.paths))
 
-    meta = pd.read_excel(paths["ar6_metadata_xlsx"], sheet_name="meta_Ch3vetted_withclimate")
+    meta = pd.read_excel(Path(paths["ar6_metadata_xlsx"]).expanduser(), sheet_name="meta_Ch3vetted_withclimate")
     meta["agg"] = meta["Category"].map({c: a for a, cs in AGG.items() for c in cs})
     vetted = meta.set_index(["Model", "Scenario"])["agg"]
+    if not vetted.index.is_unique:
+        raise SystemExit("duplicate model-scenario pairs in the metadata")
 
-    world = load_world_subset(paths["ar6_world_csv"], set(KEY_VARIABLES.values()))
-    world = world[world["Region"] == "World"] if "Region" in world.columns else world
+    world = load_world_subset(Path(paths["ar6_world_csv"]).expanduser(), set(KEY_VARIABLES.values()))
 
     report = {"target": TARGET, "filters_tested": []}
     feature_vars = [v for k, v in KEY_VARIABLES.items() if k != "KyotoGases"]
 
     for grid_name, years in GRIDS.items():
-        comp = completeness_table(world, years)
-        comp = comp.reindex(vetted.index).fillna(False)
-        # filter variants: require completeness on the 5 features, +/- Kyoto Gases
+        comp = completeness_table(world, years).reindex(vetted.index, fill_value=False)
         variants = {
             "5features": feature_vars,
             "5features+kyoto": feature_vars + [KEY_VARIABLES["KyotoGases"]],
         }
         for vname, vars_req in variants.items():
-            have = [v for v in vars_req if v in comp.columns]
-            mask = comp[have].all(axis=1) if have else pd.Series(False, index=comp.index)
+            absent = sorted(set(vars_req) - set(comp.columns))     # variables no scenario reports at all
+            mask = comp[vars_req].all(axis=1) if not absent else pd.Series(False, index=comp.index)
             counts = vetted[mask].value_counts().to_dict()
             entry = {"grid": grid_name, "variant": vname,
-                     "missing_variable_columns": sorted(set(vars_req) - set(comp.columns)),
+                     "missing_variable_columns": absent,
                      "counts": {a: int(counts.get(a, 0)) for a in TARGET},
                      "exact_match": all(counts.get(a, 0) == n for a, n in TARGET.items())}
             report["filters_tested"].append(entry)
             if entry["exact_match"]:
-                dropped = vetted[~mask]
-                dpath = Path(__file__).parent.parent / "data" / "derived" / f"dropped42_{grid_name}_{vname}.csv"
+                dpath = ROOT / "data" / "derived" / f"dropped42_{grid_name}_{vname}.csv"
                 dpath.parent.mkdir(parents=True, exist_ok=True)
-                dropped.reset_index().to_csv(dpath, index=False)
-                entry["dropped_list"] = str(dpath)
+                write_lf(dpath, vetted[~mask].reset_index().to_csv(index=False))
+                entry["dropped_list"] = dpath.relative_to(ROOT).as_posix()
 
     report["conclusion"] = ("REPRODUCED" if any(e["exact_match"] for e in report["filters_tested"])
-                            else "NOT REPRODUCED under tested filters — finding (D2)")
-    out = Path(__file__).parent.parent / "results" / "phase0_training_set.json"
+                            else "NOT REPRODUCED under the tested filters: a finding (D2)")
+    out = ROOT / "results" / "phase0_training_set.json"
     out.parent.mkdir(exist_ok=True)
-    out.write_text(json.dumps(report, indent=2))
+    write_lf(out, json.dumps(report, indent=2) + "\n")
     print(json.dumps(report, indent=2))
 
 

@@ -1,5 +1,5 @@
 Phase 0C.1 static code scan of Deep-IAM v1.0.0 (no execution)
-root: ../data/raw/Anderson111/Deep-IAM_v1.0.0
+root: the unpacked Deep-IAM v1.0.0 deposit (deepiam_v100_dir; DATA.md, A1)
 
 Per-file hit counts:
     6 hits  Data processing and Kmeans/Kmeans Analysis.ipynb

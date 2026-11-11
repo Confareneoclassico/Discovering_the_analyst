@@ -1,0 +1,4 @@
+# No end-of-line conversion on any platform. Several files are pinned by SHA-256
+# (docs/pinned_outputs.sha256, DATA.md, data/external/gsa2023/sha256.txt), and a checkout or a
+# `git archive` that rewrote line endings would break those pins.
+* -text

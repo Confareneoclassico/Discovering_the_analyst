@@ -28,6 +28,11 @@ PAPER_VALUE = 0.012
 canon = lambda s: re.sub(r"[^a-z]", "", str(s).lower())
 
 
+def write_lf(path, text):
+    """Write text with LF line endings on every platform."""
+    Path(path).write_bytes(text.replace("\r\n", "\n").encode("utf-8"))
+
+
 def read_real(path):
     if "gen_" in path.name.lower():
         raise SystemExit("Refusing to read a synthetic file before the freeze: " + path.name)
@@ -67,7 +72,7 @@ def aggregations(T, F):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--paths", default=str(Path(__file__).parent.parent / "config" / "local_paths.yaml"))
+    ap.add_argument("--paths", default=str(Path(__file__).resolve().parent.parent / "config" / "local_paths.yaml"))
     args = ap.parse_args()
     paths = yaml.safe_load(open(args.paths))
     dep = Path(paths["scenarios3000_dir"]).expanduser()
@@ -85,13 +90,15 @@ def main():
 
     cands = {k: v for k, v in report["pooled_901"].items() if not k.startswith(("n_", "share_"))}
     report["candidates_rounding_to_1.2pct"] = sorted(k for k, v in cands.items() if round(100 * v, 1) == 1.2)
-    report["closest_candidate"] = min(cands, key=lambda k: abs(cands[k] - PAPER_VALUE))
+    # two candidates coincide when no cell is missing (the mean of scenario means is then the pooled mean):
+    # distances are compared at twelve significant digits and a tie goes to the first name in alphabetical order
+    report["closest_candidate"] = min(sorted(cands), key=lambda k: float(f"{abs(cands[k] - PAPER_VALUE):.12g}"))
     report["note"] = ("If exactly one candidate rounds to 1.2%, it is taken as the authors' aggregation "
                       "for X3; if none or several do, the protocol keeps the mean over decades and "
                       "records the ambiguity.")
-    dest = Path(__file__).parent.parent / "results" / "phase0c_sumcheck_reference.json"
+    dest = Path(__file__).resolve().parent.parent / "results" / "phase0c_sumcheck_reference.json"
     dest.parent.mkdir(exist_ok=True)
-    dest.write_text(json.dumps(report, indent=2))
+    write_lf(dest, json.dumps(report, indent=2) + "\n")
     print(json.dumps({k: report[k] for k in ["pooled_901", "candidates_rounding_to_1.2pct", "closest_candidate"]}, indent=2))
 
 

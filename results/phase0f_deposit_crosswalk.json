@@ -1,0 +1,178 @@
+{
+  "inputs_sha256": {
+    "B2, AR6 World CSV v1.1": "4cf39b6b0d968e25ed389318acb1674f92146f977e9db4bfb7970f048ff73977",
+    "data/derived/kept901_5feat+elec10.csv": "64e6311addbea1c46e6696332acb43382e9fad39fea554696b7cef402fe0565b",
+    "data/derived/x5_folds_901.csv": "8094cfa4d75abe86c754c42b911ddaf82f91c143652ae12c7e4b30c41664d051",
+    "A3, Real_C1234.csv": "2a7d7327c7945ef5978b75edd3ebf7e5ecbfff1d01b40eac93cbf939cdaa3751",
+    "A3, Real_C56.csv": "bd5df3a919f2d4a52c0fffc6142f98e17071f3ec70967b592de8980bab6d8b87",
+    "A3, Real_C78.csv": "a773fa8cda1dd778fb818e3efac080671be72115ba8f04a489bf4432b0968c2d"
+  },
+  "definitions": {
+    "rule": "within each category, Scenario:k of the deposit is the k-th scenario of data/derived/kept901_5feat+elec10.csv in ascending order of (Model, Scenario), code-point order",
+    "equal": "largest absolute deviation over the nine decades 2020-2100 at most 1e-06 of the deposited variable's largest absolute value in the category, on each of the sixteen variables",
+    "duplicates": "deposited scenarios whose values coincide on all compared variables and decades: every value differs by at most 1e-06 of the variable's largest absolute value in the deposit (members of a group must agree to 1e-09); groups are sets of scenarios connected by such pairs. The groups on the fifteen variables of the D9 rule are checked against the column duplicate_group of data/derived/x5_folds_901.csv, which 09_model_groups.py derives from the AR6 values. Kyoto Gases are not among the fifteen: their deviation inside a group is the largest absolute difference between a member and the group's first, as a share of the variable's largest absolute value (identical: at most 1e-09)"
+  },
+  "ar6_variables": {
+    "PrimaryEnergy_Coal": "Primary Energy|Coal",
+    "PrimaryEnergy_Oil": "Primary Energy|Oil",
+    "PrimaryEnergy_Gas": "Primary Energy|Gas",
+    "FinalEnergy_Liquid": "Final Energy|Liquids",
+    "CarbonSequestration": "Carbon Sequestration|CCS",
+    "SecondaryEle": "Secondary Energy|Electricity",
+    "SecondaryEle_Biomass": "Secondary Energy|Electricity|Biomass",
+    "SecondaryEle_Coal": "Secondary Energy|Electricity|Coal",
+    "SecondaryEle_Gas": "Secondary Energy|Electricity|Gas",
+    "SecondaryEle_Geothermal": "Secondary Energy|Electricity|Geothermal",
+    "SecondaryEle_Hydro": "Secondary Energy|Electricity|Hydro",
+    "SecondaryEle_Nuclear": "Secondary Energy|Electricity|Nuclear",
+    "SecondaryEle_Oil": "Secondary Energy|Electricity|Oil",
+    "SecondaryEle_Solar": "Secondary Energy|Electricity|Solar",
+    "SecondaryEle_Wind": "Secondary Energy|Electricity|Wind",
+    "Kyoto_Gases": "AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR6-GWP100)"
+  },
+  "per_category": {
+    "C1234": {
+      "n_scenarios": 554,
+      "n_equal_on_all_16_variables": 554,
+      "max_scaled_deviation": 3.06e-09,
+      "kyoto_candidates": {
+        "Emissions|Kyoto Gases": {
+          "n_reported": 508,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.215
+        },
+        "AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR5-GWP100)": {
+          "n_reported": 554,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.0134
+        },
+        "AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR6-GWP100)": {
+          "n_reported": 554,
+          "n_equal": 554,
+          "max_scaled_deviation": 7.93e-11
+        },
+        "AR6 climate diagnostics|Native-with-Infilled|Emissions|Kyoto Gases (AR5-GWP100)": {
+          "n_reported": 554,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.129
+        },
+        "AR6 climate diagnostics|Native-with-Infilled|Emissions|Kyoto Gases (AR6-GWP100)": {
+          "n_reported": 554,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.127
+        }
+      },
+      "duplicates_on_15_raw_variables": {
+        "n_groups": 7,
+        "n_scenarios": 14
+      }
+    },
+    "C56": {
+      "n_scenarios": 237,
+      "n_equal_on_all_16_variables": 237,
+      "max_scaled_deviation": 0.0,
+      "kyoto_candidates": {
+        "Emissions|Kyoto Gases": {
+          "n_reported": 219,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.0937
+        },
+        "AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR5-GWP100)": {
+          "n_reported": 237,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.0126
+        },
+        "AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR6-GWP100)": {
+          "n_reported": 237,
+          "n_equal": 237,
+          "max_scaled_deviation": 0.0
+        },
+        "AR6 climate diagnostics|Native-with-Infilled|Emissions|Kyoto Gases (AR5-GWP100)": {
+          "n_reported": 237,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.0617
+        },
+        "AR6 climate diagnostics|Native-with-Infilled|Emissions|Kyoto Gases (AR6-GWP100)": {
+          "n_reported": 237,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.0666
+        }
+      },
+      "duplicates_on_15_raw_variables": {
+        "n_groups": 17,
+        "n_scenarios": 34
+      }
+    },
+    "C78": {
+      "n_scenarios": 110,
+      "n_equal_on_all_16_variables": 110,
+      "max_scaled_deviation": 0.0,
+      "kyoto_candidates": {
+        "Emissions|Kyoto Gases": {
+          "n_reported": 101,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.0702
+        },
+        "AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR5-GWP100)": {
+          "n_reported": 110,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.00801
+        },
+        "AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR6-GWP100)": {
+          "n_reported": 110,
+          "n_equal": 110,
+          "max_scaled_deviation": 0.0
+        },
+        "AR6 climate diagnostics|Native-with-Infilled|Emissions|Kyoto Gases (AR5-GWP100)": {
+          "n_reported": 110,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.0536
+        },
+        "AR6 climate diagnostics|Native-with-Infilled|Emissions|Kyoto Gases (AR6-GWP100)": {
+          "n_reported": 110,
+          "n_equal": 0,
+          "max_scaled_deviation": 0.0522
+        }
+      },
+      "duplicates_on_15_raw_variables": {
+        "n_groups": 8,
+        "n_scenarios": 18
+      }
+    }
+  },
+  "all": {
+    "n_scenarios": 901,
+    "n_equal_on_all_16_variables": 901,
+    "duplicates_on_15_raw_variables": {
+      "n_groups": 32,
+      "n_scenarios": 66,
+      "largest_group": 3,
+      "identical_within_groups": true,
+      "smallest_deviation_between_distinct_scenarios": 2.27e-05,
+      "groups_spanning_categories": 0,
+      "groups_spanning_model_groups": 0,
+      "groups_spanning_model_versions": 0,
+      "scenarios_by_model_group": {
+        "AIM": 4,
+        "COFFEE": 6,
+        "GEM-E3": 4,
+        "MESSAGE": 4,
+        "POLES": 24,
+        "REMIND": 24
+      },
+      "equal_to_duplicate_groups_of_x5_folds": true,
+      "kyoto_gases_within_groups": {
+        "n_groups_identical": 28,
+        "n_scenarios_in_identical_groups": 58,
+        "n_groups_within_tolerance_not_identical": 1,
+        "n_groups_differing": 3,
+        "smallest_deviation_among_differing": 0.00119,
+        "largest_deviation": 0.00632
+      }
+    }
+  },
+  "crosswalk": {
+    "file": "data/derived/crosswalk_901.csv",
+    "sha256": "2d503d6385934d2b1729040c4d66f21820b956a1cee901f372d9c1504e093a21"
+  }
+}

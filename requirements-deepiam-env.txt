@@ -1,6 +1,6 @@
-# Authors' environment (Configuration of Environments.txt, Deep-IAM v1.0.1)
-# Windows conda env, python 3.8.20. Core pins for replication:
-python==3.8.20
+# The authors' environment, from "Configuration of Environments.txt" of Deep-IAM v1.0.1: a Windows
+# conda environment with Python 3.8.20 (Python is not a pip package, so it is not listed as a
+# requirement). Core pins for replication:
 tensorflow==2.13.0
 keras==2.13.1
 tsgm==0.0.7
@@ -13,3 +13,8 @@ scipy==1.10.1
 xgboost==2.1.1
 shap==0.44.1
 tslearn==0.6.3
+# Not in the authors' environment, needed by phase0/05_regeneration_check.py:
+pyyaml>=6.0
+# Phase 0B was run under Python 3.10.21 on macOS/arm64 with these versions, except xgboost, shap
+# and tslearn, which the generation stage does not use and that environment does not contain; its
+# complete list is results/phase0b_env_freeze.txt.

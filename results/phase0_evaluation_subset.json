@@ -35,7 +35,7 @@
         "C78": 110
       },
       "exact_match": true,
-      "kept_list": "/Users/es922014/Google Drive/Research/Discovering_the_analyst/momp-li2025-otgsa 2/data/derived/kept901_5feat+elec10.csv"
+      "kept_list": "data/derived/kept901_5feat+elec10.csv"
     },
     {
       "variant": "5feat+elec10+kyoto (all required)",

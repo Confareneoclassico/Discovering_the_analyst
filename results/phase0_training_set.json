@@ -37,7 +37,7 @@
         "C78": 172
       },
       "exact_match": true,
-      "dropped_list": "/Users/es922014/Google Drive/Research/Discovering_the_analyst/momp-li2025-otgsa/data/derived/dropped42_2020_2100_5features.csv"
+      "dropped_list": "data/derived/dropped42_2020_2100_5features.csv"
     },
     {
       "grid": "2020_2100",

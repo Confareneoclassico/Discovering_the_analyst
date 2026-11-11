@@ -14,12 +14,13 @@ computes, before the freeze, the cells where the floors bind.
 
 It reads ONLY Real_*.csv and the configuration. No synthetic file is read and no
 claim rule is evaluated. The output contains no timestamp or environment
-information, so a re-run on the same inputs reproduces it byte for byte.
+information and is written with LF line endings, so a re-run on the same inputs
+reproduces it byte for byte.
 
 Usage:  python3 08_denominator_guard.py [--paths ../config/local_paths.yaml]
 Output: ../results/phase0d_denominator_guard.json
 """
-import argparse, hashlib, json, re
+import argparse, hashlib, json
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -32,6 +33,11 @@ CATEGORIES = ["C1234", "C56", "C78"]
 def sig(x, n=6):
     """Round to n significant digits so that the report does not depend on float noise."""
     return float(f"{x:.{n}g}")
+
+
+def write_lf(path, text):
+    """Write text with LF line endings on every platform."""
+    Path(path).write_bytes(text.replace("\r\n", "\n").encode("utf-8"))
 
 
 def read_real(path, variables, years, n_expected):
@@ -83,6 +89,8 @@ def main():
             band = np.quantile(X, 0.90, axis=0) - np.quantile(X, 0.10, axis=0)   # linear interpolation
             sd = X.std(axis=0, ddof=1)
             mb, ms = np.median(band), np.median(sd)
+            if not (mb > 0 and ms > 0):
+                raise SystemExit(f"{v}, {c}: the median spread over the decades is zero, so the floor is undefined")
             for i, y in enumerate(years):
                 common = {"variable": v, "category": c, "year": int(y), "n_scenarios": int(X.shape[0]),
                           "zero_fraction": sig(np.mean(X[:, i] == 0), 4)}
@@ -113,12 +121,13 @@ def main():
             "n_marginals": len(sds),
             "n_zero_sds": sum(r["sd"] == 0 for r in sds),
             "binding_marginals": {str(fl): binding(sds, fl) for fl in floors},
-            "max_magnification_without_floor": sig(1 / min(r["ratio"] for r in sds), 3),
+            "max_magnification_without_floor": (sig(1 / min(r["ratio"] for r in sds), 3)
+                                                if min(r["ratio"] for r in sds) > 0 else None),
         },
     }
     dest = ROOT / "results" / "phase0d_denominator_guard.json"
     dest.parent.mkdir(exist_ok=True)
-    dest.write_text(json.dumps(report, indent=2) + "\n")
+    write_lf(dest, json.dumps(report, indent=2) + "\n")
     for name, block, k in [("X1a bands", report["x1a_band"], "binding_cells"),
                            ("ensemble SDs", report["ensemble_sd"], "binding_marginals")]:
         print(f"{name}: " + "; ".join(f"floor {fl}: {len(v)}" for fl, v in block[k].items()))

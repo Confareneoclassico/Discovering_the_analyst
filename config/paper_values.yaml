@@ -1,12 +1,14 @@
-# Factor space and fixed settings, release candidate v0.5.
+# Factor space and fixed settings, release candidate v0.6.
 # Aligned one-to-one with protocol/preregistration.tex (Table 1, sections 4 to 8 and 10, appendix).
 # Where this file and the protocol disagree, the protocol governs.
 # Frozen at deposit. Tags: "agreed" = settled in the co-authors' review of 23 October 2026;
-# "approved" = proposed in v0.3 or v0.4 and approved in G. Vannucci's replies (relayed
-# 27 October and 2 November 2026); "phase0c" / "phase0d" / "phase0e" = adjudicated from
-# results/phase0c_* (24 October), results/phase0d_denominator_guard.json (27 October) and
-# results/phase0e_model_groups.json (2 November 2026); "proposed v0.5" = blue text in the
-# release-candidate PDF, new in v0.5 and awaiting approval.
+# "approved" = proposed in v0.3, v0.4 or v0.5 and approved (G. Vannucci's replies relayed
+# 27 October and 2 November 2026; all co-authors at the meeting of 5 November 2026);
+# "phase0c" / "phase0d" / "phase0e" / "phase0f" = adjudicated from results/phase0c_* (24 October),
+# results/phase0d_denominator_guard.json (27 October), results/phase0e_model_groups.json
+# (2 and 10 November) and results/phase0f_deposit_crosswalk.json (10 November 2026);
+# "proposed v0.6" = blue text in the release-candidate PDF, from the audit made before archiving
+# (10 November 2026), awaiting approval.
 #
 # cost: expensive = requires retraining (outer design, 512 scrambled Sobol' points)
 #       cheap     = varies per trained model (inner design, 8 points per training)
@@ -23,12 +25,17 @@ factors:
       "901":  {rule: "complete 2020-2100 raw coverage on 5 features + 10 electricity variables, Kyoto exempt (D9)", counts: {C1234: 554, C56: 237, C78: 110},
                note: "contains no IMAGE or WITCH scenario: none of their 257 vetted scenarios reports World geothermal electricity (D15, phase0e)"}
       "910":  {rule: "as 901, carbon sequestration imputed rather than required", counts: {C1234: 554, C56: 237, C78: 119}}
-      "828":  {rule: "as 901, Kyoto Gases also required", counts: {C1234: 508, C56: 219, C78: 101}}
+      "828":  {rule: "as 901, native Kyoto Gases (Emissions|Kyoto Gases) reporting also required; the level restricts the population and changes no variable", counts: {C1234: 508, C56: 219, C78: 101}}   # wording proposed v0.6 (D16)
       "1160": {rule: "D2 rule, 5 features only; missing electricity values filled by G4", counts: {C1234: 680, C56: 308, C78: 172}}
       "1202": {rule: "all vetted with climate category; missing values filled by G4", counts: {C1234: 700, C56: 309, C78: 193}}
-    note: >-                # approved
+    note: >-                # approved; corrected in v0.6 (proposed v0.6, D16): 901-set, not 828-set
       G1 and G4 interact by construction: under G4 imputation "none_drop_incomplete" every
-      level shrinks to its complete cases on the generated set, the 828-set when that set is E
+      level shrinks to its complete cases on the generated set, the 901-set when that set is E
+      (the 828-set at level 828), because the Kyoto Gases of the pipeline are never missing
+    data_source: >-         # proposed v0.6 (phase0f)
+      training data are built from the AR6 World CSV with fixed.evaluation_set_E.ar6_variables
+      (Kyoto Gases: the infilled AR6-GWP100 diagnostic at every level); at the paper's values of
+      G1 and G3 they reproduce the deposited Real_*.csv (results/phase0f_deposit_crosswalk.json)
 
   G2_category_aggregation:
     cost: expensive
@@ -126,6 +133,23 @@ fixed:
     electricity: [SecondaryEle, SecondaryEle_Biomass, SecondaryEle_Coal, SecondaryEle_Gas, SecondaryEle_Geothermal,
                   SecondaryEle_Hydro, SecondaryEle_Nuclear, SecondaryEle_Oil, SecondaryEle_Solar, SecondaryEle_Wind]
     years: [2020, 2030, 2040, 2050, 2060, 2070, 2080, 2090, 2100]
+    ar6_variables:               # phase0f: the AR6 v1.1 World variable behind each deposited variable (proposed v0.6)
+      PrimaryEnergy_Coal: "Primary Energy|Coal"
+      PrimaryEnergy_Oil: "Primary Energy|Oil"
+      PrimaryEnergy_Gas: "Primary Energy|Gas"
+      FinalEnergy_Liquid: "Final Energy|Liquids"
+      CarbonSequestration: "Carbon Sequestration|CCS"
+      Kyoto_Gases: "AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases (AR6-GWP100)"   # not the native "Emissions|Kyoto Gases" (D16)
+      SecondaryEle: "Secondary Energy|Electricity"
+      SecondaryEle_Biomass: "Secondary Energy|Electricity|Biomass"
+      SecondaryEle_Coal: "Secondary Energy|Electricity|Coal"
+      SecondaryEle_Gas: "Secondary Energy|Electricity|Gas"
+      SecondaryEle_Geothermal: "Secondary Energy|Electricity|Geothermal"
+      SecondaryEle_Hydro: "Secondary Energy|Electricity|Hydro"
+      SecondaryEle_Nuclear: "Secondary Energy|Electricity|Nuclear"
+      SecondaryEle_Oil: "Secondary Energy|Electricity|Oil"
+      SecondaryEle_Solar: "Secondary Energy|Electricity|Solar"
+      SecondaryEle_Wind: "Secondary Energy|Electricity|Wind"
 
   real_comparator: "901-set (deposited Real_*.csv)"
 
@@ -157,7 +181,7 @@ fixed:
     X4:  {experiment: "I, synthetic to real", test_population: "901-set", like_for_like: true,
           synthetic_per_category: 1000, inputs: "trapezoid-cumulated 2020-2100 values of the 15 variables of E other than Kyoto Gases",
           G7_acts: false}   # phase0c (D12); G7 does not act on X4 (approved)
-    X5:                                       # labels, reference mixes, folds: proposed v0.5
+    X5:                                       # labels, reference mixes, folds: approved
       labels:
         source: "SI S2.3 and Table S3: versions merged into frameworks following Dekker et al. 2023, Nature 624, 309-316; first nine kept"
         paper_nine: [IMAGE, TIAM-ECN, GCAM, POLES, AIM, MESSAGE, REMIND, WITCH, COFFEE]
@@ -176,21 +200,23 @@ fixed:
           WITCH: [WITCH 4.6, WITCH 5.0, WITCH-GLOBIOM 3.1, WITCH-GLOBIOM 4.2, WITCH-GLOBIOM 4.4]
         not_grouped: [C-ROADS-5.005, EPPA 6, MERGE-ETL 6.0]   # Table S3 rows 10, 11 and 13; none in the 901-set
       merge_note: "the merge is the paper's own (SI S2.3), which cites Dekker et al. 2023, Nature; the X5 test idea relates to Dekker et al. 2023, Nature Energy 8, 1395-1404 (model fingerprints)"
-      classifier: "random forest of G8's paper level (rf_code), fitted in each of the five training folds with its grid search inside the fold; no classifier is refitted on the whole 901-set"   # approved; fold detail proposed v0.5
+      classifier: "random forest of G8's paper level (rf_code), fitted in each of the five training folds with its grid search inside the fold; no classifier is refitted on the whole 901-set"   # approved; fold detail approved
       inputs: "trapezoid-cumulated 2020-2100 values of the 16 variables of E"   # approved
-      folds: "data/derived/x5_folds_901.csv (phase0e): scenarios ordered by category, group and SHA-256 of 'model|scenario', dealt to folds 1-5 in turn; rows in the order of the SHA-256 key for fitting, which also fixes the grid search's inner three-fold split"   # proposed v0.5
-      fitting: "fold classifiers, out-of-fold predictions, gates and references computed once with the deposited code, after the code deposit and before the first run, and archived"   # proposed v0.5
-      gate: "lower bound of the 95% Clopper-Pearson interval of the out-of-fold accuracy (correct out-of-fold predictions out of 901) exceeds the majority-class rate (REMIND, 296/901 = 0.329)"   # approved; interval type and counting proposed v0.5
-      gate_by_category: "the same test within each category against its own majority rate: C1234 REMIND 185/554 = 0.334, C56 MESSAGE 77/237 = 0.325, C78 REMIND 58/110 = 0.527"   # proposed v0.5
-      gate_failure: "X5 not testable, no indices, if the pooled gate fails or no category passes its gate; a category failing its gate is reported as not testable"   # approved; per-category part proposed v0.5
-      labels_predicted: "hard labels, as returned by predict"   # proposed v0.5
-      real_reference: "per category, the mix of the out-of-fold predicted labels of its real scenarios"   # proposed v0.5 (G. Vannucci)
-      uniform_reference: "per category, the mix predicted for a uniform mix of the eight groups: the mean of the rows (true groups) of that category's out-of-fold confusion matrix, each row normalised to sum to one"   # proposed v0.5
-      uniform_reference_variant: "the same from the confusion matrix of the whole 901-set; reported, no decision"   # proposed v0.5
-      synthetic_mix: "per category, the mix of labels the five fold classifiers assign to its synthetic scenarios, averaged over the five"   # proposed v0.5
-      rule: "X5 holds if, in each category that passes its gate, TV(synthetic mix, real reference) < TV(synthetic mix, uniform reference)"   # proposed v0.5
-      G1_note: "under every factor level the references are those of the 901-set, the real comparator of every claim"   # proposed v0.5
-      limitations: "each fold classifier has seen four fifths of the real scenarios the generator learns from, so it may label synthetic scenarios with less shrinkage than held-out real ones; scenarios of the same model and study can fall in different folds, so out-of-fold accuracy and the gates are optimistic"   # proposed v0.5
+      folds: "data/derived/x5_folds_901.csv (phase0e): duplicates (AR6 values on the fifteen variables of the D9 rule coinciding in every decade, to within 1e-6 of each variable's largest absolute value; 32 groups, 66 scenarios) form one unit; the 867 units are ordered by category, group and SHA-256 of 'model|scenario' (the smallest among a unit's members) and dealt to folds 1-5 in turn; rows in the order of the SHA-256 key for fitting"   # approved; units of duplicates proposed v0.6 (D17)
+      inner_folds: "the three inner folds of the grid search are dealt in the same way from the units of the four training folds: units ordered by category, group and key, dealt to inner folds 1-3 in turn"   # proposed v0.6 (replaces the inner split fixed by the row order)
+      crosswalk: "data/derived/crosswalk_901.csv (phase0f): attaches Model, Scenario and key, hence model group and fold, to the anonymous rows Scenario:k of the deposited Real_*.csv"   # proposed v0.6
+      fitting: "fold classifiers, out-of-fold predictions, gates and references computed once with the deposited code, after the code deposit and before the first run, and archived"   # approved
+      gate: "lower bound of the 95% Clopper-Pearson interval of the out-of-fold accuracy (correct out-of-fold predictions out of 901) exceeds the majority-class rate (REMIND, 296/901 = 0.329)"   # approved; interval type and counting approved
+      gate_by_category: "the same test within each category against its own majority rate: C1234 REMIND 185/554 = 0.334, C56 MESSAGE 77/237 = 0.325, C78 REMIND 58/110 = 0.527"   # approved
+      gate_failure: "X5 not testable, no indices, if the pooled gate fails or no category passes its gate; a category failing its gate is reported as not testable"   # approved; per-category part approved
+      labels_predicted: "hard labels, as returned by predict"   # approved
+      real_reference: "per category, the mix of the out-of-fold predicted labels of its real scenarios"   # approved (proposed by G. Vannucci)
+      uniform_reference: "per category, the mix predicted for a uniform mix of the eight groups: the mean of the rows (true groups) of that category's out-of-fold confusion matrix, each row normalised to sum to one"   # approved
+      uniform_reference_variant: "the same from the confusion matrix of the whole 901-set; reported, no decision"   # approved
+      synthetic_mix: "per category, the mix of labels the five fold classifiers assign to its synthetic scenarios, averaged over the five"   # approved
+      rule: "X5 holds if, in each category that passes its gate, TV(synthetic mix, real reference) < TV(synthetic mix, uniform reference)"   # approved
+      G1_note: "under every factor level the references are those of the 901-set, the real comparator of every claim"   # approved
+      limitations: "each fold classifier has seen four fifths of the real scenarios the generator learns from, so it may label synthetic scenarios with less shrinkage than held-out real ones; duplicates aside, scenarios of the same model and study can fall in different folds, so out-of-fold accuracy and the gates are optimistic (40 pairs of distinct scenarios differ by less than 1% of each variable's largest value on the fifteen variables, 18 of them by less than 0.1%; the folds separate 35 and 16 of these pairs)"   # approved; duplicates clause and counts proposed v0.6
       G7_acts: true                     # sets the size of the synthetic ensemble classified
       G8_acts: false
 
@@ -277,24 +303,24 @@ fixed:
     conservativeness: "expected, checked by the mock tests of the code deposit"
     headline: "declared versus undeclared factors as classified in Table 1 (field declared above); dominant = influential by the primary rule"
 
-  comparison_across_cases:             # approved; case_2023 proposed v0.5
+  comparison_across_cases:             # approved; case_2023 approved
     metrics: ["ranking of the shared factors", "index minus the mean index of its matched dummies"]
-    not_used: "ratios to a dummy (near zero under Jansen's estimators, shrinking like 1/N under binned estimators)"
-    case_2023:                          # proposed v0.5 (G. Vannucci)
+    not_used: "ratios to a dummy (near zero under pick-freeze estimators, shrinking like 1/N under binned estimators)"   # wording proposed v0.6
+    case_2023:                          # approved (proposed by G. Vannucci)
       archive: "data/external/gsa2023/: results file, generating script, README with the design, the column dictionary, the rows forming the base matrices A and B, and the mapping of the 12 factors to the coordinates of G1-G8; results file pinned by SHA-256 in DATA.md (C1) and in the protocol"
       sha256: "e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56"   # final_results.rds, commit 3d26d6d, verified 2026-11-05 with the folder's sha256.txt
-      readme_sha256: "recorded in DATA.md (C1) at the freeze, once the mapping in its last section is final"
+      readme_sha256: "f68031806bf40a31929ae3772466db417656d39595ddf919a5c2c25806de346f"   # README.md as of commit 2b57183 (final mapping, 9 November 2026)
       runs: "the rows the README identifies as the base matrices A and B, pooled (8,192 of 57,344 runs; N = 4,096 each); the AB rows are not used"
       outputs: "the 13 claim indicators"
       matching: "at the level of coordinates (eleven in this case: G3, G4 and G5 have two); only factors the README maps to a coordinate are compared; where several map to one coordinate, all are reported and the largest of their dummy-corrected indices represents them"
       estimator: "binned first-order index of section 7: M = 8 equal-count bins for continuous factors (M = 5 and 12 also reported), levels for discrete ones"
       dummies: "numpy.random.default_rng(2023).random((8192, 3)), rows in the order of A then B as the README lists them, each column cut like the factor it serves; pseudo-random, since the design has already been run"
       inference: "bootstrap resampling runs, R = 1000, 95% percentile intervals"
-      reported: "in both cases, the shared coordinates ranked by their dummy-corrected first-order indices, per claim and averaged over the claims that have indices in that case; the original Jansen indices (N = 4,096) alongside"
+      reported: "in both cases, the shared coordinates ranked by their dummy-corrected first-order indices, per claim and averaged over the claims that have indices in that case; the original first-order indices (Saltelli's estimator, as the README of C1 documents; N = 4,096) alongside"   # estimator name proposed v0.6
       timing: "computed with the deposited analysis code (deposit step 2)"
       decision: "descriptive, no decision"
 
   deposit:                             # approved (two-step, G. Vannucci)
-    step_1: "protocol, configuration, DATA.md, DISCREPANCIES.md, DEVIATIONS.md (empty), Phase 0 reports and scripts, data/derived/ (identifier lists and X5 folds), raw-data manifest, v1.0.0/v1.0.1 diff and data/external/gsa2023/ (proposed v0.5), with a Zenodo DOI"
+    step_1: "protocol, configuration, DATA.md, DISCREPANCIES.md, DEVIATIONS.md (empty), Phase 0 reports and scripts, data/derived/ (identifier lists, X5 folds and the crosswalk of Phase 0F), docs/timing/ (proposed v0.6), raw-data manifest, v1.0.0/v1.0.1 diff and data/external/gsa2023/ (approved), with a Zenodo DOI"
     step_2: "analysis harness with its commit hash, its tests on mock data (including the null values of the indices and the conservativeness of the secondary criteria) and the environment lock, as a new version of the same Zenodo record, before the first run"
     run: "any training of a generator or any evaluation of a claim rule on generated data, pilots included"

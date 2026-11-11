@@ -1,12 +1,17 @@
-# Producing the v1.0.0 vs v1.0.1 diff (D7)
-1. Download both version tarballs from Zenodo (concept DOI 10.5281/zenodo.15280652).
-2. Record both version DOIs and tarball sha256 in DATA.md (A1, A2).
-3. Unpack side by side, then:
-   diff -urN --brief Deep-IAM_v1.0.0/ Deep-IAM_v1.0.1/ > filelist.diff
-   diff -urN Deep-IAM_v1.0.0/ Deep-IAM_v1.0.1/ > full.diff        # text files
-   For notebooks, also compare stripped of outputs:
-   pip install nbdime && nbdiff --ignore-outputs <a.ipynb> <b.ipynb>
-4. Archive filelist.diff + full.diff + nbdiff outputs here.
-   Expected per Zenodo file listing: only two ADDED files
-   (Configuration of Environments.txt; Policy-Generative Model/Secondary-data-generate.ipynb).
-   ANY other change is a finding -> DISCREPANCIES.md D7.
+# Diff between Deep-IAM v1.0.0 and v1.0.1 (D7)
+
+Produced in September 2026 (first committed on 21 September 2026) from the two code deposits
+of `DATA.md` (A1 and A2), unpacked side by side:
+
+    diff -urN --brief Deep-IAM_v1.0.0/ Deep-IAM_v1.0.1/ > filelist.txt
+    diff -urN Deep-IAM_v1.0.0/ Deep-IAM_v1.0.1/ > full.diff
+
+`filelist.txt` names the four paths that differ. Two files exist only in v1.0.1
+(`Configuration of Environments.txt` and `Policy-Generative Model/Secondary-data-generate.ipynb`);
+with `-N` an absent file is compared with an empty one, so both are reported as differing and
+`full.diff` reproduces them in full, the notebook as deposited. The other two paths are one
+line of `README.md` (the Zenodo link) and a `.DS_Store` file. Nothing else changed between the
+two versions (`DISCREPANCIES.md`, D7).
+
+Both deposits are CC BY 4.0 (Li et al.; DOIs in `DATA.md`), which is the basis on which the
+added files are reproduced here.

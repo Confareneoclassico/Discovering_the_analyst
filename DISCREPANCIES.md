@@ -25,13 +25,17 @@ The rule remains UNDECLARED in the paper (the filter exists nowhere in
 Methods/SI); it stays an undeclared-DOF entry for the protocol, now with
 known content. Note the asymmetry it reveals: Kyoto is exempted (supporting
 D3's label reading) and the grid is 2020–2100, not the Methods' 2010–2100
-(feeding D5).
+(feeding D5). The exemption is explained by D16: the pipeline's Kyoto Gases
+are an AR6 diagnostic that every vetted scenario has in every decade from 2020
+to 2100, so on that grid they can never bind.
 
 ## D3 — Six key variables declared, five in the tensor. [OPEN]
 SI S3.1 names six (PrimaryEnergy_Coal/Oil/Gas, FinalEnergy_Liquid,
 CarbonSequestration, Kyoto Gases) then describes tensors as "(680, 10, 5) …
 5 key variables". Hypothesis: Kyoto Gases is the conditioning/label variable,
-not a feature. Adjudicate from the training notebooks in A1.
+not a feature. Adjudicate from the training notebooks in A1. See D12 and D14
+(Phase 0C) for the feature sets of the two notebook families, and D16 for the
+AR6 variable behind Kyoto Gases.
 
 ## D4 — Epoch/learning-rate contradictions, SI vs Extended Data Table 3. [RESOLVED 2026-10, Phase 0C]
 - CGAN: SI S3.2 → 500 epochs, lr 1e-4; ED Table 3 → 1,500 epochs, lr 1e-4.
@@ -104,32 +108,90 @@ nonetheless excluded. So the intersection was computed on pre-imputation
 availability while training consumed the imputed file. Feeds G1 and the
 population declarations in the operational rules for X1–X4. Which scenarios the rule removes,
 by model, is established under D15: all IMAGE and WITCH scenarios, for want of
-geothermal electricity.
+geothermal electricity. Phase 0F (D16) confirms the reconstruction scenario by
+scenario: every one of the 901 deposited scenarios equals the AR6 values of
+its counterpart in `data/derived/kept901_5feat+elec10.csv` on all sixteen
+variables, raw carbon sequestration included.
 
 ## D10 — Unit inconsistency: deposit in Mt, Source Data in Gt. [RESOLVED 2026-09]
 All 514 pre-harmonization fidelity failures were exact ×1000 ratios confined
 to CarbonSequestration (244) and KyotoGases (270 = all); every EJ variable
 passed at 2% rtol untouched. Deposit stores Mt(CO2/-eq), Fig. 3 source data
-Gt. Harmonization now built into `03_synthetic_fidelity.py` (UNIT_SCALE);
-re-run expected to PASS. Benign, but goes in the documentation-hygiene list.
+Gt. With the conversion built into `03_synthetic_fidelity.py` (UNIT_SCALE),
+all 1,620 comparisons passed in the first run (results/phase0_synthetic_fidelity.json).
+Benign, but goes in the documentation-hygiene list.
+
+PENDING-RERUN. The first run allowed 2.1% of the reference (`np.isclose` with an
+absolute term of 0.1% of the reference on top of the 2%) and wrote its quantiles
+rounded to four decimals, so two comparisons with references near zero (C78
+carbon sequestration, Q10 in 2080 and 2090, 0.0043 and 0.0023 Gt) cannot be
+decided from its report under the protocol's 2%. The corrected script applies
+the rule as stated (2% of the reference plus 1e-9 in the units of the sheet,
+quantiles kept to ten significant digits) and lists empty cells and series it
+does not compare. It passes all 810 comparisons of the real series (largest
+relative deviation 4.7e-15 among the 780 whose reference is not near zero).
+The 810 of the synthetic series await its run on the analysis machine.
 Curio noted in passing: Real_C78 CarbonSequestration medians of exactly
 0.0001 Mt (100 tCO2) in early decades look like an imputation floor —
 inspect when the imputed CS file is examined.
 
-## D11 — Deposited generation not tied to documented seed or shipped weights. [ESTABLISHED 2026-09, Phase 0B]
-Regeneration from the shipped decoder weights under the documented seed 3
-(three latent-stream readings tested) yields entirely different samples
-(median elementwise rel. dev. 0.33–0.45). Distributionally, the regenerated
-ensemble matches the deposit to 1.8% of spread in the median (p95 10.3%) but
-sits ~4.4x above the two-independent-draws Monte Carlo floor, with the
+## D11 — Deposited generation not tied to the shipped weights. [ESTABLISHED 2026-09, Phase 0B; scenario-level part corrected 2026-11, PENDING-RERUN]
+As distributions, the ensemble regenerated from the shipped decoder weights
+under the documented seed 3 matches the deposit to 1.8% of spread in the
+median (p95 10.3%), but sits about 4.4 times above the Monte Carlo floor of
+two independent 10,000-draw ensembles through the same decoder, with the
 excess in tails and tight-spread cells (CS 2020). Scaler-bounds diagnostic:
-0/48 feature-category flags — Real_*.csv consistent with the scaler-fit
-data. Leading explanation: the shipped h5 checkpoint is not the one that
-generated the deposit (README describes multiple training sessions with
-"comparable" results). Consequence: even the nominally deterministic half of
-the published pipeline cannot be tied to its own archived outputs. Extends
-D1 from training to generation. Reports: results/phase0b_regeneration_run{1,2}.json
-and results/phase0b_regeneration.json (final).
+0/48 feature-category flags, so the Real_*.csv are consistent with the
+scaler-fit data. Leading explanation: the shipped h5 checkpoint is not the one
+that generated the deposit (the README describes multiple training sessions
+with "comparable" results). Consequence: even the nominally deterministic half
+of the published pipeline cannot be tied to its own archived outputs. Extends
+D1 from training to generation. These figures do not depend on the order of
+the scenarios.
+
+Correction of 10 November 2026. The scenario-by-scenario comparison of the
+first run (19 September 2026) was void. `Secondary-data-generate.ipynb`
+(cell 17) labels the i-th generated scenario `Scenario:i` and sorts the table
+by that label as text before writing it, so the deposited files are in the
+order Scenario:1, Scenario:10, Scenario:100, ... The first version of
+`phase0/05_regeneration_check.py` took the scenarios in file order and
+therefore compared unrelated scenarios: its "median elementwise relative
+deviation 0.33–0.45" under three latent-stream readings, cited in the protocol
+up to v0.5 as showing "entirely different draws", is what unrelated draws
+give and said nothing about reproduction. An independent review of the Phase 0
+scripts found the error. The corrected script aligns scenarios by the integer
+in the label, reports the correlation between regenerated and deposited
+scenarios (which separates "same latent draws through other weights" from
+"other draws"), reproduces the figures of the first run under file order for
+the record, and carries a positive control that the first lacked: the
+regenerated arrays, written by a transcription of the notebook's saving
+routine and read back, must pass the scenario-level test (they come back to
+within about 1e-8). It decides each category on its own, since the notebook
+saves the three files separately (cell 18 writes only C1234), so a deposit
+may combine categories from different executions, and it stops on empty
+values or missing decades. A second review of the corrected scripts (11
+November 2026) led to these two additions. Before the script was run on the
+deposit, it was tested on mock deposits made with randomly initialised
+decoders, without the shipped weights or the deposited synthetic files
+(`docs/checks/mock_deposit_for_phase0b.py`). The mock decoders carry a gain on
+their last layer, since freshly initialised ones are nearly flat and two
+independent draws through them differ by only 0.05%. The script reports exact
+reproduction of a mock deposit generated with the same seed and weights, which
+the first version of the script reported as not reproduced, and also through
+weights perturbed by 1e-5 of their value, more than a hundred times the
+float32 rounding unit. It separates a deposit drawn with another seed
+(correlation near zero, distributions within the Monte Carlo floor) from one
+drawn with the same seed through weights perturbed by 5% (correlation high,
+distributions beyond the floor), names the reading of each category when the
+categories come from different executions, reports a deposit as partly
+reproduced when one category was drawn with another seed, and stops on an
+empty value.
+
+PENDING-RERUN: the scenario-level figures of the corrected script on the
+deposit, and the conclusion they support on the seed. Report:
+results/phase0b_regeneration.json. The reports of the first runs are
+superseded and no longer archived; the corrected script reproduces their
+scenario-level figures under the key `first_run_file_order`.
 
 ## D12 — The model documented in SI S3 is not the model behind the figures. [RESOLVED for X4 2026-10, Phase 0C; documentation discrepancy stands]
 SI S3.1–S3.2 document generators trained on 1,160 scenarios with five
@@ -219,3 +281,66 @@ WITCH, their geothermal electricity filled by G4's imputation (or the
 scenarios dropped again under G4's level none), while the references of X5
 stay those of the 901-set. Question for the authors: was the exclusion of
 IMAGE and WITCH intended?
+
+## D16 — The deposit's Kyoto Gases are an AR6 climate diagnostic, not the native variable. [ESTABLISHED 2026-11, Phase 0F]
+The deposited `Real_*.csv` carry anonymous identifiers (`Scenario:1`, ...), no
+model and no AR6 scenario name, and the paper does not say which AR6 variable
+its "Kyoto Gases" are; the notebooks read a pre-extracted `Kyoto Gases.csv`
+that the code deposit does not explain. `phase0/10_deposit_crosswalk.py`
+(results/phase0f_deposit_crosswalk.json, real data only) matches the deposit to
+AR6 by value. Within each category, `Scenario:k` is the k-th scenario of the D9
+reconstruction in ascending order of (Model, Scenario); under this rule all
+901 deposited scenarios equal the AR6 World values on all sixteen variables and
+nine decades (largest deviation 3.1e-9 of a variable's largest value, the
+deposit's rounding). Fifteen variables are the native ones of the D9 rule. The
+sixteenth is not `Emissions|Kyoto Gases`, which equals the deposit for none of
+the 828 scenarios that report it (deviations up to a quarter of the variable's
+largest value), but `AR6 climate diagnostics|Infilled|Emissions|Kyoto Gases
+(AR6-GWP100)`, which equals it for all 901; the three other AR6 Kyoto
+diagnostics (infilled AR5-GWP100, native-with-infilled under either GWP) match
+no scenario. Since every vetted scenario has this diagnostic in every decade
+from 2020 to 2100 (it starts in 2015, so it has no 2010 value), Kyoto Gases are
+never missing on the grid of the D2 and D9 rules, which is why those rules
+found them "exempt". Consequences for
+the protocol: (i) the crosswalk `data/derived/crosswalk_901.csv` attaches AR6
+identifiers, hence model groups and X5 folds, to the deposited rows; (ii)
+training data for every G1 level are built from AR6 with this variable
+mapping (`config/paper_values.yaml`, `fixed.evaluation_set_E.ar6_variables`);
+(iii) G1's level 828 is defined by native Kyoto reporting and restricts the
+population only; (iv) under G4's level "none" the complete cases on E are the
+901-set, not the 828-set as release candidates up to v0.5 stated. Question for
+the authors: the choice of the infilled AR6-GWP100 diagnostic is nowhere
+declared.
+
+## D17 — The real 901-set contains duplicated scenarios. [ESTABLISHED 2026-11, Phases 0E and 0F; DESIGN NOTE]
+66 of the 901 scenarios, in 32 groups of two or three, duplicate one another:
+their AR6 values on the fifteen native variables of the D9 rule coincide in
+every decade 2020–2100 (C1234: 7 groups, 14 scenarios; C56: 17 and 34; C78: 8
+and 18). Coinciding means that every value agrees to within 1e-6 of the
+variable's largest absolute value. The tolerance only absorbs floating-point
+representation: duplicates agree to 1e-9 in the AR6 World CSV (two REMIND
+pairs differ in the last bits of a few values) and exactly in the deposited
+`Real_*.csv`, while the closest pair of distinct scenarios lies 2.3e-5 apart.
+`phase0/09_model_groups.py` finds the groups in the AR6 values and
+`phase0/10_deposit_crosswalk.py` finds the same groups in the deposited values.
+Every group lies within one model version and one category: POLES 24
+scenarios, REMIND 24, COFFEE 6, AIM 4, GEM-E3 4, MESSAGE 4. The infilled Kyoto
+Gases coincide as well in 29 groups: identically in 28 (58 scenarios) and to
+1.2e-7 of the variable's largest value in one. In the remaining three (COFFEE
+1.1) they differ by 0.1 to 0.6%.
+They are scenario variants that differ only outside the energy variables used
+(for instance a study's pairs with and without the suffix "f", or the EMF30
+short-lived-forcer variants). The paper does not mention them. They weigh
+twice in training and in the real test population of the label-transfer
+benchmark, and under any cross-validation of the real set a scenario can be
+predicted by a classifier that has seen its duplicate: dealing the scenarios
+singly, as release candidate v0.5 did, splits 29 of the 32 groups across
+folds. Consequence for the protocol: the X5 folds
+(`data/derived/x5_folds_901.csv`, column `duplicate_group`) treat each group
+as one unit, in the outer folds and in the grid search's inner folds. Beyond
+the duplicates there is a continuum of near-identical scenarios, which stay
+separate units: 40 pairs of distinct scenarios differ by less than 1% of each
+variable's largest value on the fifteen variables, 18 of them by less than
+0.1%, all within one model group and one category, and the folds separate 35
+and 16 of these pairs. This is the stated limitation of X5 (scenarios of the
+same model and study in different folds).

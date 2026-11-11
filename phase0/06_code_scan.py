@@ -7,8 +7,12 @@ Adjudicates from source code, before the freeze:
   X3   how the electricity sum-check error is aggregated over decades
   G8   random-forest settings of the label-transfer benchmark
 
+Only the code cells of the notebooks are read, never their saved outputs. Files are named by
+their relative paths with forward slashes and listed folder by folder, and the report names
+no local directory, so it is the same on every machine.
+
 Usage:  python3 06_code_scan.py [--paths ../config/local_paths.yaml]
-Needs:  deepiam_v100_dir in local_paths.yaml (unpacked Deep-IAM v1.0.0)
+Needs:  deepiam_v100_dir in local_paths.yaml (unpacked Deep-IAM v1.0.0; DATA.md, A1)
 Output: ../results/phase0c_code_scan.txt
 """
 import argparse, json, re
@@ -32,6 +36,11 @@ PATTERNS = {
 RX = {k: re.compile(v) for k, v in PATTERNS.items()}
 
 
+def write_lf(path, text):
+    """Write text with LF line endings on every platform."""
+    Path(path).write_bytes(text.replace("\r\n", "\n").encode("utf-8"))
+
+
 def scan_source(name, cells, out):
     hits = 0
     for ci, src in cells:
@@ -45,39 +54,45 @@ def scan_source(name, cells, out):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--paths", default=str(Path(__file__).parent.parent / "config" / "local_paths.yaml"))
+    ap.add_argument("--paths", default=str(Path(__file__).resolve().parent.parent / "config" / "local_paths.yaml"))
     args = ap.parse_args()
     paths = yaml.safe_load(open(args.paths))
     root = Path(paths["deepiam_v100_dir"]).expanduser()
     if not root.is_dir():
         raise SystemExit(f"deepiam_v100_dir not found: {root}")
 
+    def listed(pattern):
+        """Files under root matching the pattern, named by their relative paths with forward slashes and
+        ordered folder by folder (by the components of the path, compared as case-sensitive strings)."""
+        found = [(p.relative_to(root).as_posix(), p) for p in root.rglob(pattern)
+                 if ".ipynb_checkpoints" not in p.parts]
+        return sorted(found, key=lambda t: t[0].split("/"))
+
     out, summary = [], []
-    for nb in sorted(root.rglob("*.ipynb")):
-        if ".ipynb_checkpoints" in nb.parts:
-            continue
+    for name, nb in listed("*.ipynb"):
         try:
             js = json.loads(nb.read_text(encoding="utf-8", errors="replace"))
         except json.JSONDecodeError as e:
-            summary.append(f"UNREADABLE {nb.relative_to(root)}: {e}")
+            summary.append(f"UNREADABLE {name}: {e}")
             continue
         cells = [(i, "".join(c.get("source", []))) for i, c in enumerate(js.get("cells", []))
                  if c.get("cell_type") == "code"]
-        out.append(f"\n===== {nb.relative_to(root)} ({len(cells)} code cells) =====")
-        n = scan_source(str(nb.relative_to(root)), cells, out)
-        summary.append(f"{n:5d} hits  {nb.relative_to(root)}")
-    for py in sorted(root.rglob("*.py")):
-        out.append(f"\n===== {py.relative_to(root)} (script) =====")
-        n = scan_source(str(py.relative_to(root)), [(0, py.read_text(errors='replace'))], out)
-        summary.append(f"{n:5d} hits  {py.relative_to(root)}")
+        out.append(f"\n===== {name} ({len(cells)} code cells) =====")
+        n = scan_source(name, cells, out)
+        summary.append(f"{n:5d} hits  {name}")
+    for name, py in listed("*.py"):
+        out.append(f"\n===== {name} (script) =====")
+        n = scan_source(name, [(0, py.read_text(encoding="utf-8", errors="replace"))], out)
+        summary.append(f"{n:5d} hits  {name}")
 
     report = ["Phase 0C.1 static code scan of Deep-IAM v1.0.0 (no execution)",
-              f"root: {root}", "", "Per-file hit counts:"] + summary + ["", "Matches:"] + out
-    dest = Path(__file__).parent.parent / "results" / "phase0c_code_scan.txt"
+              "root: the unpacked Deep-IAM v1.0.0 deposit (deepiam_v100_dir; DATA.md, A1)", "",
+              "Per-file hit counts:"] + summary + ["", "Matches:"] + out
+    dest = Path(__file__).resolve().parent.parent / "results" / "phase0c_code_scan.txt"
     dest.parent.mkdir(exist_ok=True)
-    dest.write_text("\n".join(report), encoding="utf-8")
+    write_lf(dest, "\n".join(report) + "\n")
     print("\n".join(summary))
-    print(f"\nFull listing written to {dest}")
+    print("\nFull listing written to results/" + dest.name)
 
 
 if __name__ == "__main__":
