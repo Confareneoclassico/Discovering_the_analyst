@@ -92,8 +92,8 @@ lists of `data/derived/` to one another.
 Every script but 05 is deterministic. Scripts 08, 09 and 10 write no machine-dependent
 information and round their figures, so their outputs are pinned by SHA-256 in
 `docs/pinned_outputs.sha256` (`shasum -a 256 -c docs/pinned_outputs.sha256` from the repository
-root); the pins were reproduced under two Python environments (`requirements.txt`) and with
-the input lists in shuffled order. Script 05 depends on the
+root); the pins were reproduced under two Python environments (`requirements.txt`), with
+the input lists in shuffled order, and on the analysis machine. Script 05 depends on the
 TensorFlow build and reports its environment; it checks itself with a positive control.
 
 Python ≥3.10; `pip install -r requirements.txt`.

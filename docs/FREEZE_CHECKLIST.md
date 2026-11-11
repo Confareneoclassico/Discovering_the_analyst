@@ -33,23 +33,23 @@ a claim rule.
    01, 02, 04 and 06 to 10 were then re-run under both environments of
    `requirements.txt`, with outputs identical byte for byte.
 
-   To do on the analysis machine, blocking.
-   (a) Re-run `phase0/03_synthetic_fidelity.py` and
-   `phase0/05_regeneration_check.py` with the corrected scripts (they read the
-   deposited synthetic files; 05 needs the authors' environment). Both replace
-   their report in `results/`. Then complete the text from the new reports:
-   from 05, protocol section 3 item 7 (a `\todo` marks the place) and
-   DISCREPANCIES.md, D11; from 03, protocol section 3 item 4 (a `\todo`),
-   DISCREPANCIES.md, D10, and the A3 row of DATA.md. From the repository
-   root, `grep -rn --include="*.md" --exclude=FREEZE_CHECKLIST.md "PENDING-RERUN" .`
-   must print nothing (this file is excluded because it names the marker).
-   (b) Re-run 08, 09 and 10 and check the pinned outputs from the repository
-   root: `shasum -a 256 -c docs/pinned_outputs.sha256` must print OK five
-   times (09 and 10 need `ar6_metadata_xlsx` and `ar6_world_csv` in
-   `config/local_paths.yaml`).
-   (c) Re-run the manifest check of the raw files just before the freeze:
-   `shasum -a 256 -c docs/data_raw_manifest.sha256 | grep -v ': OK$'` prints
-   nothing.
+   Done on the analysis machine, 11 November 2026, with the commit of v0.6
+   (269d85e). (a) `phase0/03_synthetic_fidelity.py` and
+   `phase0/05_regeneration_check.py` re-run with the corrected scripts (05
+   under Python 3.10.21, TensorFlow 2.13.0 and tsgm 0.0.7 on macOS arm64,
+   as in September). Their reports replaced those in `results/`, and the
+   text was completed from them in the next commit: from 05, protocol
+   section 3 item 7 and DISCREPANCIES.md, D11; from 03, protocol section 3
+   item 4, DISCREPANCIES.md, D10, and the A3 row of DATA.md. From the
+   repository root,
+   `grep -rn --include="*.md" --exclude=FREEZE_CHECKLIST.md "PENDING-RERUN" .`
+   prints nothing (this file is excluded because it names the marker).
+   (b) 08, 09 and 10 re-run, and `shasum -a 256 -c docs/pinned_outputs.sha256`
+   printed OK five times.
+
+   To do just before the freeze. (c) Re-run the manifest check of the raw
+   files: `shasum -a 256 -c docs/data_raw_manifest.sha256 | grep -v ': OK$'`
+   prints nothing.
 
 2. Co-author decision on the blue text of the release candidate. Approved in
    G. Vannucci's reply to v0.3 (relayed 27 October 2026), and black since

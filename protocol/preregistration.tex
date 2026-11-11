@@ -59,10 +59,10 @@ awaits approval. It comes from the audit made before archiving, on 10 and
 regenerated and the deposited scenarios in the wrong order, so its
 scenario-level figures were void, and the text called the regenerated
 ensemble distributionally faithful although it deviates beyond Monte Carlo
-noise; the check is re-run with the corrected script, and its figures fill
-the placeholders of item~7 of \S\ref{sec:phase0}), the re-run of the
-fidelity check of item~4 with its 2\% rule applied exactly (its count fills
-the placeholder there), Phase~0F (the deposited real files are matched to AR6
+noise; the corrected check was re-run on 11 November, and its result,
+which ties the deposit to the documented seed's latent draws but not to
+the shipped weights, is in item~7 of \S\ref{sec:phase0}), the re-run of
+the fidelity check of item~4 with its 2\% rule applied exactly, Phase~0F (the deposited real files are matched to AR6
 scenario by scenario, which confirms the D9 reconstruction and yields the
 crosswalk that X5 needs), D16 (the deposit's Kyoto Gases are an AR6
 diagnostic that is never missing from 2020 to 2100, which corrects the note on G1 and G4 in
@@ -162,8 +162,11 @@ Completed before this deposit. Machine-readable reports are archived under
   inconsistency (deposit in Mt, the paper's Source Data Fig.~3 in Gt), all
   1{,}620 quantile comparisons (6 variables $\times$ 6 series $\times$ 9
   years $\times$ 5 quantiles) pass at 2\% relative tolerance.
-  \todo{count of the re-run of \path{03_synthetic_fidelity.py}, which now
-  applies the 2\% exactly}
+  \prop{Re-run on 11 November 2026 with the rule applied exactly, all
+  1{,}620 pass with deviations at the level of rounding (at most
+  $5\times10^{-15}$ relative, or $3\times10^{-23}$ absolute for the 30
+  references near zero): the Source Data quantiles are those of the
+  deposited files.}
   Gen files hold 10{,}000 scenarios per category.
 \item \textbf{Version provenance (D7).} v1.0.0 cannot reproduce the
   deposited synthetic data or Fig.~5. The generating notebook appeared in
@@ -188,8 +191,19 @@ Completed before this deposit. Machine-readable reports are archived under
   scenario \texttt{Scenario:}$i$ and writes the files sorted by that label as
   text, so the comparison aligns scenarios by label. Scenario by scenario,
   under the three latent-stream readings of the documentation (TensorFlow
-  global seed, a second-execution probe and the SI's NumPy reading),}
-  \todo{figures of the re-run of Phase 0B with the corrected script}.
+  global seed, a second-execution probe and the SI's NumPy reading), no
+  reading reproduces any of the three categories: median elementwise
+  relative deviations are 0.28 to 0.45, against a tolerance of $10^{-4}$.
+  Under the documented global seed, however, each regenerated scenario is
+  correlated with the deposited scenario of the same label: the median over
+  years and features of the correlation across the 10{,}000 scenarios is
+  0.08, 0.05 and 0.13 in C1234, C56 and C78, whereas the other two readings,
+  and every reading with the labels shifted by one, give at most 0.01 in
+  absolute value, the sampling error of a correlation over 10{,}000 pairs.
+  The deposit is therefore consistent with the latent draws of the
+  documented seed decoded by weights other than the shipped ones. The
+  positive control described below holds, and the regeneration is
+  repeatable within one process (re-run of 11 November 2026).}
   \prop{The first run of this check, on 19 September 2026, took the scenarios
   in file order and so compared unrelated scenarios: its median elementwise
   relative deviations of 0.33--0.45, cited up to v0.5, were those of
@@ -220,8 +234,9 @@ Completed before this deposit. Machine-readable reports are archived under
   repository README's account of multiple training sessions with
   ``comparable'' results. The generation stage is therefore executable.
   \prop{Its output matches the deposit in the bulk of the distributions,
-  but not within Monte Carlo noise, and} the deposited outputs cannot be
-  tied to the documented seed or, apparently, to the shipped weights. The
+  but not within Monte Carlo noise, and the deposit cannot be reproduced
+  from the documented seed and the shipped weights, although it appears to
+  share the seed's latent draws.} The
   determinism gap the authors acknowledge for training (D1) extends to
   generation (D11). This check answers no question posed in
   \S\ref{sec:claims}--\S\ref{sec:criteria}.

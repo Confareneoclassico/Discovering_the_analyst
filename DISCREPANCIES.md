@@ -121,21 +121,24 @@ Gt. With the conversion built into `03_synthetic_fidelity.py` (UNIT_SCALE),
 all 1,620 comparisons passed in the first run (results/phase0_synthetic_fidelity.json).
 Benign, but goes in the documentation-hygiene list.
 
-PENDING-RERUN. The first run allowed 2.1% of the reference (`np.isclose` with an
-absolute term of 0.1% of the reference on top of the 2%) and wrote its quantiles
-rounded to four decimals, so two comparisons with references near zero (C78
-carbon sequestration, Q10 in 2080 and 2090, 0.0043 and 0.0023 Gt) cannot be
-decided from its report under the protocol's 2%. The corrected script applies
-the rule as stated (2% of the reference plus 1e-9 in the units of the sheet,
-quantiles kept to ten significant digits) and lists empty cells and series it
-does not compare. It passes all 810 comparisons of the real series (largest
-relative deviation 4.7e-15 among the 780 whose reference is not near zero).
-The 810 of the synthetic series await its run on the analysis machine.
+Re-run of 11 November 2026, with the corrected script on the analysis
+machine. The first run allowed 2.1% of the reference (`np.isclose` with an
+absolute term of 0.1% of the reference on top of the 2%) and wrote its
+quantiles rounded to four decimals, which left two comparisons with references
+near zero (C78 carbon sequestration, Q10 in 2080 and 2090, 0.0043 and 0.0023
+Gt) undecided under the protocol's 2%. The corrected script applies the rule
+as stated (2% of the reference plus 1e-9 in the units of the sheet, quantiles
+kept to ten significant digits) and lists empty cells and series it does not
+compare. All 1,620 comparisons pass, with no empty cell and no series left
+out. The largest relative deviation is 1.0e-15 for the 810 synthetic
+comparisons and 4.7e-15 for the 780 real ones whose reference is not near
+zero (the other 30 differ by at most 3e-23 in absolute terms): the Source Data
+quantiles are those of the deposited files up to rounding.
 Curio noted in passing: Real_C78 CarbonSequestration medians of exactly
 0.0001 Mt (100 tCO2) in early decades look like an imputation floor —
 inspect when the imputed CS file is examined.
 
-## D11 — Deposited generation not tied to the shipped weights. [ESTABLISHED 2026-09, Phase 0B; scenario-level part corrected 2026-11, PENDING-RERUN]
+## D11 — Deposited generation not tied to the shipped weights. [ESTABLISHED 2026-09, Phase 0B; scenario-level part corrected and re-run 2026-11-11]
 As distributions, the ensemble regenerated from the shipped decoder weights
 under the documented seed 3 matches the deposit to 1.8% of spread in the
 median (p95 10.3%), but sits about 4.4 times above the Monte Carlo floor of
@@ -187,11 +190,29 @@ categories come from different executions, reports a deposit as partly
 reproduced when one category was drawn with another seed, and stops on an
 empty value.
 
-PENDING-RERUN: the scenario-level figures of the corrected script on the
-deposit, and the conclusion they support on the seed. Report:
-results/phase0b_regeneration.json. The reports of the first runs are
-superseded and no longer archived; the corrected script reproduces their
-scenario-level figures under the key `first_run_file_order`.
+Re-run of 11 November 2026 (corrected script on the analysis machine:
+Python 3.10.21, TensorFlow 2.13.0, tsgm 0.0.7, macOS arm64; report
+results/phase0b_regeneration.json). Both controls hold: the positive control
+recovers the regenerated arrays to 1.1e-8, and the regeneration is repeatable
+within one process. No reading reproduces any category: median elementwise
+relative deviations of 0.28 to 0.45, against a tolerance of 1e-4. Under the
+documented global seed, however, each regenerated scenario is correlated with
+the deposited scenario of the same label: the median over years and features
+of the correlation across the 10,000 scenarios is 0.08 in C1234, 0.05 in C56
+and 0.13 in C78. The other two readings, and every reading with the labels
+shifted by one, give at most 0.01 in absolute value, the sampling error of a
+correlation over 10,000 pairs. The deposit is therefore consistent with the
+latent draws of the documented seed decoded by weights other than the shipped
+ones. This supports the leading explanation above and narrows it: the seed
+appears to be the documented one, the checkpoint does not. The difference is
+unlikely to be small: in the mock test, weights perturbed by 5% still give a
+correlation of 0.96. The distributional figures of the first run are
+reproduced (excess over the Monte Carlo floor 4.4 times in the median and 4.7
+times in the 95th percentile, pooled; 3.8, 4.8 and 5.0 times in the median for
+C1234, C56 and C78), and the scaler-bounds diagnostic again flags no feature.
+The reports of the first runs are superseded and no longer archived; the
+corrected script reproduces their scenario-level figures under the key
+`first_run_file_order`.
 
 ## D12 — The model documented in SI S3 is not the model behind the figures. [RESOLVED for X4 2026-10, Phase 0C; documentation discrepancy stands]
 SI S3.1–S3.2 document generators trained on 1,160 scenarios with five
