@@ -11,21 +11,25 @@ re-uses the rows of the A and B base matrices (see "Use in the audit").
 | File | Content |
 |---|---|
 | `gsa_1.R` | Full R script: helper functions, `run_pipeline_once()`, Sobol' design, run loop, claim summary, Sobol' indices |
+| `plot_for_paper.R` | Loads `final_results.rds`, recomputes the Sobol' indices of the 13 claims (Saltelli for S_i, Jansen for T_i, 1,000 bootstrap replicates), writes the tables and figures in `outputs/` |
 | `final_results.rds` | Output of the 57,344 runs (list with `results`, `mat`, `params`, `N`) |
 | `paper_replicate_analysis.R` | Data preparation: replicates the data preparation of Li et al. (2023) and writes `data_scenario_wide_v2.rds` |
 | (not included) `data_scenario_wide_v2.rds` | Input data of the pipeline (366 scenarios x 123 columns); rebuilt from the public database with `paper_replicate_analysis.R` (see "Input data") |
-| `jansen_indices_2023.csv` | Sobol' indices of the 2023 analysis (S_i and T_i with 95% intervals) |
-| `outputs/` | Tables (`sobol_table_*.tex`) and figures (`*.pdf`) produced by `gsa_1.R` |
+| `jansen_indices_2023.csv` | Transcription of the 13 tables `sobol_table_*.tex`: S_i and T_i with 95% intervals, rounded to three decimals (156 rows; no script writes this file) |
+| `outputs/` | Tables (`sobol_table_*.tex`) and figures (`*.pdf`) produced by `plot_for_paper.R` |
 | `sha256.txt` | SHA-256 of every file in this folder except this README and `sha256.txt` |
 
-Order of use: `paper_replicate_analysis.R` (builds the input data), then `gsa_1.R` (runs the design).
+Order of use: `paper_replicate_analysis.R` (builds the input data), then `gsa_1.R` (runs the design), then `plot_for_paper.R` (indices, tables and figures from the saved results).
+`plot_for_paper.R` reads `gsa_checkpoints_with2C/final_results.rds` and writes to `results/N4096/`; in this
+folder the results file is at the top level and the tables and figures are in `outputs/`.
 
-SHA-256 of each file: see `sha256.txt`. The two scripts differ from the versions used to produce
-the results in four respects only, none of which affects the results: the personal `setwd()` path
-is replaced by a comment (set the working directory before running); `first = "jansen"` is
-`first = "saltelli"` in the calls to `sobol_indices()` (this reproduces the tabulated indices, see
-below); the caption of the tables written by `gsa_1.R` now reads "Saltelli estimator for S_i,
-Jansen for T_i"; and the header comment of `gsa_1.R` is reworded. The results file is unchanged.
+SHA-256 of each file: see `sha256.txt`. The scripts differ from the versions used to produce the
+results in comments only, with one exception. In all three scripts the personal `setwd()` path is
+replaced by a comment (set the working directory before running) and notes from the working log are
+reworded or removed. In `gsa_1.R`, in addition, `first = "jansen"` is `first = "saltelli"` in the calls
+to `sobol_indices()` (this reproduces the tabulated indices, see below), the caption of the tables
+written by `gsa_1.R` reads "Saltelli estimator for S_i, Jansen for T_i", and the header comment is
+reworded. The results file is unchanged.
 
 ## Design (sampler, seed, rows)
 
@@ -200,7 +204,39 @@ point estimates of F1 from `final_results.rds` for claims C1a, C1_2C, C5, C4 and
 estimator reproduces the tabulated S_i in all five cases, whereas the Jansen first-order estimator
 does not (for example C1_2C: 0.037 tabulated, 0.037 Saltelli, -0.092 Jansen). An earlier
 version of `gsa_1.R` called `sobol_indices(..., first = "jansen", ...)`; the version in this folder
-uses `first = "saltelli"`, which reproduces the tables.
+uses `first = "saltelli"`, which reproduces the tables. The tables and figures in `outputs/` were
+produced by `plot_for_paper.R`, which loads `final_results.rds` and calls
+`sobol_indices(..., first = "saltelli", total = "jansen", boot = TRUE, R = 1000)` for each of the 13
+claims.
 
 The indices of all 13 claims and 12 factors are in `jansen_indices_2023.csv` (columns: claim,
-factor, Si, Si_lo, Si_hi, Ti, Ti_lo, Ti_hi; 95% bootstrap intervals, R = 1,000).
+factor, Si, Si_lo, Si_hi, Ti, Ti_lo, Ti_hi; 95% bootstrap intervals, R = 1,000). The file is a
+transcription of the 13 tables `outputs/sobol_table_*.tex` (checked: all 156 rows coincide with the
+tabulated values, rounded to three decimals); no archived script writes it.
+
+## Known limitations of the 2023 scripts
+
+These points were identified in a review in November 2026. The archived scripts and results are
+kept as executed in 2023; nothing was rerun. Where a figure is given, it was obtained by recomputing
+the claims from the mean coefficients stored in `final_results.rds` (`coefficients_1_5C` and
+`coefficients_2C` of each run). Recomputing with the rules as coded reproduces the stored claim
+indicators exactly (no difference in any of the 57,344 runs).
+
+1. *Gas with CCS in C2 and C2_2C.* The pattern `ElcGas|PriGas` also matches the CCS variants
+   (`ElcGasCCS_share`, `PriGasCCS_share`), whereas the claim concerns unabated gas. With the CCS
+   variants excluded, C2 changes in 2,426 of the 57,344 runs (fraction of runs in which it holds,
+   25.4% to 21.1%) and C2_2C in 359 runs (42.6% to 42.0%).
+2. *Sign of the top-3 coefficients and of C4.* The lists of the three largest and three smallest
+   coefficients do not require the sign stated in the rules (positive and negative, respectively),
+   and C4 takes the largest LAM coefficient even when all are negative. This matters only when fewer
+   than three retained metrics have the stated sign. Imposing the sign changes C1b in 19 runs, C1b_2C
+   in 33 runs and C1_2C in 1 run; C1a, C1, C3, C4 and their below-2C versions are unchanged.
+3. *Growth-rate metrics in the correlation screening.* As in the paper's description, the correlation
+   screening is applied to all metrics together, and the growth-rate (AnRate) metrics are removed
+   only afterwards, before the random forest. A structure metric can therefore be dropped in favour of
+   a growth-rate metric that is itself then discarded. An independent re-implementation of the
+   screening on the input data indicates that the retained set of structure metrics differs from the
+   one obtained by screening them alone at 8 of 41 equally spaced values of F1 in [0.5, 0.9] with
+   F2 = `first`, and at 12 of 41 with F2 = `max_variance`.
+4. *Provenance of the indices file.* See "Estimators of the saved indices" above:
+   `jansen_indices_2023.csv` transcribes the tables and is not written by a script.

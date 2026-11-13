@@ -1,15 +1,15 @@
-#Scenario Discovery analysis - PAPER REPLICATION
+# Scenario Discovery analysis - PAPER REPLICATION
 # This file ONLY replicates Li et al. (2023)'s data preparation pipeline.
 # Output: data_scenario_wide_v2, saved to disk for use by gsa_1.R
 rm(list=ls())
 
-#load packages
+# Load packages
 library(readxl)
 library(dplyr)
 library(tidyverse)
 
-#Set wd
-# setwd("<folder containing the input files>")  # set this to the folder with the data (personal path removed for the deposit)
+# Working directory
+# setwd("<working folder>")  # folder containing the input files
 
 # ==============================================================================
 # 1. LOAD DATA
@@ -95,7 +95,7 @@ metric_map <- c(
   "Secondary Energy|Electricity|Wind"             = "ElcWnd",
   "GDP|PPP"                                       = "GDP"
 )
-# NOTE: ElcGasCF still excluded (28.9% missingness, verified on July 22)
+# NOTE: ElcGasCF is excluded (28.9% missing values)
 
 # verify all exist
 sapply(names(metric_map), function(v) v %in% unique(data_raw$Variable))
@@ -152,11 +152,10 @@ summary(select(data_shares, ends_with("_share")))
 # --- Compute the 7 annual growth-rate metrics ---
 # Formula (Appendix C): compound annual growth rate of the share, 2010 -> 2050 (40 years)
 # CAGR = (share_2050 / share_2010)^(1/40) - 1
-# FIX (from July 22): guard against share_2010 == 0 -> Inf/NaN. Set to NA instead,
-# since a 0/0 or x/0 growth rate is not meaningfully defined. This NA-guard is
-# REQUIRED - without it, Inf values corrupt the correlation matrix downstream
-# (screen_by_correlation) with NaN, which can silently break the tie-break logic
-# or throw "missing value where TRUE/FALSE needed".
+# Where share_2010 == 0 the growth rate is set to NA, since a 0/0 or x/0 growth rate is
+# not defined. Without this guard, Inf values turn the correlation matrix used in
+# screen_by_correlation into NaN, which breaks the tie-break logic or throws
+# "missing value where TRUE/FALSE needed".
 compute_growth_rate <- function(df, share_var, year_var = "year") {
   df %>%
     select(Model, Scenario, Region, all_of(year_var), all_of(share_var)) %>%
@@ -165,7 +164,7 @@ compute_growth_rate <- function(df, share_var, year_var = "year") {
     select(Model, Scenario, Region, growth_rate)
 }
 
-# Need shares computed for BOTH years first - redo the share calc without filtering to 2050 only
+# Shares for both years (2010 and 2050), needed for the growth rates
 data_shares_allyears <- data_wide %>%
   mutate(
     PriBio_share = PriBio / PriTotal,
@@ -192,7 +191,7 @@ growth_rates_combined <- reduce(growth_rates, left_join, by = c("Model", "Scenar
 
 dim(growth_rates_combined)
 summary(select(growth_rates_combined, ends_with("AnRate")))
-# should show NO Inf values now, only NA where share_2010 == 0
+# no Inf values; NA where share_2010 == 0
 
 # ==============================================================================
 # 6. ASSEMBLE FINAL DATASET (structure/ratio 2050 + EngInt.Ratio + growth-rates)
@@ -219,7 +218,7 @@ data_2050 <- data_2050 %>%
 dim(data_2050)
 names(data_2050)
 
-# --- Full 7-metric growth-rate set (ElcSol/ElcWnd included - fine now at 80% completeness) ---
+# --- Full 7-metric growth-rate set (ElcSol and ElcWnd included, given the 80% completeness threshold) ---
 growth_rates_full7 <- growth_rates_combined
 
 data_full_7gr <- data_2050 %>%
@@ -235,7 +234,7 @@ all_metric_cols_7gr <- data_full_7gr %>%
 
 length(all_metric_cols_7gr)  # should be 24 (17 structure/ratio + 7 growth-rate)
 
-# --- Completeness check: PARTIAL threshold (80%), not 100% - see July 23 correction ---
+# --- Completeness check: 80% threshold (not 100%) ---
 completeness_7gr <- data_full_7gr %>%
   group_by(Model, Scenario) %>%
   summarise(pct_complete = mean(!is.na(across(all_of(all_metric_cols_7gr)))), .groups = "drop")

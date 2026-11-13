@@ -19,7 +19,7 @@ library(randomForest)
 library(glmnet)
 library(sensobol)
 
-# setwd("<folder containing the input files>")  # set this to the folder with the data (personal path removed for the deposit)
+# setwd("<working folder>")  # folder containing the input files
 
 # ==============================================================================
 # 0. LOAD REPLICATED DATASET (from paper_replicate_analysis.R)
@@ -57,9 +57,8 @@ screen_by_correlation <- function(df, metric_cols, corr_threshold = 0.85,
 }
 
 # --- Stage 3: Ridge-regularized logistic regression (glmnet, alpha=0) ---
-# Very likely a faithful replication of Li et al.'s actual software behavior
-# (scikit-learn LogisticRegression regularizes by default), not a deviation
-# from their stated method. See July 23 log.
+# scikit-learn's LogisticRegression regularizes by default, so a ridge penalty is
+# likely what Li et al. used, although the paper describes plain logistic regression.
 fit_logit_glmnet <- function(df, predictors, target_col, alpha = 0,
                               train_frac = 0.8, n_repeats = 10, seed = 42) {
   set.seed(seed)
@@ -83,7 +82,7 @@ fit_logit_glmnet <- function(df, predictors, target_col, alpha = 0,
 }
 
 # --- Stage 4: manual PRIM (peeling trajectory) ---
-# R packages sdtoolkit/prim did not behave as documented (July 22 log, Stage 4).
+# Manual implementation: the R packages sdtoolkit and prim did not behave as documented.
 peel_step <- function(x, y, in_box_idx, alpha = 0.05) {
   n_in_box <- sum(in_box_idx)
   n_remove <- max(1, floor(alpha * n_in_box))
@@ -201,7 +200,7 @@ run_pipeline_once <- function(data_scenario_wide, factors, run_seed = NULL) {
                                  train_frac = factors$F9.1, n_repeats = factors$F9.2,
                                  seed = logit_seed)
   
-  # --- Stage 4: manual PRIM (below1.5C only, as before) ---
+  # --- Stage 4: manual PRIM (below 1.5C only) ---
   n_prim_metrics <- min(factors$F10, length(important_metrics))
   prim_metrics <- names(sort(abs(logit_1_5C$avg_coefficients), decreasing = TRUE))[1:n_prim_metrics]
   
@@ -224,7 +223,7 @@ run_pipeline_once <- function(data_scenario_wide, factors, run_seed = NULL) {
     }
   }
   
-  # --- Claims: below-1.5C (unchanged) + below-2C (NEW, computed safely inline) ---
+  # --- Claims: below 1.5C and below 2C ---
   coefs_1_5C <- logit_1_5C$avg_coefficients
   coefs_2C   <- logit_2C$avg_coefficients
   
@@ -239,7 +238,7 @@ run_pipeline_once <- function(data_scenario_wide, factors, run_seed = NULL) {
   C1b_2C <- any(grepl("ElcSol|ElcWnd|ElcNuc", top3_pos_2C))
   
   claims <- list(
-    # below-1.5C (unchanged from validated version)
+    # below 1.5C
     C1a = C1a, C1b = C1b, C1 = C1a && C1b,
     C2 = any(grepl("ElcGas|PriGas", top3_neg_1_5C)),
     C3 = any(grepl("EngInt", top3_neg_1_5C)),
@@ -249,7 +248,7 @@ run_pipeline_once <- function(data_scenario_wide, factors, run_seed = NULL) {
     },
     C5 = !is.null(prim_box_1_5C) && prim_box_1_5C$precision > 0.45 && prim_box_1_5C$recall > 0.85,
     
-    # below-2C (NEW; C5_2C intentionally omitted - would require duplicating Stage 4)
+    # below 2C (C5_2C is not computed: it would require repeating Stage 4)
     C1a_2C = C1a_2C, C1b_2C = C1b_2C, C1_2C = C1a_2C && C1b_2C,
     C2_2C = any(grepl("ElcGas|PriGas", top3_neg_2C)),
     C3_2C = any(grepl("EngInt", top3_neg_2C)),
@@ -286,10 +285,10 @@ baseline_run$rf_oob_accuracy
 sort(baseline_run$coefficients_1_5C, decreasing = TRUE)
 
 
-# --- NEW checks: verify the below-2C additions work correctly ---
-sort(baseline_run$coefficients_2C, decreasing = TRUE)  # sanity check the new coefficients exist and look sensible
+# --- Checks of the below-2C outputs ---
+sort(baseline_run$coefficients_2C, decreasing = TRUE)  # check that the below-2C coefficients exist and look sensible
 
-# Confirm claims now has 13 elements (7 original + 6 new), not 7
+# Confirm that claims has 13 elements (7 for below 1.5C, 6 for below 2C)
 length(baseline_run$claims)
 names(baseline_run$claims)
 
@@ -343,12 +342,12 @@ cat("Started at:", format(Sys.time(), "%Y-%m-%d %H:%M:%S"), "\n\n")
 
 results_overnight <- vector("list", n_runs_overnight)
 
-checkpoint_dir <- "gsa_checkpoints_with2C"   # NEW folder, separate from the old below-1.5-only run
+checkpoint_dir <- "gsa_checkpoints_with2C"   # folder for the checkpoints of the full run
 if (!dir.exists(checkpoint_dir)) dir.create(checkpoint_dir)
 
 start_time <- Sys.time()
 
-for (i in seq_len(n_runs_overnight)) {   # start from i=1, NOT resuming
+for (i in seq_len(n_runs_overnight)) {   # the run starts from i = 1 (no resuming)
   factors_i <- map_factors_all(mat_overnight[i, ])
   results_overnight[[i]] <- tryCatch(
     run_pipeline_once(data_scenario_wide_v2, factors_i, run_seed = 10000 + i),
@@ -381,7 +380,7 @@ cat("Total failed:", sum(sapply(results_overnight, is.null)), "/", n_runs_overni
 # ==============================================================================
 
 claims_matrix_overnight <- do.call(rbind, lapply(results_overnight, function(r) {
-  if (is.null(r)) return(rep(NA, 13))   # 13, not 7
+  if (is.null(r)) return(rep(NA, 13))   # 13 claim indicators
   unlist(r$claims)
 }))
 colnames(claims_matrix_overnight) <- c("C1a","C1b","C1","C2","C3","C4","C5",
@@ -402,7 +401,7 @@ Y_C3  <- as.numeric(claims_matrix_overnight[, "C3"])
 Y_C4  <- as.numeric(claims_matrix_overnight[, "C4"])
 Y_C5  <- as.numeric(claims_matrix_overnight[, "C5"])
 
-# NEW: below-2C outcome vectors
+# Outcome vectors, below 2C
 Y_C1a_2C <- as.numeric(claims_matrix_overnight[, "C1a_2C"])
 Y_C1b_2C <- as.numeric(claims_matrix_overnight[, "C1b_2C"])
 Y_C1_2C  <- as.numeric(claims_matrix_overnight[, "C1_2C"])
@@ -423,7 +422,7 @@ ind_C3  <- sobol_indices(Y = Y_C3,  N = N_overnight, params = params_all, first 
 ind_C4  <- sobol_indices(Y = Y_C4,  N = N_overnight, params = params_all, first = "saltelli", boot = TRUE, R = 1000)
 ind_C5  <- sobol_indices(Y = Y_C5,  N = N_overnight, params = params_all, first = "saltelli", boot = TRUE, R = 1000)
 
-# NEW: below-2C Sobol' indices
+# Sobol' indices, below 2C
 ind_C1a_2C <- sobol_indices(Y = Y_C1a_2C, N = N_overnight, params = params_all, first = "saltelli", boot = TRUE, R = 1000)
 ind_C1b_2C <- sobol_indices(Y = Y_C1b_2C, N = N_overnight, params = params_all, first = "saltelli", boot = TRUE, R = 1000)
 ind_C1_2C  <- sobol_indices(Y = Y_C1_2C,  N = N_overnight, params = params_all, first = "saltelli", boot = TRUE, R = 1000)
@@ -463,7 +462,7 @@ plot_df <- do.call(rbind, lapply(names(all_indices), function(claim_name) {
 }))
 plot_df$parameters <- factor(plot_df$parameters, levels = params_all)
 
-# --- One faceted figure, all 13 claims (7 below-1.5C + 6 below-2C), 4 columns to fit better ---
+# --- One faceted figure, all 13 claims (7 below 1.5C, 6 below 2C) ---
 p <- ggplot(plot_df, aes(x = parameters, y = original, fill = sensitivity)) +
   geom_col(position = position_dodge(width = 0.8), width = 0.7) +
   geom_errorbar(aes(ymin = low.ci, ymax = high.ci),
@@ -496,7 +495,7 @@ p2 <- ggplot(fractions_df, aes(x = claim, y = fraction, fill = target)) +
 
 ggsave("claim_fractions_with2C.pdf", p2, width = 9, height = 5)
 
-# --- One table per claim (unchanged logic, now runs over all 13) ---
+# --- One table per claim ---
 for (claim_name in names(all_indices)) {
   df <- as.data.frame(all_indices[[claim_name]]$results)
   
