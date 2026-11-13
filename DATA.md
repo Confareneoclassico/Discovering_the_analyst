@@ -106,7 +106,7 @@ is part of the freeze (`docs/FREEZE_CHECKLIST.md`, step 10).
 
 | # | Artefact | Source | Version pinned | sha256 | Status |
 |---|----------|--------|----------------|--------|--------|
-| C1 | Results of the 2023 case of the series (GSA of Li P.-H. et al. (2023), pick-freeze design of `sensobol`: 57,344 runs, N = 4,096, 12 factors; per run the 13 claim indicators, the number of scenarios, the number of selected features, the random-forest OOB accuracy and the regression coefficients), with the two R scripts, the 2023 indices, tables and figures, a README and `sha256.txt` | G. Vannucci, `data/external/gsa2023/` (commit 3d26d6d, 5 November 2026) | as committed in 3d26d6d | `final_results.rds` e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56 (also in the protocol, section 7); every other file except the README in the folder's `sha256.txt`; README.md (final mapping, commit 2b57183, 9 November 2026) f68031806bf40a31929ae3772466db417656d39595ddf919a5c2c25806de346f | ✅ all 19 hashes of `sha256.txt` verified 2026-11-05 and again 2026-11-09; README checked; mapping final and approved by G. Vannucci 2026-11-09; consent to public deposit given 2026-11-05 |
+| C1 | Results of the 2023 case of the series (GSA of Li P.-H. et al. (2023), pick-freeze design of `sensobol`: 57,344 runs, N = 4,096, 12 factors; per run the 13 claim indicators, the number of scenarios, the number of selected features, the random-forest OOB accuracy and the regression coefficients), with the two R scripts that generated them, the R script that computes the 2023 indices and draws their tables and figures (`plot_for_paper.R`), the indices, tables and figures, a README and `sha256.txt` | G. Vannucci, `data/external/gsa2023/` (commit 3d26d6d, 5 November 2026; updated in commit 02c94bf, 13 November 2026) | as committed in 02c94bf | `final_results.rds` e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56 (also in the protocol, section 7; unchanged since 3d26d6d); every other file except the README in the folder's `sha256.txt` (20 files); README.md (commit 02c94bf, 13 November 2026) 9821925a02b3cf0a75aa29d819af7b441859f0b7d72efdb4feefa91467a3b844 | ✅ all hashes of `sha256.txt` verified 2026-11-05, 2026-11-09 and, after the update, 2026-11-13 (20 of 20); README checked; mapping final and approved by G. Vannucci 2026-11-09; consent to public deposit given 2026-11-05 |
 
 The README states the design (`sensobol::sobol_matrices`, N = 4,096, k = 12),
 the column dictionary, which rows form the base matrices A and B (rows 1 to
@@ -120,6 +120,21 @@ runs before the code deposit. The input data (SR1.5 database) are not
 included, as their terms restrict redistribution; the README gives the source
 and `paper_replicate_analysis.R` rebuilds them. G. Vannucci agreed on 5
 November 2026 that the whole folder be deposited publicly with the protocol.
+
+The update of 13 November 2026 answers four points raised by the audit of
+`gsa_1.R`. Two are departures of the script from the claim rules as stated:
+the pattern of C2 also matches the gas shares with CCS, and the "top 3"
+coefficients and the largest coefficient of C4 are not restricted by sign. The
+README documents them with their effect on the stored claims, which G.
+Vannucci recomputed from the coefficients in `final_results.rds`. It also
+documents that the growth-rate metrics take part in the correlation screening
+before they are dropped, and that `jansen_indices_2023.csv` transcribes the
+tables written by `plot_for_paper.R`, which was added. Scripts and results are
+kept as executed in 2023, so the comparison of protocol section 7 uses the
+claims as executed. The comments of `gsa_1.R` and `paper_replicate_analysis.R`
+were cleaned of working notes. Their code is unchanged: with comments, blank
+lines and spacing outside strings removed, both files are identical to those
+of commit 2b57183.
 
 ## Provenance rules
 

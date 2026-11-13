@@ -65,21 +65,22 @@ a claim rule.
    and B matrices of the 2023 design, per-category gates and uniform
    references for X5, folds fixed from identifiers).
 
-   Pending: the blue text of v0.6, all from the audit of 10 and 11 November
-   2026. (i) Phase 0B corrected and re-run, including the sentence that
-   called the regenerated ensemble distributionally faithful (section 3 item
-   7), and the count of the fidelity check under its exact rule (item 4).
-   (ii) Phase 0F and
-   the crosswalk (section 3 item 11, section 4 X5, section 10). (iii) The
-   note on G1 and G4 corrected: complete cases are the 901-set, level 828
-   means native Kyoto reporting (section 5, Table 1). (iv) The X5 folds
-   redone: duplicated scenarios form one unit in the outer folds and in the
-   grid search's inner folds, which replaces the folds file approved on 5
-   November (section 4 X5). (v) The estimators of the 2023 case named as its
-   README documents them (sections 2 and 7). (vi) The timing benchmark and
-   the mock test of script 05 disclosed (abstract, section 3 item 7, section
-   6). Record the approval here with its date. Any later blue text needs its
-   own approval.
+   The blue text of v0.6, all from the audit of 10 and 11 November 2026, was
+   approved in G. Vannucci's reply of 13 November 2026, with one wording
+   change she asked for, now applied: "scripts" for the 2023 folder, which
+   holds three (sections 2 and 10). It comprises (i) Phase 0B corrected and
+   re-run, including the sentence that called the regenerated ensemble
+   distributionally faithful (section 3 item 7), and the count of the fidelity
+   check under its exact rule (item 4). (ii) Phase 0F and the crosswalk
+   (section 3 item 11, section 4 X5, section 10). (iii) The note on G1 and G4
+   corrected: complete cases are the 901-set, level 828 means native Kyoto
+   reporting (section 5, Table 1). (iv) The X5 folds redone: duplicated
+   scenarios form one unit in the outer folds and in the grid search's inner
+   folds, which replaces the folds file approved on 5 November (section 4 X5).
+   (v) The estimators of the 2023 case named as its README documents them
+   (sections 2 and 7). (vi) The timing benchmark and the mock test of script
+   05 disclosed (abstract, section 3 item 7, section 6). Any later blue text
+   needs its own approval.
 
 3. External results. Done on 5 November 2026: G. Vannucci's files added in
    3d26d6d, all 19 hashes of the folder's `sha256.txt` verified
@@ -90,15 +91,25 @@ a claim rule.
    approved; README.md SHA-256 f6803180...06de346f recorded in DATA.md (C1) and
    in the configuration.
 
-   Pending: her answers to four points on `gsa_1.R` raised by the audit (the
-   pattern of claim C2 also matches the gas-with-CCS shares; "top 3" and
-   the largest coefficient of claim C4 are not restricted by sign, so C4 can
-   pick a negative coefficient; growth-rate metrics take part in the correlation
-   screening before they are dropped; `jansen_indices_2023.csv` is written by
-   no archived script). If any file of the folder changes, update its
-   `sha256.txt`, the two hashes in DATA.md (C1), `sha256` and `readme_sha256`
-   of `case_2023` in the configuration and the hash in protocol section 7,
-   and verify again with
+   Done on 13 November 2026: her answers to four points on `gsa_1.R` raised
+   by the audit, in commit 02c94bf. The pattern of claim C2 also matches the
+   gas-with-CCS shares, and "top 3" and the largest coefficient of claim C4
+   are not restricted by sign: implementation errors, documented in the
+   README with their effect on the stored claims, while scripts and results
+   stay as executed in 2023. The growth-rate metrics take part in the
+   correlation screening before they are dropped: the intended behaviour,
+   documented with its effect on the retained metrics. `jansen_indices_2023.csv`
+   is written by no archived script: it transcribes the 13 tables written by
+   `plot_for_paper.R`, which was missing and has been added. The comments of
+   the two other scripts were cleaned of working notes, with their code
+   unchanged (both compared without comments, blank lines and spacing
+   outside strings). All 20 hashes of `sha256.txt` verified; README.md SHA-256
+   9821925a...a3b844 recorded in DATA.md (C1) and in the configuration;
+   `final_results.rds` unchanged, so the hash in protocol section 7 stands.
+   `plot_for_paper.R` added to `docs/tracked_files.txt` (72 files). If any
+   file of the folder changes again, update its `sha256.txt`, the two hashes
+   in DATA.md (C1), `sha256` and `readme_sha256` of `case_2023` in the
+   configuration and the hash in protocol section 7, and verify again with
    `(cd data/external/gsa2023 && shasum -a 256 -c sha256.txt)`.
 
 4. Author block: include or not (commented block with full affiliations is in

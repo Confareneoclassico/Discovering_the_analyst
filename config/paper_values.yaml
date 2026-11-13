@@ -307,11 +307,11 @@ fixed:
     metrics: ["ranking of the shared factors", "index minus the mean index of its matched dummies"]
     not_used: "ratios to a dummy (near zero under pick-freeze estimators, shrinking like 1/N under binned estimators)"   # wording proposed v0.6
     case_2023:                          # approved (proposed by G. Vannucci)
-      archive: "data/external/gsa2023/: results file, generating script, README with the design, the column dictionary, the rows forming the base matrices A and B, and the mapping of the 12 factors to the coordinates of G1-G8; results file pinned by SHA-256 in DATA.md (C1) and in the protocol"
-      sha256: "e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56"   # final_results.rds, commit 3d26d6d, verified 2026-11-05 with the folder's sha256.txt
-      readme_sha256: "f68031806bf40a31929ae3772466db417656d39595ddf919a5c2c25806de346f"   # README.md as of commit 2b57183 (final mapping, 9 November 2026)
+      archive: "data/external/gsa2023/: results file, the scripts that generated it and the script of its indices, tables and figures, README with the design, the column dictionary, the rows forming the base matrices A and B, and the mapping of the 12 factors to the coordinates of G1-G8; results file pinned by SHA-256 in DATA.md (C1) and in the protocol"
+      sha256: "e13147fcc7d4683046337fabdb0cfe99153c3eece85f7a59fc419f0cb47dac56"   # final_results.rds, commit 3d26d6d, unchanged in 02c94bf; verified with the folder's sha256.txt on 2026-11-05 and 2026-11-13
+      readme_sha256: "9821925a02b3cf0a75aa29d819af7b441859f0b7d72efdb4feefa91467a3b844"   # README.md as of commit 02c94bf (13 November 2026)
       runs: "the rows the README identifies as the base matrices A and B, pooled (8,192 of 57,344 runs; N = 4,096 each); the AB rows are not used"
-      outputs: "the 13 claim indicators"
+      outputs: "the 13 claim indicators, as executed in 2023 (the README documents where gsa_1.R departs from the rules as stated, and the effect on the stored claims)"
       matching: "at the level of coordinates (eleven in this case: G3, G4 and G5 have two); only factors the README maps to a coordinate are compared; where several map to one coordinate, all are reported and the largest of their dummy-corrected indices represents them"
       estimator: "binned first-order index of section 7: M = 8 equal-count bins for continuous factors (M = 5 and 12 also reported), levels for discrete ones"
       dummies: "numpy.random.default_rng(2023).random((8192, 3)), rows in the order of A then B as the README lists them, each column cut like the factor it serves; pseudo-random, since the design has already been run"

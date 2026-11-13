@@ -30,6 +30,7 @@ data/external/gsa2023/outputs/sobol_table_C4.tex
 data/external/gsa2023/outputs/sobol_table_C4_2C.tex
 data/external/gsa2023/outputs/sobol_table_C5.tex
 data/external/gsa2023/paper_replicate_analysis.R
+data/external/gsa2023/plot_for_paper.R
 data/external/gsa2023/sha256.txt
 docs/FREEZE_CHECKLIST.md
 docs/checks/check_design_2023.py
